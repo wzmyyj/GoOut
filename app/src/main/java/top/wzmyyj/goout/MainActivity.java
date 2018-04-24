@@ -13,10 +13,10 @@ public class MainActivity extends BaseMainActivity {
     @Override
     protected FPT getFPT(FPT fpt) {
         fpt
-                .add(new F_1(), "活动", R.mipmap.ic_launcher, R.mipmap.ic_launcher)
-                .add(new F_2(), "发现", R.mipmap.ic_launcher, R.mipmap.ic_launcher)
-                .add(new F_3(), "消息", R.mipmap.ic_launcher, R.mipmap.ic_launcher)
-                .add(new F_4(), "我的", R.mipmap.ic_launcher, R.mipmap.ic_launcher);
+                .add(new F_1(), "主页", R.mipmap.homepage, R.mipmap.homepage_fill)
+                .add(new F_2(), "活动", R.mipmap.service, R.mipmap.service_fill)
+                .add(new F_3(), "消息", R.mipmap.remind, R.mipmap.remind_fill)
+                .add(new F_4(), "我的", R.mipmap.people, R.mipmap.people_fill);
         return fpt;
     }
 }

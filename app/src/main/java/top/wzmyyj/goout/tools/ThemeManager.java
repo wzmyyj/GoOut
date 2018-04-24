@@ -17,4 +17,8 @@ public class ThemeManager {
             return QMUIStatusBarHelper.setStatusBarDarkMode(activity);
         }
     }
+
+    public static void setStatusBarTranslucent(Activity activity){
+        QMUIStatusBarHelper.translucent(activity);
+    }
 }

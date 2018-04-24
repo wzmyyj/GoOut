@@ -114,8 +114,8 @@ public class TabMenu extends LinearLayout {
             layout.addView(tv);
             tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, text_size);
             LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(
-                    LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-            param3.gravity = Gravity.CENTER_HORIZONTAL;
+                    LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
+            param3.gravity = Gravity.CENTER;
             tv.setLayoutParams(param3);
 
             final int w = i;

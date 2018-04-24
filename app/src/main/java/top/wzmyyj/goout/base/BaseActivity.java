@@ -10,7 +10,5 @@ public abstract class BaseActivity extends InitActivity {
     protected void initSome(Bundle savedInstanceState) {
         super.initSome(savedInstanceState);
         ThemeManager.setStatusBarMode(this, true);
-
-
     }
 }
