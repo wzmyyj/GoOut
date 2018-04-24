@@ -16,12 +16,12 @@ import java.util.List;
  */
 
 public abstract class CommonAdapter<T> extends BaseAdapter {
-    protected Context mContext;
+    protected LayoutInflater mInflater;
     protected List<T> mData;
     private int layoutId;
 
     public CommonAdapter(Context context, List<T> data, int layoutId) {
-        this.mContext = context;
+        this.mInflater = LayoutInflater.from(context);
         this.mData = data;
         this.layoutId = layoutId;
     }
@@ -44,7 +44,7 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = (convertView == null) ?
-                new ViewHolder(mContext, parent, layoutId) :
+                new ViewHolder(mInflater, parent, layoutId) :
                 (ViewHolder) convertView.getTag();
         convert(holder, getItem(position), position);
         return holder.getConvertView();
@@ -58,9 +58,9 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
         private SparseArray<View> mViews;
         private View mConvertView;
 
-        public ViewHolder(Context context, ViewGroup parent, int layoutId) {
+        public ViewHolder(LayoutInflater inflater, ViewGroup parent, int layoutId) {
             this.mViews = new SparseArray<View>();
-            mConvertView = LayoutInflater.from(context).inflate(layoutId, parent, false);
+            mConvertView = inflater.inflate(layoutId, parent, false);
             mConvertView.setTag(this);
         }
 

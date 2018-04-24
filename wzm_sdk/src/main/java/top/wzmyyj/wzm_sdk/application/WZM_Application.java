@@ -8,7 +8,7 @@ import top.wzmyyj.wzm_sdk.tools.T;
  * Created by wzm on 2018/4/8 0008.
  */
 
-public class WzmApplication extends Application {
+public class WZM_Application extends Application {
     @Override
     public void onCreate() {
         super.onCreate();

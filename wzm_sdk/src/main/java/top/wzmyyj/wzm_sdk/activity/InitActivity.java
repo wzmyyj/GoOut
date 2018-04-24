@@ -3,7 +3,7 @@ package top.wzmyyj.wzm_sdk.activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public abstract class WzmActivity extends AppCompatActivity {
+public abstract class InitActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

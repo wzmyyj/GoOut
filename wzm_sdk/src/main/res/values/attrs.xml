@@ -12,6 +12,8 @@
     </declare-styleable>
 
     <declare-styleable name="TabMenu">
+        <attr name="which" format="integer" />
+        <attr name="item_count" format="integer" />
         <attr name="icon_size" format="dimension" />
         <attr name="android:textSize" />
         <attr name="text_color1" format="color" />

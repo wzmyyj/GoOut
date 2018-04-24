@@ -3,7 +3,6 @@ package top.wzmyyj.wzm_sdk.activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
@@ -16,28 +15,33 @@ import top.wzmyyj.wzm_sdk.view.TabMenu;
  * Created by wzm on 2018/4/18 0018.
  */
 
-public abstract class FPT_Activity extends WzmActivity {
+public abstract class FPT_Activity extends InitActivity {
     private List<Fragment> mFragmentList;
     private TabMenu mTabMenu;
     private ViewPager mViewPager;
 
     protected class FPT {
-        Fragment fragment;
-        String string;
-        int icon1;
-        int icon2;
+        List<Fragment> fragments = new ArrayList<>();
+        String[] str = new String[6];
+        int[] icon1 = new int[6];
+        int[] icon2 = new int[6];
 
-        public FPT(Fragment fragment, String string, int icon1, int icon2) {
-            this.fragment = fragment;
-            this.string = string;
-            this.icon1 = icon1;
-            this.icon2 = icon2;
+        public FPT add(Fragment fragment, String text, int ic_1, int ic_2) {
+            int i = this.fragments.size();
+            if (i >= 6) {
+                return this;
+            }
+            this.fragments.add(fragment);
+            this.str[i] = text;
+            this.icon1[i] = ic_1;
+            this.icon2[i] = ic_2;
+            return this;
         }
     }
 
     @Override
     protected void initView() {
-        setContentView(R.layout.fp_tab);
+        setContentView(R.layout.activity_fpt);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
         mTabMenu = (TabMenu) findViewById(R.id.tabMenu);
 
@@ -45,24 +49,14 @@ public abstract class FPT_Activity extends WzmActivity {
 
     @Override
     protected void initData() {
-        List<FPT> mData = getFPT();
-        int position = getPosition();
-
-        if (mData == null) return;
-
-        mFragmentList = new ArrayList<>();
-        int c = mData.size();
-        String[] s = new String[c];
-        int[] i1 = new int[c];
-        int[] i2 = new int[c];
-
-        for (int i = 0; i < c; i++) {
-            mFragmentList.add(mData.get(i).fragment);
-            s[i] = mData.get(i).string;
-            i1[i] = mData.get(i).icon1;
-            i2[i] = mData.get(i).icon2;
+        FPT fpt = getFPT(new FPT());
+        int which = getWhich();
+        if (fpt == null) {
+            return;
         }
-        mTabMenu.initItem(c, position, s, i1, i2);
+        mFragmentList = new ArrayList<>();
+        mFragmentList = fpt.fragments;
+
 
         FragmentPagerAdapter mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
 
@@ -83,40 +77,21 @@ public abstract class FPT_Activity extends WzmActivity {
         };
         mViewPager.setAdapter(mAdapter);
 
+        mTabMenu.setItemText(fpt.str)
+                .setItemIcon(fpt.icon1, fpt.icon2)
+                .setupWithViewPager(mViewPager);
+
     }
 
-    protected abstract List<FPT> getFPT();
+    protected abstract FPT getFPT(FPT fpt);
 
-    protected int getPosition() {
+    protected int getWhich() {
         return 0;
     }
 
 
     @Override
     protected void initListener() {
-        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position,
-                                       float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                mTabMenu.change(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-        mTabMenu.setOnMenuItemClickListener(new TabMenu.OnMenuItemClickListener() {
-            @Override
-            public void onClick(View view, int pos) {
-                mViewPager.setCurrentItem(pos);
-            }
-        });
     }
 
 

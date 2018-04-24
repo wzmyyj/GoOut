@@ -3,6 +3,8 @@ package top.wzmyyj.wzm_sdk.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -19,8 +21,8 @@ import top.wzmyyj.wzm_sdk.R;
 
 public class TabMenu extends LinearLayout {
 
-    private int position = 0;
-    private int item_count = 3;
+    private int which = 0;
+    private int item_count = 2;
 
     final static private int ITEM_COUNT_MIN = 2;
     final static private int ITEM_COUNT_MAX = 6;
@@ -32,10 +34,14 @@ public class TabMenu extends LinearLayout {
     private int text_color2;
 
     private List<LinearLayout> layouts;
+    private List<ImageView> images;
+    private List<TextView> texts;
 
-    private String[] str;
-    private int[] icon1;
-    private int[] icon2;
+    private String[] str = new String[]{"Item1", "Item2", "Item3", "Item4", "Item5", "Item6"};
+    private int[] icon1 = new int[6];
+    private int[] icon2 = new int[6];
+
+    private ViewPager mViewPager;
 
     private OnMenuItemClickListener mMenuItemClickListener;
 
@@ -61,27 +67,33 @@ public class TabMenu extends LinearLayout {
         super(context, attrs, defStyle);
         this.setOrientation(LinearLayout.HORIZONTAL);
 
+        layouts = new ArrayList<>();
+        images = new ArrayList<>();
+        texts = new ArrayList<>();
+
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs,
                 R.styleable.TabMenu, defStyle, 0);
+        which = a.getInt(R.styleable.TabMenu_which, 0);
+        item_count = a.getInt(R.styleable.TabMenu_item_count, 2);
         icon_size = (int) a.getDimension(R.styleable.TabMenu_icon_size, TypedValue
                 .applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30,
                         getResources().getDisplayMetrics()));
         text_size = a.getDimensionPixelSize(R.styleable.TabMenu_android_textSize, 13);
-
-
         item_bg = a.getResourceId(R.styleable.TabMenu_item_bg, 0);
         text_color1 = a.getColor(R.styleable.TabMenu_text_color1, 0x777777);
         text_color2 = a.getColor(R.styleable.TabMenu_text_color2, 0x222222);
         a.recycle();
+        initView();
+        initData();
 
 
     }
 
     private void initView() {
-        layouts = new ArrayList<>();
-        for (int i = 0; i < item_count; i++) {
+        for (int i = 0; i < ITEM_COUNT_MAX; i++) {
             final LinearLayout layout = new LinearLayout(this.getContext());
             this.addView(layout, i);
+            layout.setVisibility(View.GONE);
             layout.setOrientation(LinearLayout.VERTICAL);
             layout.setBackgroundResource(item_bg);
             layout.setClickable(true);
@@ -97,63 +109,179 @@ public class TabMenu extends LinearLayout {
             param2.topMargin = 10;
             param2.gravity = Gravity.CENTER_HORIZONTAL;
             img.setLayoutParams(param2);
+            //text
             TextView tv = new TextView(this.getContext());
             layout.addView(tv);
             tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, text_size);
-
-            tv.setText(str[i]);
             LinearLayout.LayoutParams param3 = new LinearLayout.LayoutParams(
                     LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
             param3.gravity = Gravity.CENTER_HORIZONTAL;
             tv.setLayoutParams(param3);
 
-
-            if (i == position) {
-                tv.setTextColor(text_color2);
-                img.setBackgroundResource(icon2[i]);
-            } else {
-                tv.setTextColor(text_color1);
-                img.setBackgroundResource(icon1[i]);
-            }
-            final int pos = i;
+            final int w = i;
             layout.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mMenuItemClickListener != null) {
-                        mMenuItemClickListener.onClick(layout, pos);
-                        change(pos);
+                        mMenuItemClickListener.onClick(layout, w);
+                        change(w);
                     }
                 }
             });
+
             layouts.add(layout);
+            images.add(img);
+            texts.add(tv);
         }
     }
 
-    public void initItem(int item_count, int position, String[] str, int[] icon1, int[] icon2) {
-        item_count = (item_count < ITEM_COUNT_MIN) ? ITEM_COUNT_MIN : item_count;
-        item_count = (item_count > ITEM_COUNT_MAX) ? ITEM_COUNT_MAX : item_count;
-        this.item_count = item_count;
-        this.position = position;
-        this.str = str;
-        this.icon1 = icon1;
-        this.icon2 = icon2;
-        initView();
+    private TabMenu limitCount(int item_count) {
+        this.item_count = (item_count > ITEM_COUNT_MAX) ? ITEM_COUNT_MAX :
+                (item_count < ITEM_COUNT_MIN) ? ITEM_COUNT_MIN : item_count;
+        return this;
     }
 
-    public void change(int position) {
-        this.position = position;
-        for (int i = 0; i < layouts.size(); i++) {
-            LinearLayout layout = layouts.get(i);
-            ImageView img = (ImageView) layout.getChildAt(0);
-            TextView tv = (TextView) layout.getChildAt(1);
-            if (i == position) {
-                tv.setTextColor(text_color2);
-                img.setBackgroundResource(icon2[i]);
-            } else {
-                tv.setTextColor(text_color1);
-                img.setBackgroundResource(icon1[i]);
+    private TabMenu limitWhich(int which) {
+        this.which = (which > this.item_count) ? which % this.item_count : which;
+        return this;
+    }
+
+    public TabMenu setItemText(String[] str) {
+        if (str != null) {
+            for (int i = 0; i < str.length; i++) {
+                if (i > this.str.length - 1) {
+                    break;
+                }
+                this.str[i] = str[i];
             }
         }
+        for (int i = 0; i < ITEM_COUNT_MAX; i++) {
+            texts.get(i).setText(this.str[i]);
+        }
+        return this;
     }
+
+    public TabMenu setItemTextColor(int text_color1, int text_color2) {
+        this.text_color1 = text_color1;
+        this.text_color2 = text_color2;
+        return this.setItemTextColor();
+    }
+
+    private TabMenu setItemTextColor() {
+        for (int i = 0; i < ITEM_COUNT_MAX; i++) {
+            if (i == this.which) {
+                texts.get(i).setTextColor(this.text_color2);
+            } else {
+                texts.get(i).setTextColor(this.text_color1);
+            }
+        }
+        return this;
+    }
+
+    public TabMenu setItemIcon(int[] icon1, int[] icon2) {
+        if (icon1 != null) {
+            for (int i = 0; i < icon1.length; i++) {
+                if (i > this.icon1.length - 1) {
+                    break;
+                }
+                this.icon1[i] = icon1[i];
+            }
+        }
+        if (icon2 != null) {
+            for (int i = 0; i < icon2.length; i++) {
+                if (i > this.icon2.length - 1) {
+                    break;
+                }
+                this.icon2[i] = icon2[i];
+            }
+        }
+        return this.setItemIcon();
+    }
+
+    private TabMenu setItemIcon() {
+        for (int i = 0; i < ITEM_COUNT_MAX; i++) {
+            if (i == this.which) {
+                images.get(i).setBackgroundResource(this.icon2[i]);
+            } else {
+                images.get(i).setBackgroundResource(this.icon1[i]);
+            }
+        }
+
+        return this;
+    }
+
+
+    private TabMenu setItemVisibility() {
+        for (int i = 0; i < ITEM_COUNT_MAX; i++) {
+            if (i < item_count) {
+                layouts.get(i).setVisibility(View.VISIBLE);
+            } else {
+                layouts.get(i).setVisibility(View.GONE);
+            }
+        }
+        return this;
+    }
+
+    private void initData() {
+        initItem(this.item_count, this.which, this.str, this.icon1, this.icon2);
+    }
+
+    public void initItem(int item_count, int which, String[] str, int[] icon1, int[] icon2) {
+        this.limitCount(item_count)
+                .limitWhich(which)
+                .setItemVisibility()
+                .setItemText(str)
+                .setItemTextColor()
+                .setItemIcon(icon1, icon2);
+    }
+
+
+    public void change(int which) {
+        if (which != this.which) {
+            this.limitWhich(which).setItemTextColor().setItemIcon();
+        }
+    }
+
+    public TabMenu setupWithViewPager(ViewPager viewPager) {
+        if (viewPager == null) {
+            return this;
+        }
+        mViewPager = viewPager;
+        PagerAdapter adapter = mViewPager.getAdapter();
+        if (adapter != null) {
+            this.limitCount(adapter.getCount())
+                    .limitWhich(mViewPager.getCurrentItem())
+                    .setItemVisibility()
+                    .setItemTextColor()
+                    .setItemIcon();
+        }
+
+        this.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+            @Override
+            public void onClick(View view, int pos) {
+                mViewPager.setCurrentItem(pos);
+            }
+        });
+
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                TabMenu.this.change(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        return this;
+
+    }
+
 
 }
