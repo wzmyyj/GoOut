@@ -2,9 +2,8 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="QMUI.Compat.NoActionBar">
-
+        <item name="qmui_config_color_blue">@color/colorPrimaryDark</item>
     </style>
-
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
