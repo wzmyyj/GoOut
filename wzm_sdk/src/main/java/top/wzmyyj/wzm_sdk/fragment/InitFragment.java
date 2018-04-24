@@ -12,7 +12,7 @@ import android.view.ViewGroup;
  * Created by wzm on 2018/4/23 0023.
  */
 
-public abstract class InitFragment extends Fragment {
+public abstract  class InitFragment extends Fragment {
 
     @Nullable
     @Override

@@ -1,7 +1,7 @@
 package top.wzmyyj.wzm_sdk.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 public abstract class InitActivity extends AppCompatActivity {
 
@@ -27,6 +27,4 @@ public abstract class InitActivity extends AppCompatActivity {
 
     protected void initEvent() {
     }
-
-
 }

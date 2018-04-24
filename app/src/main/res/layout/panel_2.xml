@@ -8,6 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="Panel_f1_1" />
+        android:text="Panel_2" />
 
 </LinearLayout>

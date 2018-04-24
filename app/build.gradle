@@ -27,6 +27,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:27.1.1'
     compile 'com.android.support:design:27.1.1'
     testCompile 'junit:junit:4.12'
-
+    compile 'com.qmuiteam:qmui:1.0.6'
     compile project(':wzm_sdk')
 }

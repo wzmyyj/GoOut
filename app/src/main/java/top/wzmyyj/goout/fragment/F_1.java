@@ -13,32 +13,30 @@ import java.util.List;
 
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.adapter.MyPagerAdapter;
+import top.wzmyyj.goout.base.BaseFragment;
 import top.wzmyyj.goout.panel.P_1;
-import top.wzmyyj.wzm_sdk.fragment.InitFragment;
+import top.wzmyyj.goout.panel.P_2;
 
 /**
  * Created by wzm on 2018/4/8 0008.
  */
 
-public class F_1 extends InitFragment {
+public class F_1 extends BaseFragment {
 
     private ViewPager mViewPager;
     private P_1 mP_1;
+    private P_2 mP_2;
 
     @Override
     protected View initView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
-        View view = inflater.inflate(R.layout.fragment_x, container, false);
+        View view = inflater.inflate(R.layout.fragment_1, container, false);
         mViewPager = view.findViewById(R.id.viewPager);
 
-        mP_1=new P_1(inflater.getContext());
-        mP_1.initView();
-        View view1=inflater.inflate(R.layout.panel_f1_1,null);
-        List<View> viewList = new ArrayList<View>();
-        viewList.add(view1);
-        viewList.add(view1);
-        MyPagerAdapter pagerAdapter=new MyPagerAdapter(viewList,new String[2]);
-        mViewPager.setAdapter(pagerAdapter);
+        mP_1 = new P_1(inflater.getContext());
+        mP_2 = new P_2(inflater.getContext());
 
+        mP_1.initView();
+        mP_2.initView();
 
         return view;
     }
@@ -46,6 +44,12 @@ public class F_1 extends InitFragment {
     @Override
     protected void initData() {
         mP_1.initData();
+        mP_2.initData();
+        List<View> viewList = new ArrayList<View>();
+        viewList.add(mP_1.getView());
+        viewList.add(mP_2.getView());
+        MyPagerAdapter pagerAdapter = new MyPagerAdapter(viewList);
+        mViewPager.setAdapter(pagerAdapter);
 
 
     }
