@@ -16,7 +16,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:background="@color/colorGray_b" />
+        android:background="@color/colorLine" />
 
     <top.wzmyyj.wzm_sdk.view.TabMenu
         android:id="@+id/tabMenu"

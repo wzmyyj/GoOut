@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="top.wzmyyj.goout">
 
     <application
@@ -20,7 +21,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".activity.LoginActivity" />
+
+        <provider
+            android:name="cn.jpush.android.service.DataProvider"
+            android:authorities="top.wzmyyj.goout.DataProvider"
+            android:exported="true"
+            tools:node="replace" />
+
+        <activity android:name=".activity.MyInfoActivity" />
+        <activity android:name=".activity.UpdateInfoActivity" />
+        <activity android:name=".activity.FriendListActivity" />
+        <activity android:name=".activity.GroupListActivity"></activity>
     </application>
 
 </manifest>

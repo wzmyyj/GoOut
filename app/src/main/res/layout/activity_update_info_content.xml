@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="bottom"
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        android:text="基本信息设置："
+        android:textColor="@color/colorBlue"
+        android:textSize="13sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/colorLine" />
+
+    <LinearLayout
+        android:id="@+id/ll_m_1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/click_bg"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:text="更改头像"
+            android:textColor="@color/colorGray_5"
+            android:textSize="16sp" />
+
+        <top.wzmyyj.wzm_sdk.view.CircleImageView
+            android:id="@+id/img_m_1"
+            android:layout_width="40dp"
+            android:background="@color/colorGray_e"
+            android:layout_height="40dp"
+            android:layout_marginRight="20dp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/colorLine" />
+
+    <LinearLayout
+        android:id="@+id/ll_m_2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/click_bg"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:text="更改昵称"
+            android:textColor="@color/colorGray_5"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="WZM"
+            android:textColor="@color/colorGray_9"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/colorLine" />
+    <LinearLayout
+        android:id="@+id/ll_m_3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/click_bg"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:text="更改签名"
+            android:textColor="@color/colorGray_5"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="Are you OK?"
+            android:textColor="@color/colorGray_9"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/colorLine" />
+
+    <LinearLayout
+        android:id="@+id/ll_m_4"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/click_bg"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:text="更改性别"
+            android:textColor="@color/colorGray_5"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="男"
+            android:textColor="@color/colorGray_9"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/colorLine" />
+    <LinearLayout
+        android:id="@+id/ll_m_5"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/click_bg"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:text="更改地址"
+            android:textColor="@color/colorGray_5"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="XXX大学某某地区"
+            android:textColor="@color/colorGray_9"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/colorLine" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:gravity="center"
+        android:text="test" />
+</LinearLayout>
