@@ -131,7 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="好友"
+                android:text="关注"
                 android:textColor="@color/colorGray_b"
                 android:textSize="12sp" />
         </LinearLayout>

@@ -4,6 +4,8 @@ import android.app.Activity;
 
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
+
+
 /**
  * Created by wzm on 2018/4/24 0024.
  */
@@ -18,7 +20,9 @@ public class ThemeManager {
         }
     }
 
-    public static void setStatusBarTranslucent(Activity activity){
+    public static void setStatusBarTranslucent(Activity activity) {
         QMUIStatusBarHelper.translucent(activity);
     }
+
+
 }
