@@ -16,6 +16,7 @@ public class P_2 extends BasePanel {
 
     public P_2(Context context) {
         super(context);
+        this.title = "周边";
     }
 
     @Override

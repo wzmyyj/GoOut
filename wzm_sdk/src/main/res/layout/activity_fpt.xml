@@ -24,7 +24,7 @@
         android:layout_height="55dp"
         android:layout_gravity="bottom"
         android:orientation="horizontal"
-        android:textSize="11sp"
+        android:textSize="11.5sp"
         wzm:icon_size="27dp"
         wzm:item_bg="@drawable/click_bg"
         wzm:text_color1="@color/colorText2"

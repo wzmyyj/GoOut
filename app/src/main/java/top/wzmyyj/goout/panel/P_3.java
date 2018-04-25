@@ -10,24 +10,24 @@ import top.wzmyyj.goout.base.BasePanel;
  * Created by wzm on 2018/4/23 0023.
  */
 
-public class P_1 extends BasePanel {
+public class P_3 extends BasePanel {
 
     private TextView tv_1;
 
-    public P_1(Context context) {
+    public P_3(Context context) {
         super(context);
-        this.title="推荐";
+        this.title="商城";
     }
 
     @Override
     public void initView() {
-        view = mInflater.inflate(R.layout.panel_1, null);
+        view = mInflater.inflate(R.layout.panel_3, null);
         tv_1 = view.findViewById(R.id.tv_1);
     }
 
     @Override
     public void initData() {
-        tv_1.setText("测试1");
+        tv_1.setText("测试3");
     }
 
     @Override

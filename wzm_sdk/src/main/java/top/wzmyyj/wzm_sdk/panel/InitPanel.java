@@ -12,7 +12,15 @@ public abstract class InitPanel {
 
     protected LayoutInflater mInflater;
     protected View view;
+    protected String title = "";
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public InitPanel(Context context) {
         this.mInflater = LayoutInflater.from(context);
@@ -27,6 +35,8 @@ public abstract class InitPanel {
     public abstract void initData();
 
     public abstract void initListener();
+
+
 
 
 }

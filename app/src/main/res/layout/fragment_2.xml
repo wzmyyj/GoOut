@@ -8,20 +8,10 @@
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
-
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            app:tabIndicatorColor="@color/colorLine"
-            app:tabIndicatorHeight="1.5dp"
-            app:tabMode="fixed"
-            app:tabSelectedTextColor="@color/colorLine"
-            app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
-            app:tabTextColor="@color/colorGray_5" />
+        android:layout_height="?attr/actionBarSize"
+        app:title="活动"
+        app:titleTextAppearance="@style/MyToolbarTextAppearance"
+        app:titleTextColor="@color/colorGray_5">
 
         <ImageView
             android:id="@+id/img_1"
@@ -29,9 +19,19 @@
             android:layout_height="45dp"
             android:layout_gravity="right|center_vertical"
             android:layout_marginRight="10dp"
-            android:padding="10dp"
             android:background="@drawable/click_bg"
+            android:padding="10dp"
             android:src="@drawable/ic_search" />
+
+        <ImageView
+            android:id="@+id/img_2"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="right|center_vertical"
+            android:background="@drawable/click_bg"
+            android:padding="10dp"
+            android:src="@drawable/ic_clear" />
+
 
     </android.support.v7.widget.Toolbar>
 
@@ -39,12 +39,4 @@
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
         android:background="@color/colorGray_b" />
-
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-
 </LinearLayout>

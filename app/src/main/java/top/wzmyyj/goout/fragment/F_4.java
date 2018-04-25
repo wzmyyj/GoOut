@@ -18,7 +18,7 @@ public class F_4 extends BaseFragment {
 
     @Override
     protected View initView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
-        View view = inflater.inflate(R.layout.fragment_x, container, false);
+        View view = inflater.inflate(R.layout.fragment_4, container, false);
 
 
         return view;

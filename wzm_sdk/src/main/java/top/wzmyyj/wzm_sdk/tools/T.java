@@ -21,10 +21,12 @@ public class T {
     }
 
     public static void s(String msg) {
+        if (app == null) return;
         s(app, msg);
     }
 
     public static void l(String msg) {
+        if (app == null) return;
         l(app, msg);
     }
 
