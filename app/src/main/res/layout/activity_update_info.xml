@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:navigationIcon="@drawable/ic_back"
-        app:title="编辑个人资料"
+        app:title="编辑资料"
         app:titleTextAppearance="@style/MyToolbarTextAppearance"
         app:titleTextColor="@color/colorGray_5">
 

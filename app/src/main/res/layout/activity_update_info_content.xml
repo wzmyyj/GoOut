@@ -6,7 +6,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:gravity="bottom"
         android:paddingBottom="5dp"
         android:paddingLeft="20dp"
@@ -22,7 +22,7 @@
     <LinearLayout
         android:id="@+id/ll_m_1"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:background="@drawable/click_bg"
         android:clickable="true"
         android:gravity="center_vertical"
@@ -41,9 +41,9 @@
         <top.wzmyyj.wzm_sdk.view.CircleImageView
             android:id="@+id/img_m_1"
             android:layout_width="40dp"
-            android:background="@color/colorGray_e"
             android:layout_height="40dp"
-            android:layout_marginRight="20dp" />
+            android:layout_marginRight="20dp"
+            android:background="@color/colorGray_e" />
     </LinearLayout>
 
     <View
@@ -56,7 +56,7 @@
     <LinearLayout
         android:id="@+id/ll_m_2"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:background="@drawable/click_bg"
         android:clickable="true"
         android:gravity="center_vertical"
@@ -68,11 +68,12 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:gravity="bottom"
-            android:text="更改昵称"
+            android:text="编辑昵称"
             android:textColor="@color/colorGray_5"
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/tv_m_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
@@ -87,10 +88,11 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:background="@color/colorLine" />
+
     <LinearLayout
         android:id="@+id/ll_m_3"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:background="@drawable/click_bg"
         android:clickable="true"
         android:gravity="center_vertical"
@@ -102,11 +104,12 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:gravity="bottom"
-            android:text="更改签名"
+            android:text="编辑签名"
             android:textColor="@color/colorGray_5"
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/tv_m_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
@@ -125,7 +128,7 @@
     <LinearLayout
         android:id="@+id/ll_m_4"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:background="@drawable/click_bg"
         android:clickable="true"
         android:gravity="center_vertical"
@@ -137,15 +140,16 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:gravity="bottom"
-            android:text="更改性别"
+            android:text="编辑性别"
             android:textColor="@color/colorGray_5"
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/tv_m_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
-            android:text="男"
+            android:text="保密"
             android:textColor="@color/colorGray_9"
             android:textSize="16sp" />
     </LinearLayout>
@@ -156,10 +160,11 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:background="@color/colorLine" />
+
     <LinearLayout
         android:id="@+id/ll_m_5"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:background="@drawable/click_bg"
         android:clickable="true"
         android:gravity="center_vertical"
@@ -171,11 +176,48 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:gravity="bottom"
-            android:text="更改地址"
+            android:text="编辑生日"
             android:textColor="@color/colorGray_5"
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/tv_m_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="2001-01-01"
+            android:textColor="@color/colorGray_9"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/colorLine" />
+
+    <LinearLayout
+        android:id="@+id/ll_m_6"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/click_bg"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:text="编辑地址"
+            android:textColor="@color/colorGray_5"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_m_6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
@@ -188,9 +230,158 @@
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
         android:background="@color/colorLine" />
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="35dp"
+        android:gravity="bottom"
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        android:text="账号相关设置："
+        android:textColor="@color/colorBlue"
+        android:textSize="13sp" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/colorLine" />
+
+    <LinearLayout
+        android:id="@+id/ll_p_1"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/click_bg"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:text="修改密码"
+            android:textColor="@color/colorGray_5"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/colorLine" />
+
+    <LinearLayout
+        android:id="@+id/ll_p_2"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/click_bg"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:text="绑定邮箱"
+            android:textColor="@color/colorGray_5"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_p_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="123456789@abc.com"
+            android:textColor="@color/colorGray_9"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/colorLine" />
+
+    <LinearLayout
+        android:id="@+id/ll_p_3"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/click_bg"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:text="绑定手机号"
+            android:textColor="@color/colorGray_5"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_p_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="158****1234"
+            android:textColor="@color/colorGray_9"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/colorLine" />
+
+    <LinearLayout
+        android:id="@+id/ll_p_4"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/click_bg"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:text="设置中遇到问题"
+            android:textColor="@color/colorGray_5"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/colorLine" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
         android:gravity="center"
-        android:text="test" />
+        android:text="--end--"
+        android:textColor="@color/colorGray_b"
+        android:textSize="13sp" />
 </LinearLayout>

@@ -6,7 +6,7 @@
     <application
         android:name=".application.MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_go"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -30,10 +30,21 @@
             android:exported="true"
             tools:node="replace" />
 
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.wzm.tasking.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
         <activity android:name=".activity.MyInfoActivity" />
         <activity android:name=".activity.UpdateInfoActivity" />
         <activity android:name=".activity.FriendListActivity" />
-        <activity android:name=".activity.GroupListActivity"></activity>
+        <activity android:name=".activity.GroupListActivity" />
+        <activity android:name=".activity.UpdatePasswordActivity"></activity>
     </application>
 
 </manifest>

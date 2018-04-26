@@ -3,6 +3,7 @@ package top.wzmyyj.goout.tools;
 import android.text.TextUtils;
 
 import cn.jpush.im.android.api.model.UserInfo;
+import top.wzmyyj.wzm_sdk.utils.TimeUtil;
 
 /**
  * Created by wzm on 2018/4/25 0025.
@@ -22,13 +23,36 @@ public class J {
         }
     }
 
-    public static String getSignature(UserInfo info){
+    public static String getSignature(UserInfo info) {
         if (info == null)
             return null;
-        if(!TextUtils.isEmpty(info.getSignature())){
+        if (!TextUtils.isEmpty(info.getSignature())) {
             return info.getSignature();
-        }else{
+        } else {
             return "No Signature";
         }
     }
+
+
+    public static String getGender(UserInfo info) {
+        if (info == null)
+            return null;
+        if (info.getGender() == UserInfo.Gender.female) {
+            return "女";
+        } else if (info.getGender() == UserInfo.Gender.male) {
+            return "男";
+        } else {
+            return "保密";
+        }
+    }
+
+
+    public static String getBirthday(UserInfo info) {
+        if (info == null)
+            return null;
+        String t = TimeUtil.changeToString(info.getBirthday(), "yyyy-MM-dd");
+        return t;
+    }
+
+
 }

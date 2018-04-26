@@ -47,7 +47,7 @@
         android:layout_height="80dp"
         android:gravity="center"
         android:text="--end--"
-        android:textColor="@color/colorLine"
+        android:textColor="@color/colorGray_b"
         android:textSize="13sp" />
 
     <View

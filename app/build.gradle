@@ -41,8 +41,11 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.qmuiteam:qmui:1.0.6'
     compile project(':wzm_sdk')
+    compile project(':gallerypick')
 
     compile 'cn.jiguang.sdk:jpush:3.1.1'  // 此处以JPush 3.1.1 版本为例。
     compile 'cn.jiguang.sdk:jmessage:2.5.0'  // 此处以JMessage 2.5.0 版本为例。
     compile 'cn.jiguang.sdk:jcore:1.1.9'  // 此处以JCore 1.1.9 版本为例。
+
+    compile 'com.github.bumptech.glide:glide:3.6.1'
 }
