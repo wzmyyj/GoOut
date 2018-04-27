@@ -3,6 +3,7 @@ package top.wzmyyj.goout.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.text.InputType;
 import android.text.Selection;
 import android.text.Spannable;
@@ -11,10 +12,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import java.io.File;
+
 import cn.jpush.im.android.api.JMessageClient;
-import cn.jpush.im.android.api.callback.GetUserInfoCallback;
-import cn.jpush.im.android.api.model.UserInfo;
 import cn.jpush.im.api.BasicCallback;
+import top.wzmyyj.goout.MainActivity;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.base.BaseActivity;
 import top.wzmyyj.wzm_sdk.tools.T;
@@ -27,9 +29,22 @@ public class RegisterActivity extends BaseActivity {
     private Button bt_1;
     private Button bt_2;
 
+    private boolean run_register = false;
+
     //save
     private SharedPreferences sha;
     private SharedPreferences.Editor ed;
+
+    @Override
+    protected void initSome(Bundle savedInstanceState) {
+        super.initSome(savedInstanceState);
+        if (JMessageClient.getMyInfo() != null) {
+            Intent intent = new Intent();
+            intent.setClass(context, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
 
 
     @Override
@@ -74,8 +89,10 @@ public class RegisterActivity extends BaseActivity {
         bt_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (run_register) return;
                 String username = et_1.getText().toString();
                 String password = et_2.getText().toString();
+                run_register = true;
                 register(username, password);
             }
         });
@@ -101,52 +118,38 @@ public class RegisterActivity extends BaseActivity {
                             login(username, password);
                         } else {
                             T.l("register fail" + ":\n" + registerDesc);
+                            run_register = false;
                         }
                     }
                 });
     }
 
-    private void login(final String username, String password) {
-        ed.putString("username", username);
-        ed.commit();
+    private void login(final String username, final String password) {
         JMessageClient.login(username, password, new BasicCallback() {
             @Override
             public void gotResult(int responseCode, String LoginDesc) {
                 if (responseCode == 0) {
-                    getUserInfo(username);
+                    T.l("login success");
+                    ed.putString("username", username);
+                    File file = JMessageClient.getMyInfo().getAvatarFile();
+                    if (file != null) {
+                        ed.putString("AvatarFile", file.getAbsolutePath());
+                    }
+                    ed.commit();
+                    Intent intent = new Intent();
+                    intent.setClass(context, MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 } else {
                     T.l("login fail" + ":\n" + LoginDesc);
                     Intent intent = new Intent();
+                    intent.putExtra("username", username);
+                    intent.putExtra("password", password);
                     intent.setClass(context, LoginActivity.class);
                     startActivity(intent);
                     finish();
                 }
             }
         });
-    }
-
-    private void getUserInfo(final String username) {
-        JMessageClient.getUserInfo(username, null,
-                new GetUserInfoCallback() {
-                    @Override
-                    public void gotResult(int i, String msg, UserInfo userInfo) {
-                        if (i == 0) {
-                            T.l("login success");
-                            Intent intent = new Intent();
-                            intent.setClass(context, InitInfoActivity.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            T.l("login fail" + ":\n" + msg);
-                            JMessageClient.logout();
-                            Intent intent = new Intent();
-                            intent.setClass(context, LoginActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }
-
-                    }
-
-                });
     }
 }

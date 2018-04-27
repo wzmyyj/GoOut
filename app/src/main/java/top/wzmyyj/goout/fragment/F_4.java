@@ -17,7 +17,7 @@ import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.callback.GetAvatarBitmapCallback;
 import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.goout.R;
-import top.wzmyyj.goout.activity.Login1111Activity;
+import top.wzmyyj.goout.activity.LoginActivity;
 import top.wzmyyj.goout.activity.UpdateInfoActivity;
 import top.wzmyyj.goout.base.BaseFragment;
 import top.wzmyyj.goout.tools.J;
@@ -103,7 +103,7 @@ public class F_4 extends BaseFragment {
                 JMessageClient.logout();
                 T.s("登出成功");
                 Intent i = new Intent();
-                i.setClass(getActivity(), Login1111Activity.class);
+                i.setClass(getActivity(), LoginActivity.class);
                 startActivity(i);
                 getActivity().finish();
             }
