@@ -24,6 +24,8 @@
     <color name="gallery_red">#FF0000</color>
     <color name="gallery_orange">#FF6600</color>
 
-    <color name="colorTheme">#aaddff</color>
+    <color name="colorTheme">#99ddff</color>
+
+    <color name="colorBackground">#efefef</color>
 
 </resources>

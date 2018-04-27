@@ -1,35 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="top.wzmyyj.goout.activity.LoginActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_login"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:navigationIcon="@drawable/ic_back"
-        app:popupTheme="@style/AppTheme.PopupOverlay"
-        app:title="欢迎使用"
-        app:titleTextAppearance="@style/MyToolbarTextAppearance"
-        app:titleTextColor="@color/colorWhite"></android.support.v7.widget.Toolbar>
-
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tab_login"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@color/colorWhite"
-        app:tabIndicatorColor="@color/colorBlue"
-        app:tabIndicatorHeight="1dp"
-        app:tabMode="fixed"
-        app:tabSelectedTextColor="@color/colorBlue"
-        app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
-        app:tabTextColor="@color/colorGray_7" />
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vp_login"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
+</RelativeLayout>

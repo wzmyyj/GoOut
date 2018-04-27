@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="top.wzmyyj.goout">
 
+    <!-- 读取文件权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 写入数据权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".application.MyApplication"
         android:allowBackup="true"
@@ -22,17 +27,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".activity.LoginActivity" />
 
         <provider
             android:name="cn.jpush.android.service.DataProvider"
             android:authorities="top.wzmyyj.goout.DataProvider"
             android:exported="true"
             tools:node="replace" />
-
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.wzm.tasking.FileProvider"
+            android:authorities="top.wzmyyj.goout.FileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -40,11 +43,20 @@
                 android:resource="@xml/filepaths" />
         </provider>
 
+        <activity android:name=".activity.Login1111Activity" />
         <activity android:name=".activity.MyInfoActivity" />
         <activity android:name=".activity.UpdateInfoActivity" />
         <activity android:name=".activity.FriendListActivity" />
         <activity android:name=".activity.GroupListActivity" />
-        <activity android:name=".activity.UpdatePasswordActivity"></activity>
+        <activity android:name=".activity.UpdatePasswordActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.RegisterActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

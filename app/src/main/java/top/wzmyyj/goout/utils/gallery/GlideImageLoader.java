@@ -24,7 +24,7 @@ public class GlideImageLoader implements ImageLoader {
                 .load(path)
                 .placeholder(R.mipmap.gallery_pick_photo)
                 .centerCrop()
-                .into(galleryImageView);
+        .into(galleryImageView);
     }
 
     @Override

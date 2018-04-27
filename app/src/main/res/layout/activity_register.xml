@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_update_password"
+    android:id="@+id/activity_register"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:navigationIcon="@drawable/ic_back"
-        app:title="修改密码"
+        app:title="欢迎使用"
         app:titleTextAppearance="@style/MyToolbarTextAppearance"
         app:titleTextColor="@color/colorGray_5">
 
@@ -20,6 +20,27 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
+        android:background="@color/colorLine" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="center">
+
+        <top.wzmyyj.wzm_sdk.view.CircleImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/ic_go"
+            app:border_color="@color/colorLine"
+            app:border_width="0.1dp" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:background="@color/colorLine" />
 
     <LinearLayout
@@ -34,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:gravity="bottom"
-            android:text="输入旧密码："
+            android:text="注册账号："
             android:textColor="@color/colorGray_5"
             android:textSize="16sp" />
 
@@ -45,7 +66,7 @@
             android:layout_marginRight="20dp"
             android:background="@color/colorWhite"
             android:gravity="center_vertical"
-            android:inputType="textPassword"
+            android:inputType="number"
             android:textColor="@color/colorGray_9"
             android:textSize="16sp" />
     </LinearLayout>
@@ -69,20 +90,30 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:gravity="bottom"
-            android:text="输入新密码："
+            android:text="注册密码："
             android:textColor="@color/colorGray_5"
             android:textSize="16sp" />
 
         <EditText
             android:id="@+id/et_2"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginRight="20dp"
+            android:layout_weight="1"
             android:background="@color/colorWhite"
             android:gravity="center_vertical"
             android:inputType="textPassword"
             android:textColor="@color/colorGray_9"
             android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/img_2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:padding="9dp"
+            android:src="@mipmap/ic_eye_0" />
     </LinearLayout>
 
     <View
@@ -105,17 +136,17 @@
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/bt_selector"
-            android:text="确定修改"
+            android:text="注册"
             android:textColor="@color/colorWhite"
             android:textSize="16sp" />
 
         <Button
             android:id="@+id/bt_2"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="30dp"
             android:layout_marginTop="15dp"
             android:background="@color/colorWhite"
-            android:text="找回密码"
+            android:text="已有账号直接登录"
             android:textColor="@color/colorGray_b"
             android:textSize="13sp" />
     </LinearLayout>

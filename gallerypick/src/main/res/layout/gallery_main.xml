@@ -17,7 +17,7 @@
         android:id="@+id/rvGalleryImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gallery_white" />
+        android:background="@color/colorBackground" />
 
 
 </LinearLayout>

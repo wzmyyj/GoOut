@@ -17,7 +17,7 @@ import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.callback.GetAvatarBitmapCallback;
 import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.goout.R;
-import top.wzmyyj.goout.activity.LoginActivity;
+import top.wzmyyj.goout.activity.Login1111Activity;
 import top.wzmyyj.goout.activity.UpdateInfoActivity;
 import top.wzmyyj.goout.base.BaseFragment;
 import top.wzmyyj.goout.tools.J;
@@ -67,10 +67,14 @@ public class F_4 extends BaseFragment {
 
     @Override
     protected void initData() {
-        UserInfo myInfo = JMessageClient.getMyInfo();
-        tv_t_1.setText(J.getName(myInfo));
-        tv_t_2.setText(J.getSignature(myInfo));
-        myInfo.getAvatarBitmap(new GetAvatarBitmapCallback() {
+
+    }
+
+    private void setInfo(UserInfo info) {
+        if (info == null) return;
+        tv_t_1.setText(J.getName(info));
+        tv_t_2.setText(J.getSignature(info));
+        info.getAvatarBitmap(new GetAvatarBitmapCallback() {
             @Override
             public void gotResult(int i, String s, Bitmap bitmap) {
                 if (bitmap != null) {
@@ -80,7 +84,6 @@ public class F_4 extends BaseFragment {
                 }
             }
         });
-
     }
 
     @Override
@@ -100,11 +103,17 @@ public class F_4 extends BaseFragment {
                 JMessageClient.logout();
                 T.s("登出成功");
                 Intent i = new Intent();
-                i.setClass(getActivity(), LoginActivity.class);
+                i.setClass(getActivity(), Login1111Activity.class);
                 startActivity(i);
                 getActivity().finish();
             }
         });
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setInfo(JMessageClient.getMyInfo());
     }
 }
