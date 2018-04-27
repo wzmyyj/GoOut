@@ -10,7 +10,7 @@ public class LaunchActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent i = new Intent();
-        i.setClass(LaunchActivity.this, RegisterActivity.class);
+        i.setClass(LaunchActivity.this, LoginActivity.class);
         startActivity(i);
         finish();
     }
