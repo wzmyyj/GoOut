@@ -18,7 +18,10 @@
             android:layout_marginTop="5dp"
             app:tabIndicatorColor="@color/colorBlue"
             app:tabIndicatorHeight="1.5dp"
-            app:tabMode="fixed" />
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/colorBlue"
+            app:tabTextAppearance="@style/MyTabLayoutTextAppearance"
+            app:tabTextColor="@color/colorGray_5" />
 
         <ImageView
             android:id="@+id/img_1"

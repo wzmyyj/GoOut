@@ -13,6 +13,7 @@ import android.view.View;
 public abstract class InitPanel {
 
     protected LayoutInflater mInflater;
+    protected Context context;
     protected View view;
     protected String title = "";
 
@@ -25,6 +26,7 @@ public abstract class InitPanel {
     }
 
     public InitPanel(Context context) {
+        this.context = context;
         this.mInflater = LayoutInflater.from(context);
     }
 

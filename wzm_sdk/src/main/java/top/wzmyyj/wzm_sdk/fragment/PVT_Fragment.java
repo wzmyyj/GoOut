@@ -24,14 +24,18 @@ import top.wzmyyj.wzm_sdk.panel.InitPanel;
 public abstract class PVT_Fragment extends InitFragment {
 
 
-    protected ViewPager mViewPager;
-    protected TabLayout mTabLayout;
-    protected ImageView mImageView;
+    private ViewPager mViewPager;
+    private TabLayout mTabLayout;
+    private ImageView mImageView;
     protected List<InitPanel> mPanelList;
 
     @Override
     protected View initView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
-        View view = setView(inflater, container);
+        View view = inflater.inflate(R.layout.fragment_pvt, container, false);
+        mViewPager = view.findViewById(R.id.viewPager);
+        mTabLayout = view.findViewById(R.id.tabLayout);
+        mImageView = view.findViewById(R.id.img_1);
+        setView(mTabLayout,mViewPager,mImageView);
         mPanelList = new ArrayList<>();
         mPanelList = getPanelList(mPanelList);
         for (InitPanel p : mPanelList) {
@@ -40,13 +44,8 @@ public abstract class PVT_Fragment extends InitFragment {
         return view;
     }
 
-    protected View setView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
-        View view = inflater.inflate(R.layout.fragment_pvt, container, false);
-        mViewPager = view.findViewById(R.id.viewPager);
-        mTabLayout = view.findViewById(R.id.tabLayout);
-        mImageView = view.findViewById(R.id.img_1);
-        return view;
-    }
+    protected abstract void setView(TabLayout tab, ViewPager vp, ImageView img);
+
 
     protected abstract List<InitPanel> getPanelList(List<InitPanel> mPanelList);
 
@@ -79,7 +78,6 @@ public abstract class PVT_Fragment extends InitFragment {
         for (InitPanel p : mPanelList) {
             p.initListener();
         }
-
     }
 
     @Override
