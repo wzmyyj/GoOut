@@ -15,7 +15,7 @@ import top.wzmyyj.wzm_sdk.view.TabMenu;
  * Created by wzm on 2018/4/18 0018.
  */
 
-public abstract class FPT_Activity extends InitActivity {
+public abstract class FVT_Activity extends InitActivity {
     private List<Fragment> mFragmentList;
     private TabMenu mTabMenu;
     private ViewPager mViewPager;
@@ -41,7 +41,7 @@ public abstract class FPT_Activity extends InitActivity {
 
     @Override
     protected void initView() {
-        setContentView(R.layout.activity_fpt);
+        setContentView(R.layout.activity_fvt);
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
         mTabMenu = (TabMenu) findViewById(R.id.tabMenu);
 

@@ -80,7 +80,7 @@ public class F_4 extends BaseFragment {
                 if (bitmap != null) {
                     img_t_1.setImageBitmap(bitmap);
                 } else {
-                    img_t_1.setImageResource(R.mipmap.temp);
+                    img_t_1.setImageResource(R.mipmap.no_avatar);
                 }
             }
         });

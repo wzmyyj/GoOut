@@ -12,7 +12,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:title="登录账号"
+        app:title="登录"
         app:titleTextAppearance="@style/MyToolbarTextAppearance"
         app:titleTextColor="@color/colorGray_5">
 
@@ -33,8 +33,8 @@
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:src="@mipmap/ic_go"
-            app:border_color="@color/colorBlue"
-            app:border_width="1dp" />
+            app:border_color="@color/colorLine"
+            app:border_width="0.5dp" />
 
     </RelativeLayout>
 
@@ -53,11 +53,11 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="90dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
             android:gravity="bottom"
-            android:text="输入账号："
+            android:text="账号："
             android:textColor="@color/colorGray_5"
             android:textSize="16sp" />
 
@@ -88,11 +88,11 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="90dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
             android:gravity="bottom"
-            android:text="输入密码："
+            android:text="密码："
             android:textColor="@color/colorGray_5"
             android:textSize="16sp" />
 

@@ -22,12 +22,12 @@ public class P_3 extends BasePanel {
     @Override
     public void initView() {
         view = mInflater.inflate(R.layout.panel_3, null);
-        tv_1 = view.findViewById(R.id.tv_1);
+
     }
 
     @Override
     public void initData() {
-        tv_1.setText("测试3");
+
     }
 
     @Override

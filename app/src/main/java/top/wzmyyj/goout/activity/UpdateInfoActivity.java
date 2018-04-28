@@ -106,7 +106,7 @@ public class UpdateInfoActivity extends BaseActivity {
                 if (bitmap != null) {
                     img_m_1.setImageBitmap(bitmap);
                 } else {
-                    img_m_1.setImageResource(R.mipmap.temp);
+                    img_m_1.setImageResource(R.mipmap.no_avatar);
                 }
             }
         });

@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputType;
 import android.text.Selection;
 import android.text.Spannable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -91,12 +93,12 @@ public class LoginActivity extends BaseActivity {
                 ch_1.setChecked(false);
             }
         }
-        String userAvatar = sha.getString("AvatarFile","");
+        String userAvatar = sha.getString("AvatarFile", "");
         Bitmap bitmap = BitmapLoader.getBitmapFromFile(userAvatar, 200, 200);
         if (bitmap != null) {
             img_1.setImageBitmap(bitmap);
         } else {
-            img_1.setImageResource(R.mipmap.temp);
+            img_1.setImageResource(R.mipmap.no_avatar);
         }
 
     }
@@ -151,6 +153,23 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
+        et_1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                img_1.setImageResource(R.mipmap.no_avatar);
+            }
+        });
+
     }
 
 
@@ -178,7 +197,7 @@ public class LoginActivity extends BaseActivity {
                     finish();
                 } else {
                     T.l("login fail" + ":\n" + LoginDesc);
-                    run_login=false;
+                    run_login = false;
                 }
             }
         });
