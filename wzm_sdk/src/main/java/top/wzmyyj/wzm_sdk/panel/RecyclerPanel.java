@@ -1,6 +1,7 @@
 package top.wzmyyj.wzm_sdk.panel;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,25 +15,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import top.wzmyyj.wzm_sdk.R;
+import top.wzmyyj.wzm_sdk.inter.IVD;
 import top.wzmyyj.wzm_sdk.tools.L;
 
 /**
  * Created by wzm on 2018/4/23 0023.
  */
 
-public abstract class SR_Panel<T> extends InitPanel {
+public abstract class RecyclerPanel<T> extends InitPanel {
 
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private List<T> mData;
-    private List<ItemViewDelegate<T>> mIVD;
+    private List<IVD<T>> mIVD;
     protected HeaderAndFooterWrapper mHeaderAndFooterWrapper;
 
     protected View mHeader;
     protected View mFooter;
 
 
-    public SR_Panel(Context context) {
+    public RecyclerPanel(Context context) {
         super(context);
         this.title = "推荐";
     }
@@ -89,7 +91,7 @@ public abstract class SR_Panel<T> extends InitPanel {
 
     protected abstract List<T> getData(List<T> data);
 
-    protected abstract List<ItemViewDelegate<T>> getIVD(List<ItemViewDelegate<T>> data);
+    protected abstract List<IVD<T>> getIVD(List<IVD<T>> mIVD);
 
     @Override
     public void initListener() {
@@ -101,12 +103,14 @@ public abstract class SR_Panel<T> extends InitPanel {
                     upData();
                     mHeaderAndFooterWrapper.notifyDataSetChanged();
                     L.e("update data success");
-                    Thread.sleep(500);
-                    mSwipeRefreshLayout.setRefreshing(false);
                 } catch (Exception e) {
-                    mSwipeRefreshLayout.setRefreshing(false);
                 }
-
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mSwipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 1000);
 
             }
         });

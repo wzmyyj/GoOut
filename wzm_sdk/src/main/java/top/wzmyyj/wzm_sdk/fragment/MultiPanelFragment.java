@@ -21,7 +21,7 @@ import top.wzmyyj.wzm_sdk.panel.InitPanel;
  * Created by wzm on 2018/4/28 0028.
  */
 
-public abstract class PVT_Fragment extends InitFragment {
+public abstract class MultiPanelFragment extends InitFragment {
 
 
     private ViewPager mViewPager;
@@ -31,23 +31,22 @@ public abstract class PVT_Fragment extends InitFragment {
 
     @Override
     protected View initView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
-        View view = inflater.inflate(R.layout.fragment_pvt, container, false);
+        View view = inflater.inflate(R.layout.fragment_multi_panel, container, false);
         mViewPager = view.findViewById(R.id.viewPager);
         mTabLayout = view.findViewById(R.id.tabLayout);
         mImageView = view.findViewById(R.id.img_1);
-        setView(mTabLayout,mViewPager,mImageView);
         mPanelList = new ArrayList<>();
         mPanelList = getPanelList(mPanelList);
         for (InitPanel p : mPanelList) {
             p.initView();
         }
+        setView(mTabLayout, mViewPager, mImageView);
         return view;
     }
 
-    protected abstract void setView(TabLayout tab, ViewPager vp, ImageView img);
-
-
     protected abstract List<InitPanel> getPanelList(List<InitPanel> mPanelList);
+
+    protected abstract void setView(TabLayout tab, ViewPager vp, ImageView img);
 
 
     @Override
@@ -118,5 +117,6 @@ public abstract class PVT_Fragment extends InitFragment {
         for (InitPanel p : mPanelList) {
             p.onDestroyView();
         }
+        mPanelList.clear();
     }
 }

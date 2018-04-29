@@ -1,40 +1,30 @@
 package top.wzmyyj.goout.fragment;
 
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v7.widget.Toolbar;
+import android.widget.ImageView;
 
 import top.wzmyyj.goout.R;
-import top.wzmyyj.goout.base.BaseFragment;
+import top.wzmyyj.goout.base.BaseSinglePanelFragment;
+import top.wzmyyj.goout.panel.P_Message;
+import top.wzmyyj.wzm_sdk.panel.InitPanel;
 
 /**
  * Created by wzm on 2018/4/8 0008.
  */
 
-public class F_3 extends BaseFragment {
-
-    private SwipeRefreshLayout mSwipeRefreshLayout;
-    private RecyclerView mRecyclerView;
+public class F_3 extends BaseSinglePanelFragment {
 
     @Override
-    protected View initView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
-        View view = inflater.inflate(R.layout.fragment_3, container, false);
-
-        return view;
+    protected InitPanel getPanel() {
+        return new P_Message(getContext());
     }
 
     @Override
-    protected void initData() {
-
+    protected void setView(Toolbar mToolbar, ImageView img_1, ImageView img_2) {
+        mToolbar.setTitle("消息");
+        img_1.setImageResource(R.drawable.ic_search);
+        img_2.setImageResource(R.drawable.ic_notifications);
     }
 
-    @Override
-    protected void initListener() {
-
-    }
 }
