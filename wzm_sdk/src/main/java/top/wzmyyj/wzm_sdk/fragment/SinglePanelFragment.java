@@ -77,23 +77,30 @@ public abstract class SinglePanelFragment extends InitFragment {
     }
 
     @Override
+    public void onPause() {
+        super.onPause();
+        mPanel.onPause();
+    }
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mPanel.onActivityCreated(savedInstanceState);
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mPanel.onDestroy();
-
-    }
-
-    @Override
     public void onDestroyView() {
         super.onDestroyView();
         mPanel.onDestroyView();
-        mPanel = null;
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mPanel.onDestroy();
+        mPanel = null;
+
+    }
+
 
 }

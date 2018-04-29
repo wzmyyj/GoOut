@@ -47,6 +47,11 @@ public  class Panel {
 
     }
 
+    public void onPause() {
+
+
+    }
+
 
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 

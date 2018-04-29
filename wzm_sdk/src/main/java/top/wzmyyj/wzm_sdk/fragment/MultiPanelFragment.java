@@ -96,18 +96,18 @@ public abstract class MultiPanelFragment extends InitFragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onPause() {
+        super.onPause();
         for (InitPanel p : mPanelList) {
-            p.onActivityCreated(savedInstanceState);
+            p.onStart();
         }
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         for (InitPanel p : mPanelList) {
-            p.onDestroy();
+            p.onActivityCreated(savedInstanceState);
         }
     }
 
@@ -117,6 +117,16 @@ public abstract class MultiPanelFragment extends InitFragment {
         for (InitPanel p : mPanelList) {
             p.onDestroyView();
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        for (InitPanel p : mPanelList) {
+            p.onDestroy();
+        }
         mPanelList.clear();
     }
+
+
 }

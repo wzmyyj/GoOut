@@ -6,6 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ItemViewDelegate;
@@ -26,6 +27,7 @@ public abstract class RecyclerPanel<T> extends InitPanel {
 
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
+    private FrameLayout mFrameLayout;
     private List<T> mData;
     private List<IVD<T>> mIVD;
     protected HeaderAndFooterWrapper mHeaderAndFooterWrapper;
@@ -42,18 +44,19 @@ public abstract class RecyclerPanel<T> extends InitPanel {
     @Override
     public void initView() {
         view = mInflater.inflate(R.layout.panel_sr, null);
+        mFrameLayout = view.findViewById(R.id.frameLayout);
         mRecyclerView = view.findViewById(R.id.recyclerView);
         mSwipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
         mSwipeRefreshLayout.setColorSchemeColors(context.getResources()
                 .getColor(R.color.colorBlue));
 
-        setView(mRecyclerView, mSwipeRefreshLayout);
+
+        setView(mRecyclerView, mSwipeRefreshLayout, mFrameLayout);
         mHeader = getHeader();
         mFooter = getFooter();
-
     }
 
-    protected abstract void setView(RecyclerView rv, SwipeRefreshLayout srl);
+    protected abstract void setView(RecyclerView rv, SwipeRefreshLayout srl, FrameLayout layout);
 
 
     protected abstract View getHeader();
@@ -116,9 +119,15 @@ public abstract class RecyclerPanel<T> extends InitPanel {
         });
     }
 
-    private void upData() {
+    protected void upData() {
         mData.clear();
         mData = getData(mData);
+        upHeaderAndFooter();
     }
+
+    protected void upHeaderAndFooter() {
+
+    }
+
 
 }
