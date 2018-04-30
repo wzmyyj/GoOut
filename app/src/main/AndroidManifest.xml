@@ -44,7 +44,7 @@
         </provider>
 
         <activity android:name=".activity.my_info.MyInfoActivity" />
-        <activity android:name=".activity.my_info.UpdateInfoActivity" />
+        <activity android:name=".activity.my_info.UpdateMyInfoActivity" />
         <activity android:name=".activity.my_info.UpdatePasswordActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.RegisterActivity">
@@ -58,10 +58,12 @@
         <activity android:name=".activity.contact.ContactActivity" />
         <activity android:name=".activity.contact.FindFriendActivity" />
         <activity android:name=".activity.contact.UserInfoActivity" />
-        <activity android:name=".activity.contact.CreateSingleChatActivity" />
-        <activity android:name=".activity.contact.SingleChatActivity" />
-        <activity android:name=".activity.contact.CreateGroupChatActivity" />
-        <activity android:name=".activity.contact.GroupChatActivity"></activity>
+        <activity android:name=".activity.chat.CreateSingleChatActivity" />
+        <activity android:name=".activity.chat.CreateGroupChatActivity" />
+        <activity android:name=".activity.chat.GroupChatInfoActivity" />
+        <activity android:name=".activity.chat.SingleChatInfoActivity"></activity>
+        <activity android:name=".activity.chat.GroupChatActivity" />
+        <activity android:name=".activity.chat.SingleChatActivity"></activity>
     </application>
 
 </manifest>

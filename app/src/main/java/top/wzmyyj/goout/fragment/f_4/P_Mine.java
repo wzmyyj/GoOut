@@ -1,6 +1,9 @@
 package top.wzmyyj.goout.fragment.f_4;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -14,15 +17,19 @@ import android.widget.TextView;
 
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
+import java.io.File;
 import java.util.List;
 
 import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.callback.GetAvatarBitmapCallback;
 import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.goout.R;
+import top.wzmyyj.goout.activity.LoginActivity;
+import top.wzmyyj.goout.activity.my_info.UpdateMyInfoActivity;
 import top.wzmyyj.goout.base.BaseRecyclerPanel;
 import top.wzmyyj.goout.tools.J;
 import top.wzmyyj.wzm_sdk.inter.IVD;
+import top.wzmyyj.wzm_sdk.tools.T;
 
 /**
  * Created by wzm on 2018/4/30 0030.
@@ -96,6 +103,22 @@ public class P_Mine extends BaseRecyclerPanel<F_4_Item> {
     }
 
     @Override
+    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+        super.onItemClick(view, holder, position);
+
+        T.l("pos:" + position);
+        switch (position) {
+            case 1:
+                JMessageClient.logout();
+                Intent i = new Intent();
+                i.setClass(context, LoginActivity.class);
+                context.startActivity(i);
+                ((Activity) context).finish();
+                break;
+        }
+    }
+
+    @Override
     protected void setView(RecyclerView rv, SwipeRefreshLayout srl, FrameLayout layout) {
 
     }
@@ -112,6 +135,10 @@ public class P_Mine extends BaseRecyclerPanel<F_4_Item> {
     private TextView tv_a_1;
     private TextView tv_a_2;
     private TextView tv_a_3;
+
+    //save
+    private SharedPreferences sha;
+    private SharedPreferences.Editor ed;
 
     @Override
     protected View getHeader() {
@@ -135,11 +162,19 @@ public class P_Mine extends BaseRecyclerPanel<F_4_Item> {
 
 
     private void headerData() {
-
+        sha = context.getSharedPreferences("log", Activity.MODE_PRIVATE);
+        ed = sha.edit();
     }
 
     private void headerListener() {
-
+        bt_t_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(context, UpdateMyInfoActivity.class);
+                context.startActivity(i);
+            }
+        });
     }
 
 
@@ -158,6 +193,11 @@ public class P_Mine extends BaseRecyclerPanel<F_4_Item> {
             public void gotResult(int i, String s, Bitmap bitmap) {
                 if (bitmap != null) {
                     img_t_1.setImageBitmap(bitmap);
+                    File file = JMessageClient.getMyInfo().getAvatarFile();
+                    if (file != null) {
+                        ed.putString("AvatarFile", file.getAbsolutePath());
+                    }
+                    ed.commit();
                 } else {
                     img_t_1.setImageResource(R.mipmap.no_avatar);
                 }

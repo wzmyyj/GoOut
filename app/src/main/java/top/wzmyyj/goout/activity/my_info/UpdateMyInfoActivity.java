@@ -34,7 +34,7 @@ import top.wzmyyj.wzm_sdk.tools.T;
 import top.wzmyyj.wzm_sdk.utils.TimeUtil;
 
 
-public class UpdateInfoActivity extends BaseActivity {
+public class UpdateMyInfoActivity extends BaseActivity {
 
     private Toolbar mToolbar;
 
@@ -97,7 +97,6 @@ public class UpdateInfoActivity extends BaseActivity {
         setSupportActionBar(mToolbar);
         setInfo(JMessageClient.getMyInfo());
 
-
     }
 
     private void setInfo(UserInfo info) {
@@ -105,7 +104,7 @@ public class UpdateInfoActivity extends BaseActivity {
         tv_m_2.setText(info.getNickname());
         tv_m_3.setText(info.getSignature());
         tv_m_4.setText(J.getGender(info));
-        tv_m_5.setText(TimeUtil.changeToString(info.getBirthday(),"yyyyMMdd"));
+        tv_m_5.setText(TimeUtil.changeToString(info.getBirthday(), "yyyy-MM-dd"));
         tv_m_6.setText(info.getRegion());
         info.getAvatarBitmap(new GetAvatarBitmapCallback() {
             @Override
@@ -221,7 +220,7 @@ public class UpdateInfoActivity extends BaseActivity {
                 h = h + "个人介绍";
                 break;
             case birthday:
-                h = h + "生日";
+                h = h + "生日:yyyyHHdd";
                 break;
             case region:
                 h = h + "地址";
@@ -276,7 +275,7 @@ public class UpdateInfoActivity extends BaseActivity {
                 }
                 break;
             case birthday:
-                info.setBirthday(TimeUtil.changeToLong(s,"yyyyMMdd"));
+                info.setBirthday(TimeUtil.changeToLong(s, "yyyyMMdd"));
                 break;
             case region:
                 info.setRegion(s);
@@ -305,6 +304,9 @@ public class UpdateInfoActivity extends BaseActivity {
         if (picturePath == null)
             return;
         File file = new File(picturePath);
+
+//        Bitmap bitmap=BitmapLoader.getBitmapFromFile(picturePath,200,200);
+
         JMessageClient.updateUserAvatar(file,
                 new BasicCallback() {
                     @Override
@@ -323,31 +325,7 @@ public class UpdateInfoActivity extends BaseActivity {
 
 
     private void openGallery() {
-        if (GalleryUtil.getGallery() == null) {
-            initGallery();
-        }
-
-        AndPermission.with(this)
-                .permission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                .onGranted(new Action() {
-                    @Override
-                    public void onAction(List<String> permissions) {
-                        GalleryUtil.open(activity);
-                    }
-                })
-                .onDenied(new Action() {
-                    @Override
-                    public void onAction(List<String> permissions) {
-                        T.s("No Permission");
-                    }
-                })
-                .start();
-    }
-
-
-    private void initGallery() {
-
-        GalleryUtil.init("top.wzmyyj.goout.FileProvider", "/GoOut/head", new IHandlerCallBack() {
+        GalleryUtil.initGallery(new IHandlerCallBack() {
             @Override
             public void onStart() {
 
@@ -373,6 +351,21 @@ public class UpdateInfoActivity extends BaseActivity {
 
             }
         });
+        AndPermission.with(this)
+                .permission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .onGranted(new Action() {
+                    @Override
+                    public void onAction(List<String> permissions) {
+                        GalleryUtil.open(activity);
+                    }
+                })
+                .onDenied(new Action() {
+                    @Override
+                    public void onAction(List<String> permissions) {
+                        T.s("No Permission");
+                    }
+                })
+                .start();
     }
 
 

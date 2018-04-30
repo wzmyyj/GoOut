@@ -18,9 +18,10 @@ import java.util.Collections;
 import java.util.List;
 
 import top.wzmyyj.goout.R;
+import top.wzmyyj.goout.activity.chat.CreateSingleChatActivity;
+import top.wzmyyj.goout.activity.contact.panel.P_FriendList;
+import top.wzmyyj.goout.activity.contact.panel.P_GroupList;
 import top.wzmyyj.goout.base.BaseMultiPanelActivity;
-import top.wzmyyj.goout.panel.P_FriendList;
-import top.wzmyyj.goout.panel.P_GroupList;
 import top.wzmyyj.wzm_sdk.adapter.CommonAdapter;
 import top.wzmyyj.wzm_sdk.panel.InitPanel;
 

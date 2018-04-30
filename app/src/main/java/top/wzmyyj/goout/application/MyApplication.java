@@ -2,6 +2,7 @@ package top.wzmyyj.goout.application;
 
 import cn.jpush.im.android.api.JMessageClient;
 import top.wzmyyj.goout.utils.BitmapLoader;
+import top.wzmyyj.goout.utils.gallery.GalleryUtil;
 import top.wzmyyj.wzm_sdk.application.WZM_Application;
 import top.wzmyyj.wzm_sdk.tools.L;
 
@@ -19,5 +20,6 @@ public class MyApplication extends WZM_Application {
         L.setDebug(true);
         JMessageClient.init(this);
         BitmapLoader.init("sdcard/GoOut/pictures/");
+        GalleryUtil.init("top.wzmyyj.goout.FileProvider", "/GoOut/head");
     }
 }

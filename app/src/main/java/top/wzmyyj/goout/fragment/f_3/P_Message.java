@@ -35,7 +35,7 @@ import cn.jpush.im.android.api.model.GroupInfo;
 import cn.jpush.im.android.api.model.Message;
 import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.goout.R;
-import top.wzmyyj.goout.activity.contact.CreateSingleChatActivity;
+import top.wzmyyj.goout.activity.chat.CreateSingleChatActivity;
 import top.wzmyyj.goout.activity.contact.FindFriendActivity;
 import top.wzmyyj.goout.activity.contact.ContactActivity;
 import top.wzmyyj.goout.base.BaseRecyclerPanel;

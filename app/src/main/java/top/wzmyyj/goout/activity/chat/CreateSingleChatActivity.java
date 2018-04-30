@@ -1,4 +1,4 @@
-package top.wzmyyj.goout.activity.contact;
+package top.wzmyyj.goout.activity.chat;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -19,6 +19,7 @@ import java.util.List;
 import cn.jpush.im.android.api.callback.GetAvatarBitmapCallback;
 import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.goout.R;
+import top.wzmyyj.goout.activity.contact.FindFriendActivity;
 import top.wzmyyj.goout.base.BaseActivity;
 import top.wzmyyj.goout.data.ContactsData;
 import top.wzmyyj.goout.tools.J;

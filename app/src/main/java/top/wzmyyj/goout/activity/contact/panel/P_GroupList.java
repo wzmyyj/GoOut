@@ -1,4 +1,4 @@
-package top.wzmyyj.goout.panel;
+package top.wzmyyj.goout.activity.contact.panel;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
