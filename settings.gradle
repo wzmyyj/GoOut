@@ -1,1 +1,1 @@
-include ':app', ':wzm_sdk', ':gallerypick', ':data'
+include ':app', ':wzm_sdk', ':gallerypick', ':data', ':reclib_qq'

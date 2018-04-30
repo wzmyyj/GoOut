@@ -7,4 +7,6 @@ import com.zhy.adapter.recyclerview.base.ItemViewDelegate;
  */
 
 public interface IVD<T> extends ItemViewDelegate<T> {
+
+
 }

@@ -19,4 +19,9 @@
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">normal</item>
     </style>
+
+    <style name="splash_style" parent="@android:style/Theme.NoTitleBar">
+        <item name="android:windowBackground">@color/colorBlue</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
 </resources>

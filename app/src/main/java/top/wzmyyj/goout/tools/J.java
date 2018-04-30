@@ -14,7 +14,7 @@ public class J {
 
         if (info == null)
             return null;
-        if (!TextUtils.isEmpty(info.getNotename())) {
+       if (!TextUtils.isEmpty(info.getNotename())) {
             return info.getNotename();
         } else if (!TextUtils.isEmpty(info.getNickname())) {
             return info.getNickname();

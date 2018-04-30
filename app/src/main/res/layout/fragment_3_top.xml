@@ -36,7 +36,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="5dp"
-                android:src="@mipmap/addpeople" />
+                android:src="@mipmap/ic_mh_1" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -63,13 +63,13 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="5dp"
-                android:src="@mipmap/group" />
+                android:src="@mipmap/ic_mh_2" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:text="群组"
+                android:text="通讯录"
                 android:textColor="@color/colorGray_5"
                 android:textSize="13sp" />
 
@@ -90,13 +90,13 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="5dp"
-                android:src="@mipmap/addressbook" />
+                android:src="@mipmap/ic_mh_3" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:text="好友"
+                android:text="喜欢和赞"
                 android:textColor="@color/colorGray_5"
                 android:textSize="13sp" />
 
@@ -125,13 +125,13 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="5dp"
-                android:src="@mipmap/addpeople" />
+                android:src="@mipmap/ic_mh_4" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:text="新朋友"
+                android:text="日程提醒"
                 android:textColor="@color/colorGray_5"
                 android:textSize="13sp" />
 
@@ -152,13 +152,13 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="5dp"
-                android:src="@mipmap/group" />
+                android:src="@mipmap/ic_mh_5" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:text="群组"
+                android:text="转账相关"
                 android:textColor="@color/colorGray_5"
                 android:textSize="13sp" />
 
@@ -179,13 +179,13 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginTop="5dp"
-                android:src="@mipmap/addressbook" />
+                android:src="@mipmap/ic_mh_6" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:text="好友"
+                android:text="其他消息"
                 android:textColor="@color/colorGray_5"
                 android:textSize="13sp" />
 
@@ -218,12 +218,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_weight="1"
-            android:text="消息列表"
+            android:text="聊天列表"
             android:textColor="@color/colorGray_7"
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/bt_1"
+            android:id="@+id/bt_h_1"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginLeft="15dp"

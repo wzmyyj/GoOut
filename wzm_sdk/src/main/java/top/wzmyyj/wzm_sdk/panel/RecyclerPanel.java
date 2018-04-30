@@ -2,6 +2,7 @@ package top.wzmyyj.wzm_sdk.panel;
 
 import android.content.Context;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,13 +24,14 @@ import top.wzmyyj.wzm_sdk.tools.L;
  * Created by wzm on 2018/4/23 0023.
  */
 
-public abstract class RecyclerPanel<T> extends InitPanel {
+public abstract class RecyclerPanel<T> extends InitPanel
+        implements  MultiItemTypeAdapter.OnItemClickListener{
 
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private FrameLayout mFrameLayout;
-    private List<T> mData;
-    private List<IVD<T>> mIVD;
+    protected List<T> mData;
+    protected List<IVD<T>> mIVD;
     protected HeaderAndFooterWrapper mHeaderAndFooterWrapper;
 
     protected View mHeader;
@@ -50,14 +52,24 @@ public abstract class RecyclerPanel<T> extends InitPanel {
         mSwipeRefreshLayout.setColorSchemeColors(context.getResources()
                 .getColor(R.color.colorBlue));
 
+        mData = new ArrayList<>();
+        mData = getData(mData);
+
+        mIVD = new ArrayList<>();
+        mIVD = getIVD(mIVD);
 
         setView(mRecyclerView, mSwipeRefreshLayout, mFrameLayout);
         mHeader = getHeader();
         mFooter = getFooter();
     }
 
-    protected abstract void setView(RecyclerView rv, SwipeRefreshLayout srl, FrameLayout layout);
+    @NonNull
+    protected abstract List<T> getData(List<T> data);
 
+    @NonNull
+    protected abstract List<IVD<T>> getIVD(List<IVD<T>> ivd);
+
+    protected abstract void setView(RecyclerView rv, SwipeRefreshLayout srl, FrameLayout layout);
 
     protected abstract View getHeader();
 
@@ -66,13 +78,8 @@ public abstract class RecyclerPanel<T> extends InitPanel {
 
     @Override
     public void initData() {
+
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-
-        mData = new ArrayList<>();
-        mData = getData(mData);
-
-        mIVD = new ArrayList<>();
-        mIVD = getIVD(mIVD);
 
         MultiItemTypeAdapter mAdapter = new MultiItemTypeAdapter(context, mData);
 
@@ -80,6 +87,7 @@ public abstract class RecyclerPanel<T> extends InitPanel {
             mAdapter.addItemViewDelegate(ivd);
         }
 
+        mAdapter.setOnItemClickListener(this);
         mHeaderAndFooterWrapper = new HeaderAndFooterWrapper(mAdapter);
         if (mHeader != null)
             mHeaderAndFooterWrapper.addHeaderView(mHeader);
@@ -87,14 +95,16 @@ public abstract class RecyclerPanel<T> extends InitPanel {
             mHeaderAndFooterWrapper.addFootView(mFooter);
         mRecyclerView.setAdapter(mHeaderAndFooterWrapper);
         mHeaderAndFooterWrapper.notifyDataSetChanged();
-
-
     }
 
 
-    protected abstract List<T> getData(List<T> data);
+    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
 
-    protected abstract List<IVD<T>> getIVD(List<IVD<T>> mIVD);
+    }
+
+    public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+        return false;
+    }
 
     @Override
     public void initListener() {
@@ -103,8 +113,7 @@ public abstract class RecyclerPanel<T> extends InitPanel {
             public void onRefresh() {
                 mSwipeRefreshLayout.setRefreshing(true);
                 try {
-                    upData();
-                    mHeaderAndFooterWrapper.notifyDataSetChanged();
+                    update();
                     L.e("update data success");
                 } catch (Exception e) {
                 }
@@ -117,11 +126,17 @@ public abstract class RecyclerPanel<T> extends InitPanel {
 
             }
         });
+
     }
 
-    protected void upData() {
+    protected void update() {
         mData.clear();
         mData = getData(mData);
+        notifyDataSetChanged();
+    }
+
+    protected void notifyDataSetChanged() {
+        mHeaderAndFooterWrapper.notifyDataSetChanged();
         upHeaderAndFooter();
     }
 

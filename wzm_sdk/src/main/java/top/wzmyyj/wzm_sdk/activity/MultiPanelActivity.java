@@ -1,14 +1,10 @@
-package top.wzmyyj.wzm_sdk.fragment;
+package top.wzmyyj.wzm_sdk.activity;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -22,7 +18,7 @@ import top.wzmyyj.wzm_sdk.panel.InitPanel;
  * Created by wzm on 2018/4/28 0028.
  */
 
-public abstract class MultiPanelFragment extends InitFragment {
+public abstract class MultiPanelActivity extends InitActivity {
 
     private Toolbar mToolbar;
     private ViewPager mViewPager;
@@ -31,19 +27,18 @@ public abstract class MultiPanelFragment extends InitFragment {
     protected List<InitPanel> mPanelList;
 
     @Override
-    protected View initView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
-        View view = inflater.inflate(R.layout.af_multi_panel, container, false);
-        mToolbar = view.findViewById(R.id.toolbar);
-        mViewPager = view.findViewById(R.id.viewPager);
-        mTabLayout = view.findViewById(R.id.tabLayout);
-        mImageView = view.findViewById(R.id.img_1);
+    protected void initView() {
+        setContentView(R.layout.af_multi_panel);
+        mToolbar = findViewById(R.id.toolbar);
+        mViewPager = findViewById(R.id.viewPager);
+        mTabLayout = findViewById(R.id.tabLayout);
+        mImageView = findViewById(R.id.img_1);
         mPanelList = new ArrayList<>();
         mPanelList = getPanelList(mPanelList);
         for (InitPanel p : mPanelList) {
             p.initView();
         }
         setView(mToolbar, mTabLayout, mViewPager, mImageView);
-        return view;
     }
 
     protected abstract List<InitPanel> getPanelList(List<InitPanel> mPanelList);
@@ -106,18 +101,10 @@ public abstract class MultiPanelFragment extends InitFragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    protected void onRestart() {
+        super.onRestart();
         for (InitPanel p : mPanelList) {
-            p.onActivityCreated(savedInstanceState);
-        }
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        for (InitPanel p : mPanelList) {
-            p.onDestroyView();
+            p.onRestart();
         }
     }
 

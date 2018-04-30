@@ -3,6 +3,7 @@ package top.wzmyyj.goout.fragment;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -32,9 +33,9 @@ public class F_1 extends BaseMultiPanelFragment {
         return mPanelList;
     }
 
-    //给三个View设置属性
+    //给四个View设置属性
     @Override
-    protected void setView(TabLayout tab, ViewPager vp, ImageView img) {
+    protected void setView(Toolbar toolbar, TabLayout tab, ViewPager vp, ImageView img) {
         img.setImageResource(R.drawable.ic_search);
         img.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -47,6 +47,10 @@ public  class Panel {
 
     }
 
+    public void onRestart() {
+
+    }
+
     public void onPause() {
 
 

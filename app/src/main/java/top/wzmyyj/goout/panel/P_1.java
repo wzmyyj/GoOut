@@ -2,6 +2,7 @@ package top.wzmyyj.goout.panel;
 
 import android.content.Context;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +23,7 @@ import top.wzmyyj.goout.base.BaseRecyclerPanel;
 import top.wzmyyj.goout.data.BoData;
 import top.wzmyyj.goout.tools.FixedSpeedScroller;
 import top.wzmyyj.wzm_sdk.inter.IVD;
+import top.wzmyyj.wzm_sdk.tools.T;
 
 /**
  * Created by wzm on 2018/4/23 0023.
@@ -30,7 +32,6 @@ import top.wzmyyj.wzm_sdk.inter.IVD;
 public class P_1 extends BaseRecyclerPanel<String> {
 
 
-    private View header;
     private ViewPager mVp_bo;
     private LinearLayout ll_h_1;
     private LinearLayout ll_h_2;
@@ -61,6 +62,56 @@ public class P_1 extends BaseRecyclerPanel<String> {
         this.title = "推荐";
     }
 
+    @NonNull
+    @Override
+    protected List<String> getData(List<String> data) {
+        data.clear();
+        data.add("aaaaaaaaaaaa");
+        data.add("aaaaaaaaaaaa");
+        data.add("aaaaaaaaaaaa");
+        data.add("aaaaaaaaaaaa");
+        data.add("aaaaaaaaaaaa");
+        data.add("aaaaaaaaaaaa");
+        data.add("aaaaaaaaaaaa");
+        data.add("aaaaaaaaaaaa");
+        data.add("aaaaaaaaaaaa");
+        data.add("aaaaaaaaaaaa");
+        data.add("aaaaaaaaaaaa");
+        data.add("aaaaaaaaaaaa");
+        data.add("aaaaaaaaaaaa");
+        data.add("aaaaaaaaaaaa");
+        data.add("aaaaaaaaaaaa");
+        return data;
+    }
+
+    @NonNull
+    @Override
+    protected List<IVD<String>> getIVD(List<IVD<String>> ivd) {
+        ivd.add(new IVD<String>() {
+            @Override
+            public int getItemViewLayoutId() {
+                return R.layout.fragment_1_panel_1_item;
+            }
+
+            @Override
+            public boolean isForViewType(String item, int position) {
+                return true;
+            }
+
+            @Override
+            public void convert(ViewHolder holder, String s, int position) {
+                holder.setText(R.id.tv_1, s + position);
+            }
+        });
+        return ivd;
+    }
+
+
+    @Override
+    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+        super.onItemClick(view, holder, position);
+        T.s(mData.get(position)  + position);
+    }
 
     @Override
     protected void setView(RecyclerView rv, SwipeRefreshLayout srl, FrameLayout layout) {
@@ -69,17 +120,24 @@ public class P_1 extends BaseRecyclerPanel<String> {
 
     @Override
     protected View getHeader() {
-        header = mInflater.inflate(R.layout.panel_1_head, null);
+        View header = mInflater.inflate(R.layout.fragment_1_panel_1_head, null);
         mVp_bo = header.findViewById(R.id.viewPager);
         ll_h_1 = header.findViewById(R.id.ll_h_1);
         ll_h_2 = header.findViewById(R.id.ll_h_2);
         ll_h_3 = header.findViewById(R.id.ll_h_3);
         ll_h_4 = header.findViewById(R.id.ll_h_4);
-
-        initBo();
+        headerData();
+        headerListener();
         return header;
     }
 
+    private void headerData() {
+        initBo();
+    }
+
+    private void headerListener() {
+
+    }
 
     private void initBo() {
         mImageList = new ArrayList<ImageView>();
@@ -122,48 +180,6 @@ public class P_1 extends BaseRecyclerPanel<String> {
     @Override
     protected View getFooter() {
         return mInflater.inflate(R.layout.panel_footer, null);
-    }
-
-
-    @Override
-    protected List<String> getData(List<String> data) {
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        return data;
-    }
-
-    @Override
-    protected List<IVD<String>> getIVD(List<IVD<String>> ivd) {
-        ivd.add(new IVD<String>() {
-            @Override
-            public int getItemViewLayoutId() {
-                return R.layout.panel_1_item;
-            }
-
-            @Override
-            public boolean isForViewType(String item, int position) {
-                return true;
-            }
-
-            @Override
-            public void convert(ViewHolder holder, String s, int position) {
-                holder.setText(R.id.tv_1, s + position);
-            }
-        });
-        return ivd;
     }
 
 
