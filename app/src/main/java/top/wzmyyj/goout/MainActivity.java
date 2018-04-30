@@ -2,10 +2,10 @@ package top.wzmyyj.goout;
 
 
 import top.wzmyyj.goout.base.BaseMainActivity;
-import top.wzmyyj.goout.fragment.F_1;
-import top.wzmyyj.goout.fragment.F_2;
-import top.wzmyyj.goout.fragment.F_3;
-import top.wzmyyj.goout.fragment.F_4;
+import top.wzmyyj.goout.fragment.f_1.F_1;
+import top.wzmyyj.goout.fragment.f_2.F_2;
+import top.wzmyyj.goout.fragment.f_3.F_3;
+import top.wzmyyj.goout.fragment.f_4.F_4;
 
 public class MainActivity extends BaseMainActivity {
 

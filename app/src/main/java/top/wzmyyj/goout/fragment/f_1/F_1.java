@@ -1,4 +1,4 @@
-package top.wzmyyj.goout.fragment;
+package top.wzmyyj.goout.fragment.f_1;
 
 
 import android.support.design.widget.TabLayout;
@@ -11,9 +11,6 @@ import java.util.List;
 
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.base.BaseMultiPanelFragment;
-import top.wzmyyj.goout.panel.P_1;
-import top.wzmyyj.goout.panel.P_2;
-import top.wzmyyj.goout.panel.P_3;
 import top.wzmyyj.wzm_sdk.panel.InitPanel;
 import top.wzmyyj.wzm_sdk.tools.T;
 

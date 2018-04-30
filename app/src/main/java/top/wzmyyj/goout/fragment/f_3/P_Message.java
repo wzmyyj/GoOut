@@ -1,4 +1,4 @@
-package top.wzmyyj.goout.panel;
+package top.wzmyyj.goout.fragment.f_3;
 
 import android.content.Context;
 import android.content.Intent;

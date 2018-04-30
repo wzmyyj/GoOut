@@ -1,4 +1,4 @@
-package top.wzmyyj.goout.fragment;
+package top.wzmyyj.goout.fragment.f_3;
 
 
 import android.support.v7.widget.Toolbar;
@@ -6,7 +6,6 @@ import android.widget.ImageView;
 
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.base.BaseSinglePanelFragment;
-import top.wzmyyj.goout.panel.P_Message;
 import top.wzmyyj.wzm_sdk.panel.InitPanel;
 
 /**

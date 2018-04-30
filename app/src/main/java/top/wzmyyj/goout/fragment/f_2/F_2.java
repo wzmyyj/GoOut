@@ -1,4 +1,4 @@
-package top.wzmyyj.goout.fragment;
+package top.wzmyyj.goout.fragment.f_2;
 
 
 import android.support.annotation.NonNull;

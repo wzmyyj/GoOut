@@ -7,6 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import java.util.List;
+
+import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.base.BaseActivity;
 import top.wzmyyj.wzm_sdk.tools.T;
@@ -17,6 +20,7 @@ public class AddFriendActivity extends BaseActivity {
     private EditText et_1;
     private Button bt_1;
     private RecyclerView mRecyclerView;
+    private List<UserInfo> mData;
 
     @Override
     protected void initView() {
@@ -30,6 +34,7 @@ public class AddFriendActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+
 
     }
 
