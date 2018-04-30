@@ -1,4 +1,4 @@
-package top.wzmyyj.goout.activity;
+package top.wzmyyj.goout.activity.my_info;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -31,6 +31,7 @@ import top.wzmyyj.goout.base.BaseActivity;
 import top.wzmyyj.goout.tools.J;
 import top.wzmyyj.goout.utils.gallery.GalleryUtil;
 import top.wzmyyj.wzm_sdk.tools.T;
+import top.wzmyyj.wzm_sdk.utils.TimeUtil;
 
 
 public class UpdateInfoActivity extends BaseActivity {
@@ -43,12 +44,15 @@ public class UpdateInfoActivity extends BaseActivity {
     private LinearLayout ll_m_3;
     private LinearLayout ll_m_4;
     private LinearLayout ll_m_5;
+    private LinearLayout ll_m_6;
+
 
     private ImageView img_m_1;
     private TextView tv_m_2;
     private TextView tv_m_3;
     private TextView tv_m_4;
     private TextView tv_m_5;
+    private TextView tv_m_6;
 
 
     private LinearLayout ll_p_1;
@@ -70,12 +74,14 @@ public class UpdateInfoActivity extends BaseActivity {
         ll_m_3 = findViewById(R.id.ll_m_3);
         ll_m_4 = findViewById(R.id.ll_m_4);
         ll_m_5 = findViewById(R.id.ll_m_5);
+        ll_m_6 = findViewById(R.id.ll_m_6);
 
         img_m_1 = findViewById(R.id.img_m_1);
         tv_m_2 = findViewById(R.id.tv_m_2);
         tv_m_3 = findViewById(R.id.tv_m_3);
         tv_m_4 = findViewById(R.id.tv_m_4);
         tv_m_5 = findViewById(R.id.tv_m_5);
+        tv_m_6 = findViewById(R.id.tv_m_6);
 
         ll_p_1 = findViewById(R.id.ll_p_1);
         ll_p_2 = findViewById(R.id.ll_p_2);
@@ -99,7 +105,8 @@ public class UpdateInfoActivity extends BaseActivity {
         tv_m_2.setText(info.getNickname());
         tv_m_3.setText(info.getSignature());
         tv_m_4.setText(J.getGender(info));
-        tv_m_5.setText(info.getRegion());
+        tv_m_5.setText(TimeUtil.changeToString(info.getBirthday(),"yyyyMMdd"));
+        tv_m_6.setText(info.getRegion());
         info.getAvatarBitmap(new GetAvatarBitmapCallback() {
             @Override
             public void gotResult(int i, String s, Bitmap bitmap) {
@@ -147,6 +154,12 @@ public class UpdateInfoActivity extends BaseActivity {
             }
         });
         ll_m_5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog(UserInfo.Field.birthday);
+            }
+        });
+        ll_m_6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDialog(UserInfo.Field.region);
@@ -207,6 +220,9 @@ public class UpdateInfoActivity extends BaseActivity {
             case signature:
                 h = h + "个人介绍";
                 break;
+            case birthday:
+                h = h + "生日";
+                break;
             case region:
                 h = h + "地址";
                 break;
@@ -249,6 +265,7 @@ public class UpdateInfoActivity extends BaseActivity {
                 break;
             case signature:
                 info.setSignature(s);
+                break;
             case gender:
                 if (s.equals("男")) {
                     info.setGender(UserInfo.Gender.male);
@@ -257,8 +274,13 @@ public class UpdateInfoActivity extends BaseActivity {
                 } else {
                     info.setGender(UserInfo.Gender.unknown);
                 }
+                break;
+            case birthday:
+                info.setBirthday(TimeUtil.changeToLong(s,"yyyyMMdd"));
+                break;
             case region:
                 info.setRegion(s);
+                break;
         }
 
         JMessageClient.updateMyInfo(what, info, new BasicCallback() {

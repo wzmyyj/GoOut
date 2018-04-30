@@ -43,11 +43,9 @@
                 android:resource="@xml/filepaths" />
         </provider>
 
-        <activity android:name=".activity.MyInfoActivity" />
-        <activity android:name=".activity.UpdateInfoActivity" />
-        <activity android:name=".activity.FriendListActivity" />
-        <activity android:name=".activity.GroupListActivity" />
-        <activity android:name=".activity.UpdatePasswordActivity" />
+        <activity android:name=".activity.my_info.MyInfoActivity" />
+        <activity android:name=".activity.my_info.UpdateInfoActivity" />
+        <activity android:name=".activity.my_info.UpdatePasswordActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.RegisterActivity">
             <intent-filter>
@@ -56,9 +54,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.InitInfoActivity" />
-        <activity android:name=".activity.ContactActivity" />
-        <activity android:name=".activity.AddFriendActivity"></activity>
+        <activity android:name=".activity.my_info.InitInfoActivity" />
+        <activity android:name=".activity.contact.ContactActivity" />
+        <activity android:name=".activity.contact.FindFriendActivity" />
+        <activity android:name=".activity.contact.UserInfoActivity" />
+        <activity android:name=".activity.contact.CreateSingleChatActivity" />
+        <activity android:name=".activity.contact.SingleChatActivity" />
+        <activity android:name=".activity.contact.CreateGroupChatActivity" />
+        <activity android:name=".activity.contact.GroupChatActivity"></activity>
     </application>
 
 </manifest>

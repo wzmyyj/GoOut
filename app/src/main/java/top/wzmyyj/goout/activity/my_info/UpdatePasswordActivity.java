@@ -1,4 +1,4 @@
-package top.wzmyyj.goout.activity;
+package top.wzmyyj.goout.activity.my_info;
 
 import android.support.v7.widget.Toolbar;
 import android.view.View;

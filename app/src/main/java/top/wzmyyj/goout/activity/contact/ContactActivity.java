@@ -1,4 +1,4 @@
-package top.wzmyyj.goout.activity;
+package top.wzmyyj.goout.activity.contact;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
@@ -85,16 +85,16 @@ public class ContactActivity extends BaseMultiPanelActivity {
                             Intent intent = new Intent();
                             switch (i) {
                                 case 0:
-                                    intent.setClass(context, AddFriendActivity.class);
+                                    intent.setClass(context, CreateSingleChatActivity.class);
                                     break;
                                 case 1:
-                                    intent.setClass(context, AddFriendActivity.class);
+                                    intent.setClass(context, FindFriendActivity.class);
                                     break;
                                 case 2:
-                                    intent.setClass(context, AddFriendActivity.class);
+                                    intent.setClass(context, FindFriendActivity.class);
                                     break;
                                 case 3:
-                                    intent.setClass(context, AddFriendActivity.class);
+                                    intent.setClass(context, FindFriendActivity.class);
                                     break;
                             }
                             startActivity(intent);

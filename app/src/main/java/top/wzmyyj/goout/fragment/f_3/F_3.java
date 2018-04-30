@@ -1,11 +1,14 @@
 package top.wzmyyj.goout.fragment.f_3;
 
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
 
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.base.BaseSinglePanelFragment;
+import top.wzmyyj.goout.data.ContactsData;
 import top.wzmyyj.wzm_sdk.panel.InitPanel;
 
 /**
@@ -26,4 +29,10 @@ public class F_3 extends BaseSinglePanelFragment {
         img_2.setImageResource(R.drawable.ic_notifications);
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        ContactsData.initFriendList();
+        ContactsData.initGroupList();
+    }
 }

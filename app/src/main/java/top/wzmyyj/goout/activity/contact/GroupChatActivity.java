@@ -1,13 +1,13 @@
-package top.wzmyyj.goout.activity;
+package top.wzmyyj.goout.activity.contact;
 
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.base.BaseActivity;
 
-public class InitInfoActivity extends BaseActivity {
+public class GroupChatActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        setContentView(R.layout.activity_init_info);
+        setContentView(R.layout.activity_group_chat);
     }
 
     @Override

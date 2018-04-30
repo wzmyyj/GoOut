@@ -35,9 +35,11 @@ import cn.jpush.im.android.api.model.GroupInfo;
 import cn.jpush.im.android.api.model.Message;
 import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.goout.R;
-import top.wzmyyj.goout.activity.AddFriendActivity;
-import top.wzmyyj.goout.activity.ContactActivity;
+import top.wzmyyj.goout.activity.contact.CreateSingleChatActivity;
+import top.wzmyyj.goout.activity.contact.FindFriendActivity;
+import top.wzmyyj.goout.activity.contact.ContactActivity;
 import top.wzmyyj.goout.base.BaseRecyclerPanel;
+import top.wzmyyj.goout.data.ContactsData;
 import top.wzmyyj.goout.tools.Expression;
 import top.wzmyyj.goout.tools.J;
 import top.wzmyyj.wzm_sdk.adapter.CommonAdapter;
@@ -62,6 +64,14 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
         if (JMessageClient.getConversationList() != null)
             data = JMessageClient.getConversationList();
         return data;
+    }
+
+
+    @Override
+    protected void update() {
+        super.update();
+        ContactsData.initFriendList();
+        ContactsData.initGroupList();
     }
 
     @NonNull
@@ -227,6 +237,13 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
         });
     }
 
+
+    @Override
+    public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+        return super.onItemLongClick(view, holder, position);
+
+    }
+
     private QMUIListPopup mListPopup;
 
     private void initListPopupIfNeed() {
@@ -257,16 +274,16 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
                             Intent intent = new Intent();
                             switch (i) {
                                 case 0:
-                                    intent.setClass(context, AddFriendActivity.class);
+                                    intent.setClass(context, CreateSingleChatActivity.class);
                                     break;
                                 case 1:
-                                    intent.setClass(context, AddFriendActivity.class);
+                                    intent.setClass(context, FindFriendActivity.class);
                                     break;
                                 case 2:
-                                    intent.setClass(context, AddFriendActivity.class);
+                                    intent.setClass(context, FindFriendActivity.class);
                                     break;
                                 case 3:
-                                    intent.setClass(context, AddFriendActivity.class);
+                                    intent.setClass(context, FindFriendActivity.class);
                                     break;
                             }
                             context.startActivity(intent);

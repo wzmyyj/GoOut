@@ -153,7 +153,6 @@
             android:textColor="@color/colorGray_9"
             android:textSize="16sp" />
     </LinearLayout>
-
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
@@ -176,12 +175,47 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:gravity="bottom"
-            android:text="编辑地址"
+            android:text="编辑生日"
             android:textColor="@color/colorGray_5"
             android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_m_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="yyyy-MM-dd"
+            android:textColor="@color/colorGray_9"
+            android:textSize="16sp" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/colorLine" />
+
+    <LinearLayout
+        android:id="@+id/ll_m_6"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@drawable/click_bg"
+        android:clickable="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:text="编辑地址"
+            android:textColor="@color/colorGray_5"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_m_6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
