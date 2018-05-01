@@ -45,16 +45,16 @@ public class P_Mine extends BaseRecyclerPanel<F_4_Item> {
     @NonNull
     @Override
     protected List<F_4_Item> getData(List<F_4_Item> data) {
-        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_nice));
-        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_nice));
-        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_nice));
-        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_nice, true));
-        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_nice));
-        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_nice));
-        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_nice, true));
-        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_nice));
-        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_nice));
-        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_nice, true));
+        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_p1_2));
+        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_p1_2));
+        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_p1_2));
+        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_p1_2, true));
+        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_p1_2));
+        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_p1_2));
+        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_p1_2, true));
+        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_p1_2));
+        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_p1_2));
+        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_p1_2, true));
         return data;
     }
 
@@ -142,7 +142,7 @@ public class P_Mine extends BaseRecyclerPanel<F_4_Item> {
 
     @Override
     protected View getHeader() {
-        View header = mInflater.inflate(R.layout.fragment_4_top, null);
+        View header = mInflater.inflate(R.layout.fragment_4_head, null);
 
         img_t_1 = header.findViewById(R.id.img_t_1);
         tv_t_1 = header.findViewById(R.id.tv_t_1);

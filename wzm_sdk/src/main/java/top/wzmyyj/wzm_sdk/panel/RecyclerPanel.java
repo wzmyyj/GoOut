@@ -51,6 +51,7 @@ public abstract class RecyclerPanel<T> extends InitPanel
         mSwipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
         mSwipeRefreshLayout.setColorSchemeColors(context.getResources()
                 .getColor(R.color.colorBlue));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
 
         mData = new ArrayList<>();
         mData = getData(mData);
@@ -78,8 +79,6 @@ public abstract class RecyclerPanel<T> extends InitPanel
 
     @Override
     public void initData() {
-
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
 
         MultiItemTypeAdapter mAdapter = new MultiItemTypeAdapter(context, mData);
 

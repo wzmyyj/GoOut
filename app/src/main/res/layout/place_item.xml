@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="230dp"
+    android:background="@color/colorGray_g"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="3dp"
+        android:background="@drawable/click_bg"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <ImageView
+                android:id="@+id/img_image"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@color/colorGray_e" />
+
+            <TextView
+                android:id="@+id/tv_locale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:paddingLeft="7dp"
+                android:text="FFFFGg"
+                android:textColor="@color/colorWhite"
+                android:textSize="13sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="VVVVVv"
+            android:textColor="@color/colorGray_5"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <top.wzmyyj.wzm_sdk.view.CircleImageView
+                android:id="@+id/img_head"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:src="@color/colorGray_e" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="哈哈哈"
+                android:textColor="@color/colorGray_9"
+                android:textSize="11sp" />
+
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="5dp"
+                android:src="@mipmap/ic_lk" />
+
+            <TextView
+                android:id="@+id/tv_like"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="100"
+                android:textColor="@color/colorGray_b"
+                android:textSize="9sp" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

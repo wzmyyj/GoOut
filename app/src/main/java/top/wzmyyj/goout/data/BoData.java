@@ -1,10 +1,10 @@
 package top.wzmyyj.goout.data;
 
-import top.wzmyyj.data.BoImageData;
+import top.wzmyyj.data.Data_Bo;
 
 /**
  * Created by wzm on 2018/4/29 0029.
  */
 
-public class BoData extends BoImageData {
+public class BoData extends Data_Bo {
 }

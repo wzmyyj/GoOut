@@ -199,7 +199,7 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
 
     @Override
     protected View getHeader() {
-        View header = mInflater.inflate(R.layout.fragment_3_top, null);
+        View header = mInflater.inflate(R.layout.fragment_3_head, null);
         ll_h_1 = header.findViewById(R.id.ll_h_1);
         ll_h_2 = header.findViewById(R.id.ll_h_2);
         ll_h_3 = header.findViewById(R.id.ll_h_3);

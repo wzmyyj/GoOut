@@ -47,13 +47,7 @@
         <activity android:name=".activity.my_info.UpdateMyInfoActivity" />
         <activity android:name=".activity.my_info.UpdatePasswordActivity" />
         <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.RegisterActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.my_info.InitInfoActivity" />
         <activity android:name=".activity.contact.ContactActivity" />
         <activity android:name=".activity.contact.FindFriendActivity" />

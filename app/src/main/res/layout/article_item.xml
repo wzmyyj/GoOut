@@ -1,33 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="165dp"
+    android:background="@drawable/click_bg"
     android:orientation="vertical"
-    android:padding="5dp">
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
 
     <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="30dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/item2_image1"
+        <top.wzmyyj.wzm_sdk.view.CircleImageView
+            android:id="@+id/img_head"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@color/colorGray_b" />
+            android:src="@color/colorGray_e" />
 
         <TextView
-            android:id="@+id/item2_text1"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_weight="1.0"
-            android:gravity="left||center"
-            android:text="寒夜" />
+            android:id="@+id/tv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:text="寒夜"
+            android:textColor="@color/colorGray_7"
+            android:textSize="13sp" />
 
         <ImageView
+            android:id="@+id/img_menu"
+            android:padding="5dp"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@color/colorGray_b" />
+            android:src="@mipmap/ic_more" />
     </LinearLayout>
 
     <LinearLayout
@@ -37,85 +45,91 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="85dp"
-            android:layout_weight="3.0"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/item2_text2"
-                android:layout_width="250dp"
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:text="Fragment 实现底部导航栏的简单切换"
-                android:textColor="@color/colorGray_b"
-                android:textSize="20sp" />
+                android:textColor="@color/colorGray_3"
+                android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/item2_text3"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
                 android:ellipsize="end"
                 android:lines="3"
-                android:text="第"
+                android:text="ggaggag哈哈哈哈哈哈反反复复付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付"
                 android:textColor="#acadac"
-                android:textSize="8sp" />
+                android:textSize="14sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:layout_weight="1.0"
             android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/item2_image2"
+                android:id="@+id/img_image"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:src="@color/colorGray_b" />
+                android:src="@color/colorGray_e" />
         </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="15dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:src="@drawable/pinglun" />
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="5dp"
+            android:src="@mipmap/ic_pp" />
 
         <TextView
-            android:id="@+id/item2_text4"
+            android:id="@+id/tv_comment"
             android:layout_width="20dp"
-            android:layout_height="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:text="100"
-            android:textColor="#acadac"
-            android:textSize="8sp" />
+            android:textColor="@color/colorGray_b"
+            android:textSize="9sp" />
 
         <ImageView
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:src="@drawable/xihuan" />
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="5dp"
+            android:src="@mipmap/ic_lk" />
 
         <TextView
-            android:id="@+id/item2_text5"
+            android:id="@+id/tv_like"
             android:layout_width="20dp"
-            android:layout_height="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:text="100"
-            android:textColor="#acadac"
-            android:textSize="8sp" />
+            android:textColor="@color/colorGray_b"
+            android:textSize="9sp" />
 
 
     </LinearLayout>
 
-    <LinearLayout
+    <View
         android:layout_width="match_parent"
-        android:layout_height="10dp" />
+        android:layout_height="0.1dp"
+        android:background="@color/colorLine" />
 </LinearLayout>

@@ -20,6 +20,8 @@ import java.util.List;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.adapter.MyBoAdapter;
 import top.wzmyyj.goout.base.BaseRecyclerPanel;
+import top.wzmyyj.goout.bean.Article;
+import top.wzmyyj.goout.data.ArticleData;
 import top.wzmyyj.goout.data.BoData;
 import top.wzmyyj.goout.tools.FixedSpeedScroller;
 import top.wzmyyj.wzm_sdk.inter.IVD;
@@ -29,7 +31,7 @@ import top.wzmyyj.wzm_sdk.tools.T;
  * Created by wzm on 2018/4/23 0023.
  */
 
-public class P_1 extends BaseRecyclerPanel<String> {
+public class P_1 extends BaseRecyclerPanel<Article> {
 
 
     private ViewPager mVp_bo;
@@ -64,43 +66,38 @@ public class P_1 extends BaseRecyclerPanel<String> {
 
     @NonNull
     @Override
-    protected List<String> getData(List<String> data) {
+    protected List<Article> getData(List<Article> data) {
         data.clear();
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
-        data.add("aaaaaaaaaaaa");
+        for (Article a : ArticleData.getData()) {
+            data.add(a);
+        }
         return data;
     }
 
     @NonNull
     @Override
-    protected List<IVD<String>> getIVD(List<IVD<String>> ivd) {
-        ivd.add(new IVD<String>() {
+    protected List<IVD<Article>> getIVD(List<IVD<Article>> ivd) {
+        ivd.add(new IVD<Article>() {
             @Override
             public int getItemViewLayoutId() {
-                return R.layout.fragment_1_panel_1_item;
+                return R.layout.article_item;
             }
 
             @Override
-            public boolean isForViewType(String item, int position) {
+            public boolean isForViewType(Article item, int position) {
                 return true;
             }
 
             @Override
-            public void convert(ViewHolder holder, String s, int position) {
-                holder.setText(R.id.tv_1, s + position);
+            public void convert(ViewHolder holder, Article o, int position) {
+                holder.setImageResource(R.id.img_head, o.getHead())
+                        .setText(R.id.tv_name, o.getName())
+                        .setText(R.id.tv_title, o.getTitle())
+                        .setText(R.id.tv_content, o.getContent())
+                        .setImageResource(R.id.img_image, o.getImage())
+                        .setText(R.id.tv_comment, "" + o.getComment())
+                        .setText(R.id.tv_like, "" + o.getLike())
+                ;
             }
         });
         return ivd;
@@ -110,7 +107,7 @@ public class P_1 extends BaseRecyclerPanel<String> {
     @Override
     public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
         super.onItemClick(view, holder, position);
-        T.s(mData.get(position)  + position);
+        T.s("click:" + position);
     }
 
     @Override
@@ -120,7 +117,7 @@ public class P_1 extends BaseRecyclerPanel<String> {
 
     @Override
     protected View getHeader() {
-        View header = mInflater.inflate(R.layout.fragment_1_panel_1_head, null);
+        View header = mInflater.inflate(R.layout.fragment_1_panel_1_header, null);
         mVp_bo = header.findViewById(R.id.viewPager);
         ll_h_1 = header.findViewById(R.id.ll_h_1);
         ll_h_2 = header.findViewById(R.id.ll_h_2);
