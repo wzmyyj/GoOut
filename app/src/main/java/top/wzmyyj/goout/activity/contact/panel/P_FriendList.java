@@ -22,7 +22,7 @@ import cn.jpush.im.android.api.callback.GetUserInfoListCallback;
 import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.base.BaseRecyclerPanel;
-import top.wzmyyj.goout.data.ContactsData;
+import top.wzmyyj.goout.database.ContactsData;
 import top.wzmyyj.goout.tools.FriendComparator;
 import top.wzmyyj.goout.tools.J;
 import top.wzmyyj.wzm_sdk.inter.IVD;

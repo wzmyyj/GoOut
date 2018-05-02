@@ -40,7 +40,7 @@ public abstract class RecyclerPanel<T> extends InitPanel
 
     public RecyclerPanel(Context context) {
         super(context);
-        this.title = "推荐";
+        this.title = "";
     }
 
     @Override

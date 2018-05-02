@@ -16,8 +16,9 @@
             android:id="@+id/img_1"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp" />
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="15dp"
+            android:padding="3dp" />
 
         <TextView
             android:id="@+id/tv_1"
@@ -31,7 +32,7 @@
             android:id="@+id/tv_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="20dp"
             android:textColor="@color/colorGray_b"
             android:textSize="13sp" />
     </LinearLayout>

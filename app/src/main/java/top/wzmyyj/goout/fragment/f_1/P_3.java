@@ -2,6 +2,7 @@ package top.wzmyyj.goout.fragment.f_1;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TabLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -72,9 +73,45 @@ public class P_3 extends BaseRecyclerPanel<Goods> {
         rv.setLayoutManager(new GridLayoutManager(context, 3));
     }
 
+
+    private TabLayout mTabLayout;
+
     @Override
     protected View getHeader() {
-        return null;
+        View header = mInflater.inflate(R.layout.fragment_1_panel_3_header, null);
+        mTabLayout = header.findViewById(R.id.tabLayout);
+        headerData();
+        headerListener();
+        return header;
+    }
+
+    private void headerData() {
+
+        mTabLayout.addTab(mTabLayout.newTab().setText("综合"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("新品"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("销量"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("价格"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("分类"));
+        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+    }
+
+    private void headerListener() {
+
     }
 
     @Override

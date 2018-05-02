@@ -9,7 +9,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,11 +24,11 @@ import cn.jpush.im.android.api.callback.GetAvatarBitmapCallback;
 import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.activity.LoginActivity;
+import top.wzmyyj.goout.activity.contact.ContactActivity;
 import top.wzmyyj.goout.activity.my_info.UpdateMyInfoActivity;
 import top.wzmyyj.goout.base.BaseRecyclerPanel;
 import top.wzmyyj.goout.tools.J;
 import top.wzmyyj.wzm_sdk.inter.IVD;
-import top.wzmyyj.wzm_sdk.tools.T;
 
 /**
  * Created by wzm on 2018/4/30 0030.
@@ -45,16 +44,20 @@ public class P_Mine extends BaseRecyclerPanel<F_4_Item> {
     @NonNull
     @Override
     protected List<F_4_Item> getData(List<F_4_Item> data) {
-        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_p1_2));
-        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_p1_2));
-        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_p1_2));
-        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_p1_2, true));
-        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_p1_2));
-        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_p1_2));
-        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_p1_2, true));
-        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_p1_2));
-        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_p1_2));
-        data.add(new F_4_Item("我的收藏", "12", R.mipmap.ic_p1_2, true));
+        data.add(new F_4_Item("我的发帖", "12", R.mipmap.ic_m_1_1));
+        data.add(new F_4_Item("我的收藏", "15", R.mipmap.ic_m_1_2));
+        data.add(new F_4_Item("我的点赞", "35", R.mipmap.ic_m_1_3));
+        data.add(new F_4_Item("我的相册", "5", R.mipmap.ic_m_1_4));
+        data.add(new F_4_Item("我的卡片", "10", R.mipmap.ic_m_1_5, true));
+        data.add(new F_4_Item("通讯录", "", R.mipmap.ic_m_2_1));
+        data.add(new F_4_Item("日程安排", "", R.mipmap.ic_m_2_2));
+        data.add(new F_4_Item("账单记录", "", R.mipmap.ic_m_2_3));
+        data.add(new F_4_Item("购物订单", "", R.mipmap.ic_m_2_4, true));
+        data.add(new F_4_Item("通用设置", "", R.mipmap.ic_m_3_1));
+        data.add(new F_4_Item("帮助与反馈", "", R.mipmap.ic_m_3_2, true));
+        data.add(new F_4_Item("分享本应用", "", R.mipmap.ic_m_4_1));
+        data.add(new F_4_Item("评价本应用", "", R.mipmap.ic_m_4_2));
+        data.add(new F_4_Item("关于本应用", "", R.mipmap.ic_m_4_3, true));
         return data;
     }
 
@@ -106,14 +109,20 @@ public class P_Mine extends BaseRecyclerPanel<F_4_Item> {
     public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
         super.onItemClick(view, holder, position);
 
-        T.l("pos:" + position);
+//        T.l("pos:" + position);
         switch (position) {
-            case 1:
+            case 10:
                 JMessageClient.logout();
                 Intent i = new Intent();
                 i.setClass(context, LoginActivity.class);
                 context.startActivity(i);
                 ((Activity) context).finish();
+                break;
+
+            case 6:
+                Intent i6 = new Intent();
+                i6.setClass(context, ContactActivity.class);
+                context.startActivity(i6);
                 break;
         }
     }
@@ -126,7 +135,7 @@ public class P_Mine extends BaseRecyclerPanel<F_4_Item> {
 
     //Header
     private ImageView img_t_1;
-    private Button bt_t_1;
+    private ImageView img_t_2;
     private TextView tv_t_1;
     private TextView tv_t_2;
     private LinearLayout ll_a_1;
@@ -147,7 +156,7 @@ public class P_Mine extends BaseRecyclerPanel<F_4_Item> {
         img_t_1 = header.findViewById(R.id.img_t_1);
         tv_t_1 = header.findViewById(R.id.tv_t_1);
         tv_t_2 = header.findViewById(R.id.tv_t_2);
-        bt_t_1 = header.findViewById(R.id.bt_t_1);
+        img_t_2 = header.findViewById(R.id.img_t_2);
 
         ll_a_1 = header.findViewById(R.id.ll_a_1);
         ll_a_2 = header.findViewById(R.id.ll_a_2);
@@ -167,7 +176,7 @@ public class P_Mine extends BaseRecyclerPanel<F_4_Item> {
     }
 
     private void headerListener() {
-        bt_t_1.setOnClickListener(new View.OnClickListener() {
+        img_t_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent();

@@ -30,7 +30,7 @@ import cn.jpush.im.api.BasicCallback;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.activity.my_info.MyInfoActivity;
 import top.wzmyyj.goout.base.BaseActivity;
-import top.wzmyyj.goout.data.ContactsData;
+import top.wzmyyj.goout.database.ContactsData;
 import top.wzmyyj.goout.tools.J;
 import top.wzmyyj.wzm_sdk.tools.T;
 

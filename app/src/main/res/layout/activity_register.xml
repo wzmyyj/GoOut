@@ -26,10 +26,10 @@
         android:layout_height="130dp"
         android:gravity="center">
 
-        <top.wzmyyj.wzm_sdk.view.CircleImageView
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:src="@mipmap/ic_go" />
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="80dp"
+            android:src="@mipmap/welcome" />
 
     </RelativeLayout>
 
@@ -74,7 +74,6 @@
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
         android:background="@color/colorLine" />
-
 
 
     <LinearLayout

@@ -1,4 +1,4 @@
-package top.wzmyyj.goout.data;
+package top.wzmyyj.goout.database;
 
 import top.wzmyyj.data.Data_Bo;
 

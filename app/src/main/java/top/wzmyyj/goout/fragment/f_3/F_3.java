@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.base.BaseSinglePanelFragment;
-import top.wzmyyj.goout.data.ContactsData;
+import top.wzmyyj.goout.database.ContactsData;
 import top.wzmyyj.wzm_sdk.panel.InitPanel;
 
 /**

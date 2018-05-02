@@ -39,7 +39,7 @@ import top.wzmyyj.goout.activity.chat.CreateSingleChatActivity;
 import top.wzmyyj.goout.activity.contact.FindFriendActivity;
 import top.wzmyyj.goout.activity.contact.ContactActivity;
 import top.wzmyyj.goout.base.BaseRecyclerPanel;
-import top.wzmyyj.goout.data.ContactsData;
+import top.wzmyyj.goout.database.ContactsData;
 import top.wzmyyj.goout.tools.Expression;
 import top.wzmyyj.goout.tools.J;
 import top.wzmyyj.wzm_sdk.adapter.CommonAdapter;

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="170dp"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <LinearLayout
@@ -25,8 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_margin="3dp"
-            android:text="VVVVVv"
             android:gravity="center_vertical"
+            android:text="VVVVVv"
             android:textColor="@color/colorGray_5"
             android:textSize="15sp" />
 

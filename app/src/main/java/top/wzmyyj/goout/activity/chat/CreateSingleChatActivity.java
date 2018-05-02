@@ -21,7 +21,7 @@ import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.activity.contact.FindFriendActivity;
 import top.wzmyyj.goout.base.BaseActivity;
-import top.wzmyyj.goout.data.ContactsData;
+import top.wzmyyj.goout.database.ContactsData;
 import top.wzmyyj.goout.tools.J;
 
 public class CreateSingleChatActivity extends BaseActivity {

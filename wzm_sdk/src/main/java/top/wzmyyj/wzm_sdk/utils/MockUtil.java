@@ -1,4 +1,4 @@
-package top.wzmyyj.goout.utils;
+package top.wzmyyj.wzm_sdk.utils;
 
 import android.content.Context;
 import android.view.WindowManager;
