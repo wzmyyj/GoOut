@@ -93,8 +93,9 @@ public abstract class RecyclerPanel<T> extends InitPanel
         if (mFooter != null)
             mHeaderAndFooterWrapper.addFootView(mFooter);
         mRecyclerView.setAdapter(mHeaderAndFooterWrapper);
-        mHeaderAndFooterWrapper.notifyDataSetChanged();
     }
+
+
 
 
     public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {

@@ -259,7 +259,7 @@ public class TabMenu extends LinearLayout {
         this.setOnMenuItemClickListener(new OnMenuItemClickListener() {
             @Override
             public void onClick(View view, int pos) {
-                mViewPager.setCurrentItem(pos);
+                mViewPager.setCurrentItem(pos, false);
             }
         });
 

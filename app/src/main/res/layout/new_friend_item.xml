@@ -14,28 +14,57 @@
         android:orientation="horizontal">
 
         <top.wzmyyj.wzm_sdk.view.CircleImageView
-            android:id="@+id/img_1"
+            android:id="@+id/img_head"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_gravity="center" />
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
             <TextView
-                android:id="@+id/tv_1"
-                android:layout_width="0dp"
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:text="CCC"
+                android:textColor="@color/colorGray_5"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_reason"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="15sp"
                 android:layout_weight="1"
-                android:textColor="@color/colorGray_3"
-                android:textSize="15sp" />
+                android:text="dddddd"
+                android:textColor="@color/colorGray_b"
+                android:textSize="10sp" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/bt_1"
-            android:layout_width="55dp"
+            android:layout_width="45dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:background="@color/colorClarity"
+            android:text="同意"
+            android:textColor="@color/colorBlue"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/bt_2"
+            android:layout_width="45dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:background="@color/colorClarity"
+            android:text="拒绝"
             android:textColor="@color/colorBlue"
             android:textSize="14sp" />
     </LinearLayout>

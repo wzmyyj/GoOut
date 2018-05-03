@@ -31,6 +31,7 @@ android {
     }
 }
 
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -50,5 +51,6 @@ dependencies {
     compile 'cn.jiguang.sdk:jcore:1.1.9'  // 此处以JCore 1.1.9 版本为例。
 
     compile 'com.github.bumptech.glide:glide:3.6.1'
-    compile 'com.yanzhenjie:permission:2.0.0-rc4'
+
+    compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
 }

@@ -30,4 +30,19 @@ public class TimeUtil {
         }
         return l;
     }
+
+
+    public static String getEasyTime(long l) {
+        Date d = new Date();
+        String s;
+        //一天内
+        if (Math.abs(d.getTime() - l) < 24 * 60 * 60 * 1000) {
+            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+            s = sdf.format(new Date(l));
+        } else {
+            SimpleDateFormat sdf = new SimpleDateFormat("MM-dd HH:mm");
+            s = sdf.format(new Date(l));
+        }
+        return s;
+    }
 }

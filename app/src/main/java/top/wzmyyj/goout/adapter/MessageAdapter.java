@@ -16,8 +16,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import cn.jpush.im.android.api.callback.DownloadCompletionCallback;
@@ -31,6 +29,7 @@ import cn.jpush.im.android.api.model.Message;
 import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.tools.Expression;
+import top.wzmyyj.wzm_sdk.utils.TimeUtil;
 
 
 public class MessageAdapter extends BaseAdapter {
@@ -111,8 +110,7 @@ public class MessageAdapter extends BaseAdapter {
         viewHolder.mImage2.setVisibility(View.GONE);
         final ViewHolder finalViewHolder = viewHolder;
         //time
-        SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        viewHolder.mDate.setText(df.format(new Date(message.getCreateTime())));
+        viewHolder.mDate.setText(TimeUtil.getEasyTime(message.getCreateTime()));
         //userInfo
         UserInfo userInfo = message.getFromUser();
         if (!TextUtils.isEmpty(userInfo.getNotename())) {
@@ -175,11 +173,28 @@ public class MessageAdapter extends BaseAdapter {
                             public void onComplete(int i, String s, File file) {
                                 Glide.with(mInflater.getContext())
                                         .load(file)
-                                        .centerCrop()
                                         .placeholder(R.mipmap.gallery_pick_photo)
                                         .into(finalViewHolder.mImage2);
                                 finalViewHolder.mImage2.setVisibility(View.VISIBLE);
                                 finalViewHolder.mImage.setVisibility(View.GONE);
+                            }
+                        });
+                    }
+                });
+
+                viewHolder.mImage2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        imageContent.downloadOriginImage(message, new DownloadCompletionCallback() {
+                            @Override
+                            public void onComplete(int i, String s, File file) {
+                                Glide.with(mInflater.getContext())
+                                        .load(file)
+                                        .centerCrop()
+                                        .placeholder(R.mipmap.gallery_pick_photo)
+                                        .into(finalViewHolder.mImage);
+                                finalViewHolder.mImage.setVisibility(View.VISIBLE);
+                                finalViewHolder.mImage2.setVisibility(View.GONE);
                             }
                         });
                     }

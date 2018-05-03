@@ -33,6 +33,28 @@
             android:authorities="top.wzmyyj.goout.DataProvider"
             android:exported="true"
             tools:node="replace" />
+
+        <receiver
+            android:name=".receiver.MyReceiver"
+            android:enabled="true"
+            android:exported="false">
+            -
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <!-- Required 用户注册SDK的intent -->
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <!-- Required 用户接收SDK消息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <!-- Required 用户接收SDK通知栏信息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <!-- Required 用户打开自定义通知栏的intent -->
+                <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" />
+                <!-- Optional 用户接受Rich Push Javascript 回调函数的intent -->
+                <action android:name="cn.jpush.android.intent.CONNECTION" />
+                <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <category android:name="top.wzmyyj.goout" />
+            </intent-filter>
+        </receiver>
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="top.wzmyyj.goout.FileProvider"
@@ -55,9 +77,17 @@
         <activity android:name=".activity.chat.CreateSingleChatActivity" />
         <activity android:name=".activity.chat.CreateGroupChatActivity" />
         <activity android:name=".activity.chat.GroupChatInfoActivity" />
-        <activity android:name=".activity.chat.SingleChatInfoActivity"></activity>
+        <activity android:name=".activity.chat.SingleChatInfoActivity" />
         <activity android:name=".activity.chat.GroupChatActivity" />
-        <activity android:name=".activity.chat.SingleChatActivity"></activity>
+        <activity android:name=".activity.chat.SingleChatActivity" />
+        <activity android:name=".activity.SomeMessageActivity" />
+        <activity android:name=".activity.contact.NewFriendActivity"></activity>
     </application>
 
+    <meta-data
+        android:name="AA_DB_NAME"
+        android:value="wzm.db" />
+    <meta-data
+        android:name="AA_DB_VERSION"
+        android:value="1" />
 </manifest>

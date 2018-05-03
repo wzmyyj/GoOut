@@ -3,6 +3,7 @@ package top.wzmyyj.goout.fragment.f_3;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
@@ -30,14 +31,17 @@ import cn.jpush.im.android.api.callback.GetAvatarBitmapCallback;
 import cn.jpush.im.android.api.content.EventNotificationContent;
 import cn.jpush.im.android.api.content.MessageContent;
 import cn.jpush.im.android.api.content.TextContent;
+import cn.jpush.im.android.api.event.MessageEvent;
 import cn.jpush.im.android.api.model.Conversation;
 import cn.jpush.im.android.api.model.GroupInfo;
 import cn.jpush.im.android.api.model.Message;
 import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.activity.chat.CreateSingleChatActivity;
-import top.wzmyyj.goout.activity.contact.FindFriendActivity;
+import top.wzmyyj.goout.activity.chat.SingleChatActivity;
 import top.wzmyyj.goout.activity.contact.ContactActivity;
+import top.wzmyyj.goout.activity.contact.FindFriendActivity;
+import top.wzmyyj.goout.activity.contact.NewFriendActivity;
 import top.wzmyyj.goout.base.BaseRecyclerPanel;
 import top.wzmyyj.goout.database.ContactsData;
 import top.wzmyyj.goout.tools.Expression;
@@ -45,12 +49,16 @@ import top.wzmyyj.goout.tools.J;
 import top.wzmyyj.wzm_sdk.adapter.CommonAdapter;
 import top.wzmyyj.wzm_sdk.inter.IVD;
 import top.wzmyyj.wzm_sdk.inter.SingleIVD;
+import top.wzmyyj.wzm_sdk.utils.TimeUtil;
 
 /**
  * Created by wzm on 2018/4/23 0023.
  */
 
 public class P_Message extends BaseRecyclerPanel<Conversation> {
+
+    private Handler handler = new Handler();
+    private MyRunnable myRunnable = new MyRunnable();
 
 
     public P_Message(Context context) {
@@ -62,7 +70,9 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
     @Override
     protected List<Conversation> getData(List<Conversation> data) {
         if (JMessageClient.getConversationList() != null)
-            data = JMessageClient.getConversationList();
+            for (Conversation conversation : JMessageClient.getConversationList()) {
+                data.add(conversation);
+            }
         return data;
     }
 
@@ -87,13 +97,17 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
             public void convert(ViewHolder holder, Conversation conversation, int position) {
                 final ImageView img_head = holder.getView(R.id.img_head);
                 TextView tv_name = holder.getView(R.id.tv_name);
+                TextView tv_time = holder.getView(R.id.tv_time);
                 TextView tv_text = holder.getView(R.id.tv_text);
                 TextView tv_count = holder.getView(R.id.tv_count);
 
                 Message latestMessage = conversation.getLatestMessage();
                 int unReadMsgCnt = conversation.getUnReadMsgCnt();
                 String text = "", count = "", lastName = "";
+
                 if (latestMessage != null) {
+                    long l = latestMessage.getCreateTime();
+                    tv_time.setText(TimeUtil.getEasyTime(l));
                     MessageContent content = latestMessage.getContent();
                     switch (content.getContentType()) {
                         case text:
@@ -180,8 +194,58 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
     @Override
     public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
         super.onItemClick(view, holder, position);
+        Intent i = new Intent();
+        Conversation conversation = mData.get(position - 1);
+        switch (conversation.getType()) {
+            case single:
+                UserInfo user = (UserInfo) conversation.getTargetInfo();
+                i.putExtra("u", user.getUserName());
+                i.putExtra("n", J.getName(user));
+                i.setClass(context, SingleChatActivity.class);
+                context.startActivity(i);
+                break;
+            case group:
+                break;
+        }
+
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        JMessageClient.registerEventReceiver(this);
+    }
+
+
+    public void onEvent(MessageEvent event) {
+        handler.post(myRunnable);
+    }
+
+
+    private class MyRunnable implements Runnable {
+
+        @Override
+        public void run() {
+            try {
+                update();
+            } catch (Exception e) {
+
+            }
+
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        update();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        JMessageClient.unRegisterEventReceiver(this);
+    }
 
     @Override
     protected void setView(RecyclerView rv, SwipeRefreshLayout srl, FrameLayout layout) {
@@ -217,6 +281,14 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
     }
 
     private void headerListener() {
+        ll_h_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(context, NewFriendActivity.class);
+                context.startActivity(i);
+            }
+        });
         ll_h_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -225,6 +297,7 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
                 context.startActivity(i);
             }
         });
+
 
         bt_h_1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -237,12 +310,6 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
         });
     }
 
-
-    @Override
-    public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
-        return super.onItemLongClick(view, holder, position);
-
-    }
 
     private QMUIListPopup mListPopup;
 

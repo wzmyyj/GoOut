@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.bumptech.glide.Glide;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.lang.reflect.Field;
@@ -90,14 +91,24 @@ public class P_1 extends BaseRecyclerPanel<Article> {
 
             @Override
             public void convert(ViewHolder holder, Article o, int position) {
-                holder.setImageResource(R.id.img_head, o.getHead())
+                holder
                         .setText(R.id.tv_name, o.getName())
                         .setText(R.id.tv_title, o.getTitle())
                         .setText(R.id.tv_content, o.getContent())
-                        .setImageResource(R.id.img_image, o.getImage())
                         .setText(R.id.tv_comment, "" + o.getComment())
                         .setText(R.id.tv_like, "" + o.getLike())
                 ;
+
+                ImageView img_head = holder.getView(R.id.img_head);
+                ImageView img_image = holder.getView(R.id.img_image);
+
+
+                Glide.with(context)
+                        .load(o.getHead())
+                        .into(img_head);
+                Glide.with(context)
+                        .load(o.getImage())
+                        .into(img_image);
             }
         });
         return ivd;

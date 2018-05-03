@@ -12,20 +12,39 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:navigationIcon="@drawable/ic_back"
-        app:title="XX"
+        app:title=""
         app:titleTextAppearance="@style/MyToolbarTextAppearance"
-        app:titleTextColor="@color/colorGray_5" />
+        app:titleTextColor="@color/colorGray_5">
 
+        <ImageView
+            android:id="@+id/img_1"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/click_bg"
+            android:padding="10dp"
+            android:src="@drawable/ic_perm" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/colorLine" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
         android:layout_weight="1">
 
         <ListView
             android:id="@+id/lv_chat"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/colorGray_h"
             android:divider="@null"
             android:dividerHeight="3dp"
             android:listSelector="@color/colorClarity" />
@@ -33,10 +52,15 @@
         <include layout="@layout/chat_exp" />
     </FrameLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/colorLine" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_marginTop="5dp"
         android:background="@color/colorWhite"
         android:focusable="true"
@@ -48,10 +72,10 @@
         <EditText
             android:id="@+id/et_chat_input"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:background="@color/colorWhite_1"
+            android:background="@color/colorGray_g"
             android:minHeight="40dp"
             android:padding="5sp"
             android:textSize="15sp" />

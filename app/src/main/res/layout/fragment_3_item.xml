@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="65dp"
+    android:background="@drawable/click_bg"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="59.9dp"
+        android:layout_height="63dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingLeft="20dp"
@@ -15,48 +16,48 @@
 
         <top.wzmyyj.wzm_sdk.view.CircleImageView
             android:id="@+id/img_head"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:src="@color/colorGray_g"
-            app:border_color="@color/colorLine"
-            app:border_width="0.1dp" />
+            app:border_color="@color/colorLine" />
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="12dp"
             android:orientation="vertical">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="30dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tv_name"
                     android:layout_width="0dp"
-                    android:layout_height="35dp"
+                    android:layout_height="30dp"
                     android:layout_weight="1"
                     android:gravity="bottom"
-                    android:textColor="@color/colorGray_3"
-                    android:textSize="16sp" />
+                    android:textColor="@color/colorGray_5"
+                    android:textSize="15sp" />
 
                 <TextView
-                    android:layout_marginLeft="10dp"
                     android:id="@+id/tv_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
                     android:gravity="bottom"
-                    android:textColor="@color/colorGray_9"
-                    android:textSize="12sp" />
+                    android:textColor="@color/colorGray_b"
+                    android:textSize="10sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
@@ -65,27 +66,32 @@
                     android:layout_height="20dp"
                     android:layout_weight="1"
                     android:ellipsize="end"
+                    android:layout_marginRight="20dp"
                     android:maxLines="1"
-                    android:textColor="@color/colorGray_7"
-                    android:textSize="13sp" />
+                    android:singleLine="true"
+                    android:textColor="@color/colorGray_9"
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/tv_count"
                     android:layout_width="wrap_content"
                     android:layout_height="15dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_marginRight="10dp"
                     android:gravity="center"
-                    android:minWidth="15dp"
+                    android:minWidth="12dp"
                     android:textColor="@color/colorWhite"
-                    android:textSize="12sp" />
+                    android:textSize="10sp" />
             </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
+        android:layout_marginLeft="65dp"
+        android:layout_marginRight="20dp"
         android:background="@color/colorLine" />
 
 </LinearLayout>

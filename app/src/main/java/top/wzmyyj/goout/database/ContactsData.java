@@ -45,16 +45,18 @@ public class ContactsData {
     }
 
     public static void addUser(UserInfo userInfo) {
-        userList.add(userInfo);
+        if (!userList.contains(userInfo))
+            userList.add(userInfo);
     }
 
     public static UserInfo getUser(String username) {
-        for (UserInfo userInfo : userList) {
+
+        for (UserInfo userInfo : friendList) {
             if (userInfo.getUserName().equals(username)) {
                 return userInfo;
             }
         }
-        for (UserInfo userInfo : friendList) {
+        for (UserInfo userInfo : userList) {
             if (userInfo.getUserName().equals(username)) {
                 return userInfo;
             }

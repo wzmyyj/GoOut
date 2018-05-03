@@ -31,16 +31,53 @@
         android:layout_height="0.1dp"
         android:background="@color/colorLine" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/colorWhite"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:padding="12dp"
+            android:src="@drawable/ic_search" />
+
+        <EditText
+            android:id="@+id/et_1"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@color/colorGray_g"
+            android:gravity="center_vertical"
+            android:inputType="number"
+            android:padding="2dp"
+            android:textColor="@color/colorGray_9"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/bt_1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/click_bg"
+            android:text="搜索"
+            android:textColor="@color/colorBlue"
+            android:textSize="14sp" />
+    </LinearLayout>
+
 
     <View
         android:layout_width="match_parent"
         android:layout_height="15dp"
         android:background="@color/colorGray_g" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="@color/colorLine" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"

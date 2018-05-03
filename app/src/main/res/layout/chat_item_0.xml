@@ -8,11 +8,11 @@
     <TextView
         android:id="@+id/tv_chat_item_date"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="11dp"
         android:layout_gravity="center"
-        android:text="2017/1/1 00:00:00"
-        android:textColor="@color/colorGray_b"
-        android:textSize="12sp" />
+        android:text="00:00:00"
+        android:textColor="@color/colorGray_g"
+        android:textSize="10sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,10 +51,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginRight="30dp"
             android:layout_marginTop="3dp"
             android:background="@drawable/chat_bg"
-            android:padding="5dp">
+            android:padding="7dp">
 
             <TextView
                 android:id="@+id/tv_chat_item_text"
@@ -71,8 +71,8 @@
 
             <ImageView
                 android:id="@+id/img_chat_item_img2"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
                 android:visibility="gone" />
         </FrameLayout>
     </LinearLayout>

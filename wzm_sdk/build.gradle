@@ -31,4 +31,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.zhy:base-rvadapter:3.0.3'
     compile 'com.zhy:base-adapter:3.0.3'
+    compile 'com.yanzhenjie:permission:2.0.0-rc4'
 }
