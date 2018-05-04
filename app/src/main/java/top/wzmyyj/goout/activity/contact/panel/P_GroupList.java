@@ -1,6 +1,8 @@
 package top.wzmyyj.goout.activity.contact.panel;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
@@ -16,13 +18,16 @@ import java.util.Comparator;
 import java.util.List;
 
 import cn.jpush.im.android.api.JMessageClient;
+import cn.jpush.im.android.api.callback.GetAvatarBitmapCallback;
 import cn.jpush.im.android.api.callback.GetGroupIDListCallback;
 import cn.jpush.im.android.api.callback.GetGroupInfoCallback;
 import cn.jpush.im.android.api.model.GroupInfo;
 import top.wzmyyj.goout.R;
+import top.wzmyyj.goout.activity.chat.GroupChatActivity;
 import top.wzmyyj.goout.base.BaseRecyclerPanel;
 import top.wzmyyj.goout.database.ContactsData;
 import top.wzmyyj.goout.tools.GroupComparator;
+import top.wzmyyj.goout.tools.J;
 import top.wzmyyj.wzm_sdk.inter.IVD;
 import top.wzmyyj.wzm_sdk.inter.SingleIVD;
 
@@ -95,9 +100,30 @@ public class P_GroupList extends BaseRecyclerPanel<GroupInfo> {
             public void convert(ViewHolder holder, GroupInfo groupInfo, int position) {
                 final ImageView img = holder.getView(R.id.img_1);
                 TextView tv = holder.getView(R.id.tv_1);
+                tv.setText(J.getName(groupInfo));
+                groupInfo.getAvatarBitmap(new GetAvatarBitmapCallback() {
+                    @Override
+                    public void gotResult(int i, String s, Bitmap bitmap) {
+                        if (bitmap != null) {
+                            img.setImageBitmap(bitmap);
+                        } else {
+                            img.setImageResource(R.mipmap.no_avatar);
+                        }
+                    }
+                });
             }
         });
         return ivd;
+    }
+
+    @Override
+    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+        super.onItemClick(view, holder, position);
+        Intent i = new Intent();
+        i.putExtra("id", mData.get(position).getGroupID());
+        i.putExtra("n", J.getName(mData.get(position)));
+        i.setClass(context, GroupChatActivity.class);
+        context.startActivity(i);
     }
 
     @Override

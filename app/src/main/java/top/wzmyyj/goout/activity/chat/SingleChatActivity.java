@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -57,6 +58,7 @@ public class SingleChatActivity extends BaseActivity {
     private EditText mEt_input;
     private Button mBt_send;
     private String username;
+    private ImageView img_1;
 
 
     //exp
@@ -81,19 +83,20 @@ public class SingleChatActivity extends BaseActivity {
     @Override
     protected void initView() {
         setContentView(R.layout.chat_activity);
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mList = (ListView) findViewById(R.id.lv_chat);
-        mEt_input = (EditText) findViewById(R.id.et_chat_input);
-        mBt_send = (Button) findViewById(R.id.bt_chat_send);
+        mToolbar = findViewById(R.id.toolbar);
+        mList = findViewById(R.id.lv_chat);
+        mEt_input = findViewById(R.id.et_chat_input);
+        mBt_send = findViewById(R.id.bt_chat_send);
+        img_1 = findViewById(R.id.img_1);
 
         //exp
-        mRL_1 = (RelativeLayout) findViewById(R.id.rl_chat_1);
-        ll_exp = (LinearLayout) findViewById(R.id.ll_chat_exp);
-        gv_exp = (GridView) findViewById(R.id.gv_chat_exp);
+        mRL_1 = findViewById(R.id.rl_chat_1);
+        ll_exp = findViewById(R.id.ll_chat_exp);
+        gv_exp = findViewById(R.id.gv_chat_exp);
 
 
         //image
-        mRL_3 = (RelativeLayout) findViewById(R.id.rl_chat_3);
+        mRL_3 = findViewById(R.id.rl_chat_3);
     }
 
     @Override
@@ -120,6 +123,15 @@ public class SingleChatActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+        img_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.putExtra("u", username);
+                i.setClass(context, SingleChatInfoActivity.class);
+                startActivity(i);
             }
         });
         mBt_send.setOnClickListener(new View.OnClickListener() {
@@ -207,14 +219,6 @@ public class SingleChatActivity extends BaseActivity {
             }
         });
 
-    }
-
-
-    private void getUserInfo() {
-        Intent i = new Intent();
-        i.putExtra("u", username);
-        i.setClass(SingleChatActivity.this, UserInfoActivity.class);
-        startActivity(i);
     }
 
     public void onEvent(MessageEvent event) {

@@ -164,9 +164,34 @@ public class P_NewFriend extends BaseRecyclerPanel<UserInfo> {
         return null;
     }
 
+    private TextView tv_end;
+
     @Override
     protected View getFooter() {
-        return null;
+        View footer = mInflater.inflate(R.layout.panel_footer, null);
+        tv_end = footer.findViewById(R.id.tv_end);
+        footerData();
+        footerListener();
+        return footer;
+    }
+
+
+    private void footerData() {
+        if (mData.size() == 0) {
+            tv_end.setText("--没有新朋友TAT--");
+        } else {
+            tv_end.setText("--end--");
+        }
+    }
+
+    private void footerListener() {
+
+    }
+
+    @Override
+    protected void upHeaderAndFooter() {
+        super.upHeaderAndFooter();
+        footerData();
     }
 
 

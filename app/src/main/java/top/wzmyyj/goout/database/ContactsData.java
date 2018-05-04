@@ -64,6 +64,15 @@ public class ContactsData {
         return null;
     }
 
+    public static GroupInfo getGroup(long ID) {
+        for (GroupInfo groupInfo : groupList) {
+            if (groupInfo.getGroupID() == ID) {
+                return groupInfo;
+            }
+        }
+        return null;
+    }
+
     public static void delUser(String username) {
         for (UserInfo userInfo : userList) {
             if (userInfo.getUserName().equals(username)) {

@@ -61,6 +61,8 @@ public class CreateSingleChatActivity extends BaseActivity {
             protected void convert(ViewHolder holder, UserInfo userInfo, int position) {
                 final ImageView img = holder.getView(R.id.img_1);
                 TextView tv = holder.getView(R.id.tv_1);
+                Button bt = holder.getView(R.id.bt_1);
+                bt.setVisibility(View.GONE);
                 tv.setText(J.getName(userInfo));
                 userInfo.getAvatarBitmap(new GetAvatarBitmapCallback() {
                     @Override
@@ -77,7 +79,6 @@ public class CreateSingleChatActivity extends BaseActivity {
         };
 
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
 
     }
 
@@ -104,7 +105,7 @@ public class CreateSingleChatActivity extends BaseActivity {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
                 Intent i = new Intent();
-                UserInfo user=mData.get(position);
+                UserInfo user = mData.get(position);
                 i.putExtra("u", user.getUserName());
                 i.putExtra("n", J.getName(user));
                 i.setClass(context, SingleChatActivity.class);

@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.List;
 
 import top.wzmyyj.goout.R;
+import top.wzmyyj.goout.activity.chat.CreateGroupChatActivity;
 import top.wzmyyj.goout.activity.chat.CreateSingleChatActivity;
 import top.wzmyyj.goout.activity.contact.panel.P_FriendList;
 import top.wzmyyj.goout.activity.contact.panel.P_GroupList;
@@ -78,7 +79,7 @@ public class ContactActivity extends BaseMultiPanelActivity {
                         }
                     });
 
-            mListPopup.create(QMUIDisplayHelper.dp2px(context, 110), QMUIDisplayHelper.dp2px(context, 180),
+            mListPopup.create(QMUIDisplayHelper.dp2px(context, 130), QMUIDisplayHelper.dp2px(context, 200),
                     new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -89,7 +90,7 @@ public class ContactActivity extends BaseMultiPanelActivity {
                                     intent.setClass(context, CreateSingleChatActivity.class);
                                     break;
                                 case 1:
-                                    intent.setClass(context, FindFriendActivity.class);
+                                    intent.setClass(context, CreateGroupChatActivity.class);
                                     break;
                                 case 2:
                                     intent.setClass(context, FindFriendActivity.class);

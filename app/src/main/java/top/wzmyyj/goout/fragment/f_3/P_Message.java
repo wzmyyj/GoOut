@@ -37,7 +37,9 @@ import cn.jpush.im.android.api.model.GroupInfo;
 import cn.jpush.im.android.api.model.Message;
 import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.goout.R;
+import top.wzmyyj.goout.activity.chat.CreateGroupChatActivity;
 import top.wzmyyj.goout.activity.chat.CreateSingleChatActivity;
+import top.wzmyyj.goout.activity.chat.GroupChatActivity;
 import top.wzmyyj.goout.activity.chat.SingleChatActivity;
 import top.wzmyyj.goout.activity.contact.ContactActivity;
 import top.wzmyyj.goout.activity.contact.FindFriendActivity;
@@ -205,10 +207,91 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
                 context.startActivity(i);
                 break;
             case group:
+                GroupInfo group = (GroupInfo) conversation.getTargetInfo();
+                i.putExtra("id", group.getGroupID());
+                i.putExtra("n", J.getName(group));
+                i.setClass(context, GroupChatActivity.class);
+                context.startActivity(i);
+
                 break;
         }
 
     }
+
+
+    @Override
+    public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+        Conversation conversation = mData.get(position - 1);
+        showMenuPopup(conversation, view);
+        return true;
+    }
+
+
+    private void changeRead(Conversation conversation) {
+        if (conversation.getUnReadMsgCnt() > 0) {
+            conversation.resetUnreadCount();
+        } else {
+            conversation.setUnReadMessageCnt(1);
+        }
+        notifyDataSetChanged();
+
+    }
+
+    private void delConversation(Conversation conversation) {
+        switch (conversation.getType()) {
+            case single:
+                UserInfo userInfo = (UserInfo) conversation.getTargetInfo();
+                JMessageClient.deleteSingleConversation(userInfo.getUserName());
+                break;
+            case group:
+                GroupInfo groupInfo = (GroupInfo) conversation.getTargetInfo();
+                JMessageClient.deleteGroupConversation(groupInfo.getGroupID());
+                break;
+        }
+        mData.remove(conversation);
+        notifyDataSetChanged();
+    }
+
+
+    private void showMenuPopup(final Conversation conversation, View v) {
+        List<String> data = new ArrayList<>();
+        if (conversation.getUnReadMsgCnt() > 0) {
+            data.add("标为已读");
+            data.add("删除会话");
+        } else {
+            data.add("标为未读");
+            data.add("删除会话");
+        }
+
+        final QMUIListPopup mPopup = new QMUIListPopup(context, QMUIPopup.DIRECTION_NONE,
+                new CommonAdapter<String>(context, data, R.layout.popup_item) {
+                    @Override
+                    public void convert(ViewHolder holder, String bean, int position) {
+                        holder.setText(R.id.tv_1, bean);
+                    }
+                });
+
+        mPopup.create(QMUIDisplayHelper.dp2px(context, 130), QMUIDisplayHelper.dp2px(context, 200),
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        mPopup.dismiss();
+                        switch (i) {
+                            case 0:
+                                changeRead(conversation);
+                                break;
+                            case 1:
+                                delConversation(conversation);
+                                break;
+                        }
+                    }
+                });
+        mPopup.setAnimStyle(QMUIPopup.ANIM_GROW_FROM_CENTER);
+        mPopup.setPreferredDirection(QMUIPopup.DIRECTION_NONE);
+        mPopup.show(v);
+
+    }
+
 
     @Override
     public void onResume() {
@@ -333,7 +416,7 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
                         }
                     });
 
-            mListPopup.create(QMUIDisplayHelper.dp2px(context, 110), QMUIDisplayHelper.dp2px(context, 180),
+            mListPopup.create(QMUIDisplayHelper.dp2px(context, 130), QMUIDisplayHelper.dp2px(context, 200),
                     new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -344,7 +427,7 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
                                     intent.setClass(context, CreateSingleChatActivity.class);
                                     break;
                                 case 1:
-                                    intent.setClass(context, FindFriendActivity.class);
+                                    intent.setClass(context, CreateGroupChatActivity.class);
                                     break;
                                 case 2:
                                     intent.setClass(context, FindFriendActivity.class);
@@ -364,6 +447,7 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
             });
         }
     }
+
 
     private TextView tv_end;
 

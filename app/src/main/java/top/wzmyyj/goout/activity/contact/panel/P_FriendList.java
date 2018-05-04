@@ -1,6 +1,7 @@
 package top.wzmyyj.goout.activity.contact.panel;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -21,6 +22,7 @@ import cn.jpush.im.android.api.callback.GetAvatarBitmapCallback;
 import cn.jpush.im.android.api.callback.GetUserInfoListCallback;
 import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.goout.R;
+import top.wzmyyj.goout.activity.contact.UserInfoActivity;
 import top.wzmyyj.goout.base.BaseRecyclerPanel;
 import top.wzmyyj.goout.database.ContactsData;
 import top.wzmyyj.goout.tools.FriendComparator;
@@ -98,6 +100,15 @@ public class P_FriendList extends BaseRecyclerPanel<UserInfo> {
             }
         });
         return ivd;
+    }
+
+    @Override
+    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+        super.onItemClick(view, holder, position);
+        Intent i = new Intent();
+        i.putExtra("u",mData.get(position).getUserName());
+        i.setClass(context, UserInfoActivity.class);
+        context.startActivity(i);
     }
 
     @Override

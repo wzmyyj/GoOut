@@ -3,8 +3,8 @@ package top.wzmyyj.goout.fragment.f_1;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -73,7 +73,7 @@ public class P_2 extends BaseRecyclerPanel<Place> {
 
     @Override
     protected void setView(RecyclerView rv, SwipeRefreshLayout srl, FrameLayout layout) {
-        rv.setLayoutManager(new GridLayoutManager(context, 2));
+        rv.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
 
     }
 

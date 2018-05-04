@@ -2,6 +2,7 @@ package top.wzmyyj.goout.tools;
 
 import android.text.TextUtils;
 
+import cn.jpush.im.android.api.model.GroupInfo;
 import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.wzm_sdk.utils.TimeUtil;
 
@@ -20,6 +21,17 @@ public class J {
             return info.getNickname();
         } else {
             return info.getUserName();
+        }
+    }
+
+    public static String getName(GroupInfo info) {
+
+        if (info == null)
+            return null;
+        if (!TextUtils.isEmpty(info.getGroupName())) {
+            return info.getGroupName();
+        }else {
+            return "群聊："+info.getGroupID();
         }
     }
 
