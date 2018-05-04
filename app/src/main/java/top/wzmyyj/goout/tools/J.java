@@ -31,7 +31,7 @@ public class J {
         if (!TextUtils.isEmpty(info.getGroupName())) {
             return info.getGroupName();
         }else {
-            return "群聊："+info.getGroupID();
+            return "群组："+info.getGroupID();
         }
     }
 

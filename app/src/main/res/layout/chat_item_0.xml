@@ -37,20 +37,21 @@
 
             <TextView
                 android:id="@+id/tv_chat_item_user"
-                android:layout_width="45dp"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="1dp"
                 android:gravity="center"
                 android:text="User"
-                android:textColor="@color/colorGray_3"
-                android:textSize="13sp" />
+                android:textColor="@color/colorGray_5"
+                android:textSize="12sp" />
         </LinearLayout>
 
         <FrameLayout
             android:id="@+id/fl_chat_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="3dp"
             android:background="@drawable/chat_bg"

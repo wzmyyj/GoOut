@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="5dp"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/chat_bg"
                 android:padding="7dp">
@@ -49,6 +49,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:visibility="gone" />
+
                 <ImageView
                     android:id="@+id/img_chat_item_img2"
                     android:layout_width="230dp"
@@ -73,13 +74,14 @@
 
             <TextView
                 android:id="@+id/tv_chat_item_user"
-                android:layout_width="45dp"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="1dp"
                 android:gravity="center"
                 android:text="wo"
-                android:textColor="@color/colorGray_3"
-                android:textSize="13sp" />
+                android:textColor="@color/colorGray_5"
+                android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
 

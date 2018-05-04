@@ -75,6 +75,13 @@ public class P_1 extends BaseRecyclerPanel<Article> {
         return data;
     }
 
+    @Override
+    protected void update() {
+        ArticleData.getRandomData();
+        super.update();
+
+    }
+
     @NonNull
     @Override
     protected List<IVD<Article>> getIVD(List<IVD<Article>> ivd) {

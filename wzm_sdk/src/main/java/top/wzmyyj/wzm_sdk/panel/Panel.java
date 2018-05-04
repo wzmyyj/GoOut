@@ -10,7 +10,7 @@ import android.view.View;
  * Created by wzm on 2018/4/23 0023.
  */
 
-public  class Panel {
+public class Panel {
 
     protected LayoutInflater mInflater;
     protected Context context;
@@ -34,7 +34,7 @@ public  class Panel {
         return view;
     }
 
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
 
     }
 
@@ -53,9 +53,11 @@ public  class Panel {
 
     public void onPause() {
 
-
     }
 
+    public void onStop() {
+
+    }
 
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 

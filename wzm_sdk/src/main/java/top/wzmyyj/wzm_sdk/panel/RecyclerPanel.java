@@ -25,7 +25,7 @@ import top.wzmyyj.wzm_sdk.tools.L;
  */
 
 public abstract class RecyclerPanel<T> extends InitPanel
-        implements  MultiItemTypeAdapter.OnItemClickListener{
+        implements MultiItemTypeAdapter.OnItemClickListener {
 
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
@@ -40,7 +40,6 @@ public abstract class RecyclerPanel<T> extends InitPanel
 
     public RecyclerPanel(Context context) {
         super(context);
-        this.title = "";
     }
 
     @Override
@@ -96,8 +95,6 @@ public abstract class RecyclerPanel<T> extends InitPanel
     }
 
 
-
-
     public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
 
     }
@@ -132,7 +129,13 @@ public abstract class RecyclerPanel<T> extends InitPanel
     protected void update() {
         mData.clear();
         mData = getData(mData);
-        notifyDataSetChanged();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                notifyDataSetChanged();
+            }
+        }, 600);
+
     }
 
     protected void notifyDataSetChanged() {

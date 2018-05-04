@@ -30,6 +30,8 @@ import top.wzmyyj.goout.database.ContactsData;
 import top.wzmyyj.goout.tools.J;
 import top.wzmyyj.wzm_sdk.tools.T;
 
+import static cn.jpush.android.api.JPushInterface.a.l;
+
 public class CreateGroupChatActivity extends BaseActivity {
     private Toolbar mToolbar;
     private ImageView img_1;
@@ -195,7 +197,7 @@ public class CreateGroupChatActivity extends BaseActivity {
         JMessageClient.addGroupMembers(id, list, new BasicCallback() {
             @Override
             public void gotResult(int i, String s) {
-                ContactsData.getGroupList();
+                ContactsData.updateGroup(l);
                 if (i == 0) {
                     T.s("添加成功");
                     Intent intent = new Intent();

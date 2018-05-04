@@ -1,6 +1,5 @@
 package top.wzmyyj.wzm_sdk.fragment;
 
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -22,45 +21,33 @@ import top.wzmyyj.wzm_sdk.panel.InitPanel;
  * Created by wzm on 2018/4/28 0028.
  */
 
-public abstract class MultiPanelFragment extends InitFragment {
+public abstract class MultiPanelFragment extends PanelFragment {
 
     private Toolbar mToolbar;
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
     private ImageView mImageView;
-    protected List<InitPanel> mPanelList;
+
+
+    protected abstract List<InitPanel> getPanelList(List<InitPanel> mPanelList);
 
     @Override
     protected View initView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container) {
+        super.initView(inflater, container);
         View view = inflater.inflate(R.layout.af_multi_panel, container, false);
         mToolbar = view.findViewById(R.id.toolbar);
         mViewPager = view.findViewById(R.id.viewPager);
         mTabLayout = view.findViewById(R.id.tabLayout);
         mImageView = view.findViewById(R.id.img_1);
-        mPanelList = new ArrayList<>();
-        mPanelList = getPanelList(mPanelList);
-        for (InitPanel p : mPanelList) {
-            p.initView();
-        }
         setView(mToolbar, mTabLayout, mViewPager, mImageView);
         return view;
     }
 
-    protected abstract List<InitPanel> getPanelList(List<InitPanel> mPanelList);
-
     protected abstract void setView(Toolbar toolbar, TabLayout tab, ViewPager vp, ImageView img);
-
-
-    @Override
-    protected void initSome(Bundle savedInstanceState) {
-        super.initSome(savedInstanceState);
-    }
 
     @Override
     protected void initData() {
-        for (InitPanel p : mPanelList) {
-            p.initData();
-        }
+        super.initData();
         List<View> viewList = new ArrayList<View>();
         List<String> titles = new ArrayList<>();
         for (InitPanel p : mPanelList) {
@@ -71,63 +58,6 @@ public abstract class MultiPanelFragment extends InitFragment {
         mViewPager.setAdapter(pagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
 
-    }
-
-
-    @Override
-    protected void initListener() {
-        for (InitPanel p : mPanelList) {
-            p.initListener();
-        }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        for (InitPanel p : mPanelList) {
-            p.onResume();
-        }
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        for (InitPanel p : mPanelList) {
-            p.onStart();
-        }
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        for (InitPanel p : mPanelList) {
-            p.onStart();
-        }
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        for (InitPanel p : mPanelList) {
-            p.onActivityCreated(savedInstanceState);
-        }
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        for (InitPanel p : mPanelList) {
-            p.onDestroyView();
-        }
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        for (InitPanel p : mPanelList) {
-            p.onDestroy();
-        }
-        mPanelList.clear();
     }
 
 

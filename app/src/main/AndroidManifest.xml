@@ -8,6 +8,13 @@
     <!-- 写入数据权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <meta-data
+        android:name="AA_DB_NAME"
+        android:value="wzm.db" />
+    <meta-data
+        android:name="AA_DB_VERSION"
+        android:value="1" />
+
     <application
         android:name=".application.MyApplication"
         android:allowBackup="true"
@@ -55,6 +62,7 @@
                 <category android:name="top.wzmyyj.goout" />
             </intent-filter>
         </receiver>
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="top.wzmyyj.goout.FileProvider"
@@ -81,13 +89,8 @@
         <activity android:name=".activity.chat.GroupChatActivity" />
         <activity android:name=".activity.chat.SingleChatActivity" />
         <activity android:name=".activity.SomeMessageActivity" />
-        <activity android:name=".activity.contact.NewFriendActivity"></activity>
+        <activity android:name=".activity.contact.NewFriendActivity" />
+        <activity android:name=".activity.home.ArticleActivity"></activity>
     </application>
 
-    <meta-data
-        android:name="AA_DB_NAME"
-        android:value="wzm.db" />
-    <meta-data
-        android:name="AA_DB_VERSION"
-        android:value="1" />
 </manifest>

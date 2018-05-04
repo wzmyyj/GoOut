@@ -5,6 +5,7 @@ import java.util.List;
 
 import top.wzmyyj.data.Data_Article;
 import top.wzmyyj.goout.bean.Article;
+import top.wzmyyj.goout.tools.RandomSort;
 
 /**
  * Created by wzm on 2018/5/1 0001.
@@ -13,13 +14,27 @@ import top.wzmyyj.goout.bean.Article;
 public class ArticleData extends Data_Article {
 
 
+    private static List<Article> mData;
+
     public static List<Article> getData() {
-        List<Article> mData = new ArrayList<>();
-        for (int i = 0; i < head.length; i++) {
-            mData.add(new Article(head[i], name[i],
+        if (mData != null) {
+            return mData;
+        }
+        return getRandomData();
+    }
+
+    public static List<Article> getRandomData() {
+        int[] a = RandomSort.getInt(head.length);
+        List<Article> data = new ArrayList<>();
+        for (int j = 0; j < head.length; j++) {
+            int i = a[j];
+            data.add(new Article(head[i], name[i],
                     title[i], content[i], image[i],
                     comment[i], like[i], tag[i]));
         }
+        mData = data;
         return mData;
     }
+
+
 }

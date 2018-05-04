@@ -119,6 +119,7 @@ public class ContactsData {
         groupList.add(groupInfo);
     }
 
+
     public static void initFriendList() {
         ContactManager.getFriendList(new GetUserInfoListCallback() {
             @Override
@@ -164,5 +165,30 @@ public class ContactsData {
         });
     }
 
+    public static void addGroup(long l) {
+        JMessageClient.getGroupInfo(l,
+                new GetGroupInfoCallback() {
+
+                    @Override
+                    public void gotResult(int i,
+                                          String s, GroupInfo groupInfo) {
+                        groupList.add(groupInfo);
+                        Comparator comp = new GroupComparator();
+                        Collections.sort(groupList, comp);
+                    }
+                });
+
+    }
+
+
+    public static void updateGroup(long l) {
+        for (GroupInfo groupInfo : groupList) {
+            if (groupInfo.getGroupID() == l) {
+                groupList.remove(groupInfo);
+            }
+        }
+        addGroup(l);
+
+    }
 
 }

@@ -1,6 +1,7 @@
 package top.wzmyyj.goout.activity.contact;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,6 +14,7 @@ import top.wzmyyj.wzm_sdk.panel.InitPanel;
 public class NewFriendActivity extends BaseSinglePanelActivity {
 
 
+    @NonNull
     @Override
     protected InitPanel getPanel() {
         return new P_NewFriend(this);

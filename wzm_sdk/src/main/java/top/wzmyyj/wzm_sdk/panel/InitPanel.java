@@ -11,6 +11,7 @@ public abstract class InitPanel extends Panel {
 
     public InitPanel(Context context) {
         super(context);
+        this.title = "";
     }
 
     @Override
