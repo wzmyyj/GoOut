@@ -2,8 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/colorLine" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:background="@color/colorGray_g" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/colorLine" />
 
     <TextView
         android:layout_width="match_parent"
@@ -35,7 +50,7 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:gravity="bottom"
-            android:text="更改头像"
+            android:text="群头像"
             android:textColor="@color/colorGray_5"
             android:textSize="16sp" />
 
@@ -43,10 +58,10 @@
             android:id="@+id/img_m_1"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginRight="20dp"
-            android:src="@color/colorGray_e"
             app:border_color="@color/colorLine"
-            app:border_width="0.1dp" />
+            app:border_width="0.1dp"
+            android:layout_marginRight="20dp"
+            android:src="@color/colorGray_e" />
     </LinearLayout>
 
     <View
@@ -71,7 +86,7 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:gravity="bottom"
-            android:text="编辑昵称"
+            android:text="群名称"
             android:textColor="@color/colorGray_5"
             android:textSize="16sp" />
 
@@ -80,7 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
-            android:text="WZM"
+            android:text="group"
             android:textColor="@color/colorGray_9"
             android:textSize="16sp" />
     </LinearLayout>
@@ -107,7 +122,7 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:gravity="bottom"
-            android:text="编辑个人介绍"
+            android:text="群介绍"
             android:textColor="@color/colorGray_5"
             android:textSize="16sp" />
 
@@ -116,7 +131,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
-            android:text="Are you OK?"
+            android:text="a b c d e f g h"
             android:textColor="@color/colorGray_9"
             android:textSize="16sp" />
     </LinearLayout>
@@ -124,110 +139,12 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:background="@color/colorLine" />
-
-    <LinearLayout
-        android:id="@+id/ll_m_4"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@drawable/click_bg"
-        android:clickable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-            android:gravity="bottom"
-            android:text="编辑性别"
-            android:textColor="@color/colorGray_5"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/tv_m_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:text="保密"
-            android:textColor="@color/colorGray_9"
-            android:textSize="16sp" />
-    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:background="@color/colorLine" />
-
-    <LinearLayout
-        android:id="@+id/ll_m_5"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@drawable/click_bg"
-        android:clickable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-            android:gravity="bottom"
-            android:text="编辑生日"
-            android:textColor="@color/colorGray_5"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/tv_m_5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:text="yyyy-MM-dd"
-            android:textColor="@color/colorGray_9"
-            android:textSize="16sp" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:background="@color/colorLine" />
-
-    <LinearLayout
-        android:id="@+id/ll_m_6"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@drawable/click_bg"
-        android:clickable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-            android:gravity="bottom"
-            android:text="编辑地址"
-            android:textColor="@color/colorGray_5"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/tv_m_6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:text="XXX大学某某地区"
-            android:textColor="@color/colorGray_9"
-            android:textSize="16sp" />
-    </LinearLayout>
+        android:layout_height="20dp"
+        android:background="@color/colorGray_g" />
 
     <View
         android:layout_width="match_parent"
@@ -240,7 +157,7 @@
         android:gravity="bottom"
         android:paddingBottom="5dp"
         android:paddingLeft="20dp"
-        android:text="账号相关设置："
+        android:text="消息相关设置："
         android:textColor="@color/colorBlue"
         android:textSize="13sp" />
 
@@ -249,6 +166,7 @@
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
         android:background="@color/colorLine" />
+
 
     <LinearLayout
         android:id="@+id/ll_p_1"
@@ -265,11 +183,20 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:gravity="bottom"
-            android:text="修改密码"
+            android:text="消息免打扰"
             android:textColor="@color/colorGray_5"
             android:textSize="16sp" />
 
+        <Switch
+            android:id="@+id/sw_p_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/colorGray_9"
+            android:textSize="16sp" />
+
     </LinearLayout>
+
 
     <View
         android:layout_width="match_parent"
@@ -293,21 +220,19 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:gravity="bottom"
-            android:text="绑定邮箱"
+            android:text="屏蔽群消息"
             android:textColor="@color/colorGray_5"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/tv_p_2"
+        <Switch
+            android:id="@+id/sw_p_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
-            android:text="123456789@abc.com"
             android:textColor="@color/colorGray_9"
             android:textSize="16sp" />
 
     </LinearLayout>
-
 
     <View
         android:layout_width="match_parent"
@@ -326,36 +251,17 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:gravity="bottom"
-            android:text="绑定手机号"
+            android:text="清空聊天记录"
             android:textColor="@color/colorGray_5"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/tv_p_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:text="158****1234"
-            android:textColor="@color/colorGray_9"
-            android:textSize="16sp" />
-
     </LinearLayout>
-
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="@color/colorLine" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="@color/colorWhite" />
 
     <View
         android:layout_width="match_parent"
@@ -363,36 +269,23 @@
         android:background="@color/colorLine" />
 
     <LinearLayout
-        android:id="@+id/ll_p_4"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:background="@drawable/click_bg"
+        android:layout_height="80dp"
+        android:background="@color/colorGray_g"
         android:clickable="true"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+        <Button
+            android:id="@+id/bt_out"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-            android:gravity="bottom"
-            android:text="设置中遇到问题"
-            android:textColor="@color/colorGray_5"
+            android:background="@color/colorRed"
+            android:text="删除并退出"
+            android:textColor="@color/colorWhite"
             android:textSize="16sp" />
 
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="@color/colorLine" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:gravity="center"
-        android:text="--end--"
-        android:textColor="@color/colorGray_b"
-        android:textSize="13sp" />
 </LinearLayout>

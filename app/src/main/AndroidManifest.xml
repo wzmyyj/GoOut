@@ -90,7 +90,8 @@
         <activity android:name=".activity.chat.SingleChatActivity" />
         <activity android:name=".activity.SomeMessageActivity" />
         <activity android:name=".activity.contact.NewFriendActivity" />
-        <activity android:name=".activity.home.ArticleActivity"></activity>
+        <activity android:name=".activity.home.ArticleActivity" />
+        <activity android:name=".activity.chat.DeleteGroupMemberActivity"></activity>
     </application>
 
 </manifest>

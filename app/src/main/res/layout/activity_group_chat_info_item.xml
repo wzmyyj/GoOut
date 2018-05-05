@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@drawable/click_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <top.wzmyyj.wzm_sdk.view.CircleImageView
+        android:id="@+id/img_head"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:src="@color/colorGray_g"
+        app:border_color="@color/colorLine"
+        app:border_width="0.1dp" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="XXX"
+        android:textColor="@color/colorGray_7"
+        android:textSize="12sp" />
+</LinearLayout>

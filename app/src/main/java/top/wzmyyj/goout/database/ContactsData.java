@@ -96,11 +96,14 @@ public class ContactsData {
     }
 
     public static void delFriend(String s) {
+        UserInfo user = null;
         for (UserInfo userInfo : friendList) {
             if (userInfo.getUserName().equals(s)) {
-                friendList.remove(userInfo);
+                user = userInfo;
+                break;
             }
         }
+        friendList.remove(user);
     }
 
     public static void delGroup(long l) {
@@ -161,48 +164,37 @@ public class ContactsData {
         });
     }
 
-    public static void addGroup(long l) {
-        JMessageClient.getGroupInfo(l,
-                new GetGroupInfoCallback() {
-
-                    @Override
-                    public void gotResult(int i,
-                                          String s, GroupInfo groupInfo) {
-                        groupList.add(groupInfo);
-                        Comparator comp = new GroupComparator();
-                        Collections.sort(groupList, comp);
-                    }
-                });
-
-    }
+//    public static void addGroup(long l) {
+//        JMessageClient.getGroupInfo(l,
+//                new GetGroupInfoCallback() {
+//
+//                    @Override
+//                    public void gotResult(int i,
+//                                          String s, GroupInfo groupInfo) {
+//                        groupList.add(groupInfo);
+//                        Comparator comp = new GroupComparator();
+//                        Collections.sort(groupList, comp);
+//                    }
+//                });
+//
+//    }
 
     public static void addGroup(GroupInfo group) {
         groupList.add(group);
         Comparator comp = new GroupComparator();
         Collections.sort(groupList, comp);
-
     }
 
     public static void updateGroup(GroupInfo group) {
-        for (GroupInfo groupInfo : groupList) {
-            if (groupInfo.getGroupID() == group.getGroupID()) {
-                groupList.remove(groupInfo);
+        for (int i = 0; i < groupList.size(); i++) {
+            if (groupList.get(i).getGroupID() == group.getGroupID()) {
+                groupList.set(i, group);
                 break;
             }
         }
-        addGroup(group);
-
-    }
-
-    public static void updateGroup(long l) {
-        for (GroupInfo groupInfo : groupList) {
-            if (groupInfo.getGroupID() == l) {
-                groupList.remove(groupInfo);
-                break;
-            }
+        if (!groupList.contains(group)) {
+            addGroup(group);
         }
-        addGroup(l);
-
     }
 
 }

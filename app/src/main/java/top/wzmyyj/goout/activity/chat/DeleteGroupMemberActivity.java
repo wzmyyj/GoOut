@@ -6,16 +6,17 @@ import android.view.View;
 import android.widget.ImageView;
 
 import top.wzmyyj.goout.R;
-import top.wzmyyj.goout.activity.chat.panel.P_GroupChatInfo;
+import top.wzmyyj.goout.activity.chat.panel.P_DeleteGroupMember;
 import top.wzmyyj.goout.base.BaseSinglePanelActivity;
 import top.wzmyyj.wzm_sdk.panel.InitPanel;
 
-public class GroupChatInfoActivity extends BaseSinglePanelActivity {
+public class DeleteGroupMemberActivity extends BaseSinglePanelActivity {
+
 
     @NonNull
     @Override
     protected InitPanel getPanel() {
-        return new P_GroupChatInfo(activity);
+        return new P_DeleteGroupMember(activity);
     }
 
     @Override

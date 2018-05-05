@@ -33,8 +33,6 @@ import top.wzmyyj.goout.database.ContactsData;
 import top.wzmyyj.goout.tools.J;
 import top.wzmyyj.wzm_sdk.tools.T;
 
-import static cn.jpush.android.api.JPushInterface.a.l;
-
 public class CreateGroupChatActivity extends BaseActivity {
     private Toolbar mToolbar;
     private ImageView img_1;
@@ -43,6 +41,7 @@ public class CreateGroupChatActivity extends BaseActivity {
     private List<UserInfo> mData, mHead;
     private CommonAdapter mAdapter, mHeadAdapter;
     private long ID = 0;
+    private int flag = 0;
     private String n = "";
 
     @Override
@@ -62,16 +61,22 @@ public class CreateGroupChatActivity extends BaseActivity {
         mData = ContactsData.getFriendList();
         Intent i = getIntent();
         ID = i.getLongExtra("id", 0);
+        flag = i.getIntExtra("flag", 0);
         GroupInfo group = ContactsData.getGroup(ID);
         if (group != null) {
             n = J.getName(group);
+            List<UserInfo> list = new ArrayList<>();
             for (UserInfo userInfo : mData) {
                 for (UserInfo member : group.getGroupMembers()) {
                     if (userInfo.getUserName().equals(member.getUserName())) {
-                        mData.remove(userInfo);
+                        list.add(userInfo);
                         continue;
                     }
                 }
+            }
+
+            for (UserInfo userInfo : list) {
+                mData.remove(userInfo);
             }
         }
 
@@ -158,6 +163,9 @@ public class CreateGroupChatActivity extends BaseActivity {
         mRecyclerView.setAdapter(mAdapter);
     }
 
+
+    private boolean is_run = false;
+
     @Override
     protected void initListener() {
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -173,6 +181,7 @@ public class CreateGroupChatActivity extends BaseActivity {
                     T.s("请添加");
                     return;
                 }
+                if (is_run) return;
                 if (ID == 0) {
                     showEditTextDialog();
                 } else {
@@ -211,12 +220,13 @@ public class CreateGroupChatActivity extends BaseActivity {
 
 
     private void createGroup(String name) {
-
+        is_run = true;
         JMessageClient.createGroup(name,
                 "由用户：" + J.getName(JMessageClient.getMyInfo()) + "创建",
                 new CreateGroupCallback() {
                     @Override
                     public void gotResult(int i, String s, long l) {
+                        is_run = false;
                         if (i == 0) {
                             ID = l;
                             addGroupMembers(ID);
@@ -226,6 +236,7 @@ public class CreateGroupChatActivity extends BaseActivity {
     }
 
     private void addGroupMembers(final long id) {
+        is_run = true;
         List<String> list = new ArrayList<>();
         for (UserInfo userInfo : mHead) {
             list.add(userInfo.getUserName());
@@ -233,9 +244,13 @@ public class CreateGroupChatActivity extends BaseActivity {
         JMessageClient.addGroupMembers(id, list, new BasicCallback() {
             @Override
             public void gotResult(int i, String s) {
-                ContactsData.updateGroup(l);
+                is_run = false;
                 if (i == 0) {
                     T.s("添加成功");
+                    if (flag == 1) {
+                        activity.finish();
+                        return;
+                    }
                     Intent intent = new Intent();
                     intent.putExtra("id", id);
                     intent.putExtra("n", n);
