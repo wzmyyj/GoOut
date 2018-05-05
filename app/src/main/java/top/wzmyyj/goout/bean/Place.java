@@ -23,7 +23,7 @@ public class Place {
     public Place() {
     }
 
-    public Place(String name, int head, String title, String locale, int image, int like, int tag) {
+    public Place(int head, String name, String title, String locale, int image, int like, int tag) {
         this.name = name;
         this.head = head;
         this.title = title;

@@ -6,6 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.base.BaseNestedScrollPanel;
 
 /**
@@ -15,6 +16,7 @@ import top.wzmyyj.goout.base.BaseNestedScrollPanel;
 public class P_Article extends BaseNestedScrollPanel {
     public P_Article(Context context) {
         super(context);
+        this.title = "文章";
     }
 
     @Override
@@ -24,6 +26,7 @@ public class P_Article extends BaseNestedScrollPanel {
 
     @Override
     protected View getContentView() {
-        return null;
+        View content = mInflater.inflate(R.layout.activity_article, null);
+        return content;
     }
 }

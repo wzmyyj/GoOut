@@ -28,7 +28,7 @@ public class ArticleData extends Data_Article {
         List<Article> data = new ArrayList<>();
         for (int j = 0; j < head.length; j++) {
             int i = a[j];
-            data.add(new Article(head[i], name[i],
+            data.add(new Article(i, head[i], name[i],
                     title[i], content[i], image[i],
                     comment[i], like[i], tag[i]));
         }
@@ -36,5 +36,18 @@ public class ArticleData extends Data_Article {
         return mData;
     }
 
+
+    public static Article getArticle(int id) {
+        if (mData == null) return null;
+        Article a = null;
+        for (Article article : mData) {
+            if (article.getId() == id) {
+                a = article;
+                break;
+            }
+        }
+
+        return a;
+    }
 
 }

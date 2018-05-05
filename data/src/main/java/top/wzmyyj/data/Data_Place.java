@@ -1,0 +1,148 @@
+package top.wzmyyj.data;
+
+/**
+ * Created by cjm on 2018/5/2.
+ */
+public class Data_Place {
+    protected static String[] name=new String[]{
+            "三叶",
+            "眼角の远望",
+            "Liebe Ist Fur Alle Da",
+            "追光者",
+            "just  release",
+            "随心",
+            "石头",
+            "人生若只如初见",
+            "呆橘@",
+            "〆小青年",
+            "Eternity..か",
+            "DESTINY",
+            "劈夫",
+            "林惜然",
+            "离鸢。",
+            "Alex",
+            "LOST52WF",
+            "哼哼"
+    };
+    protected static int[] head = new int[]{
+            R.drawable.place_head_1,
+            R.drawable.place_head_2,
+            R.drawable.place_head_3,
+            R.drawable.place_head_4,
+            R.drawable.place_head_5,
+            R.drawable.place_head_6,
+            R.drawable.place_head_7,
+            R.drawable.place_head_8,
+            R.drawable.place_head_9,
+            R.drawable.place_head_10,
+            R.drawable.place_head_11,
+            R.drawable.place_head_12,
+            R.drawable.place_head_13,
+            R.drawable.place_head_14,
+            R.drawable.place_head_15,
+            R.drawable.place_head_16,
+            R.drawable.place_head_17,
+            R.drawable.place_head_18
+    };
+    protected static String[] title=new String[]{
+            "人民币背后的图案——三潭印月",
+            "因济公而闻名天下的江南古刹",
+            "一曲溪流一曲烟",
+            "树烟花雾绕堤沙",
+            "绿杨阴里白沙堤",
+            "飞来峰",
+            "法海你不懂爱",
+            "许仙与白娘子的相会之地",
+            "西湖十景之五",
+            "杭州著名夜市",
+            "杭州商业中心",
+            "避暑胜地",
+            "游乐场",
+            "体验森林之美",
+            "宋城千古情",
+            "夜游西湖不可错过的景观",
+            "九溪十八涧",
+            "百种荷花的美"
+    };
+    protected static String[] locale=new String[]{
+            "三潭印月",
+            "西湖灵隐寺",
+            "西溪湿地",
+            "苏堤春晓",
+            "白堤",
+            "西湖龙门山",
+            "西湖雷峰塔",
+            "断桥残雪",
+            "柳烟闻莺",
+            "吴山夜市",
+            "武林广场",
+            "竹栖云径",
+            "杭州乐园",
+            "午潮山国家森林公园",
+            "宋城",
+            "西湖音乐喷泉",
+            "九溪烟树",
+            "曲院风荷"
+    };
+    protected static int[] image = new int[]{
+            R.drawable.place_image_1,
+            R.drawable.place_image_2,
+            R.drawable.place_image_3,
+            R.drawable.place_image_4,
+            R.drawable.place_image_5,
+            R.drawable.place_image_6,
+            R.drawable.place_image_7,
+            R.drawable.place_image_8,
+            R.drawable.place_image_9,
+            R.drawable.place_image_10,
+            R.drawable.place_image_11,
+            R.drawable.place_image_12,
+            R.drawable.place_image_13,
+            R.drawable.place_image_14,
+            R.drawable.place_image_15,
+            R.drawable.place_image_16,
+            R.drawable.place_image_17,
+            R.drawable.place_image_18
+
+    };
+    protected static int[] like = new int[]{
+            424,
+            253,
+            635,
+            242,
+            621,
+            727,
+            835,
+            235,
+            215,
+            124,
+            184,
+            831,
+            235,
+            723,
+            152,
+            722,
+            83,
+            367
+    };
+    protected static int[] tag = new int[]{
+            0,
+            3,
+            2,
+            1,
+            5,
+            7,
+            5,
+            6,
+            3,
+            4,
+            2,
+            1,
+            0,
+            4,
+            6,
+            7,
+            3,
+            1,
+    };
+}

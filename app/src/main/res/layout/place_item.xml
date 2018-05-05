@@ -10,26 +10,30 @@
         android:layout_height="match_parent"
         android:layout_margin="3dp"
         android:background="@drawable/click_bg"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         android:padding="10dp">
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/img_image"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="wrap_content"
+                android:minHeight="150dp"
                 android:src="@color/colorGray_e" />
 
             <TextView
                 android:id="@+id/tv_locale"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="16dp"
                 android:layout_alignParentBottom="true"
+                android:background="@color/colorAhp_Black"
+                android:gravity="center_vertical"
                 android:paddingLeft="7dp"
-                android:text="FFFFGg"
+                android:text="FFFF"
                 android:textColor="@color/colorWhite"
                 android:textSize="13sp" />
         </RelativeLayout>
@@ -63,6 +67,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:text="哈哈哈"
+                android:singleLine="true"
                 android:textColor="@color/colorGray_9"
                 android:textSize="11sp" />
 

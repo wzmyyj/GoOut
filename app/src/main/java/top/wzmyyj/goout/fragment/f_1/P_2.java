@@ -6,8 +6,11 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.List;
@@ -15,6 +18,7 @@ import java.util.List;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.base.BaseRecyclerPanel;
 import top.wzmyyj.goout.bean.Place;
+import top.wzmyyj.goout.database.PlaceData;
 import top.wzmyyj.wzm_sdk.inter.IVD;
 import top.wzmyyj.wzm_sdk.inter.SingleIVD;
 
@@ -32,19 +36,18 @@ public class P_2 extends BaseRecyclerPanel<Place> {
     @NonNull
     @Override
     protected List<Place> getData(List<Place> data) {
-        data.add(new Place());
-        data.add(new Place());
-        data.add(new Place());
-        data.add(new Place());
-        data.add(new Place());
-        data.add(new Place());
-        data.add(new Place());
-        data.add(new Place());
-        data.add(new Place());
-        data.add(new Place());
-        data.add(new Place());
-        data.add(new Place());
+        data.clear();
+        for (Place a : PlaceData.getData()) {
+            data.add(a);
+        }
         return data;
+    }
+
+    @Override
+    protected void update() {
+        PlaceData.getRandomData();
+        super.update();
+
     }
 
 
@@ -58,14 +61,25 @@ public class P_2 extends BaseRecyclerPanel<Place> {
             }
 
             @Override
-            public void convert(ViewHolder holder, Place place, int position) {
+            public void convert(ViewHolder holder, Place o, int position) {
 
-//                ll_p.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        T.s("hhh");
-//                    }
-//                });
+                holder
+                        .setText(R.id.tv_name, o.getName())
+                        .setText(R.id.tv_title, o.getTitle())
+                        .setText(R.id.tv_locale, o.getLocale())
+                        .setText(R.id.tv_like, "" + o.getLike())
+                ;
+
+                ImageView img_head = holder.getView(R.id.img_head);
+                ImageView img_image = holder.getView(R.id.img_image);
+
+
+                Glide.with(context)
+                        .load(o.getHead())
+                        .into(img_head);
+                Glide.with(context)
+                        .load(o.getImage())
+                        .into(img_image);
             }
         });
         return ivd;
@@ -73,14 +87,28 @@ public class P_2 extends BaseRecyclerPanel<Place> {
 
     @Override
     protected void setView(RecyclerView rv, SwipeRefreshLayout srl, FrameLayout layout) {
-        rv.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+        rv.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
     }
+
+
+    private Button bt_h_1;
 
     @Override
     protected View getHeader() {
         View header = mInflater.inflate(R.layout.fragment_1_panel_2_header, null);
+        bt_h_1 = header.findViewById(R.id.bt_h_1);
+        headerListener();
         return header;
+    }
+
+    private void headerListener() {
+        bt_h_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                update();
+            }
+        });
     }
 
     @Override

@@ -8,7 +8,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.List;
@@ -16,6 +18,7 @@ import java.util.List;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.base.BaseRecyclerPanel;
 import top.wzmyyj.goout.bean.Goods;
+import top.wzmyyj.goout.database.GoodsData;
 import top.wzmyyj.wzm_sdk.inter.IVD;
 import top.wzmyyj.wzm_sdk.inter.SingleIVD;
 
@@ -33,22 +36,18 @@ public class P_3 extends BaseRecyclerPanel<Goods> {
     @NonNull
     @Override
     protected List<Goods> getData(List<Goods> data) {
-        data.add(new Goods());
-        data.add(new Goods());
-        data.add(new Goods());
-        data.add(new Goods());
-        data.add(new Goods());
-        data.add(new Goods());
-        data.add(new Goods());
-        data.add(new Goods());
-        data.add(new Goods());
-        data.add(new Goods());
-        data.add(new Goods());
-        data.add(new Goods());
-        data.add(new Goods());
-        data.add(new Goods());
-        data.add(new Goods());
+        data.clear();
+        for (Goods a : GoodsData.getData()) {
+            data.add(a);
+        }
         return data;
+    }
+
+    @Override
+    protected void update() {
+        GoodsData.getRandomData();
+        super.update();
+
     }
 
     @NonNull
@@ -61,8 +60,18 @@ public class P_3 extends BaseRecyclerPanel<Goods> {
             }
 
             @Override
-            public void convert(ViewHolder holder, Goods goods, int position) {
+            public void convert(ViewHolder holder, Goods o, int position) {
+                holder
+                        .setText(R.id.tv_name, o.getName())
+                        .setText(R.id.tv_price, "￥" + o.getPrice())
+                        .setText(R.id.tv_mans, o.getMans() + "人购买")
+                ;
 
+                ImageView img_image = holder.getView(R.id.img_image);
+
+                Glide.with(context)
+                        .load(o.getImage())
+                        .into(img_image);
             }
         });
         return ivd;
@@ -95,7 +104,7 @@ public class P_3 extends BaseRecyclerPanel<Goods> {
         mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-
+                update();
             }
 
             @Override

@@ -15,21 +15,24 @@
 
 
         <ImageView
-            android:id="@+id/img_Image"
-            android:layout_width="match_parent"
-            android:layout_height="110dp"
+            android:id="@+id/img_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/img_stroke_bg"
+            android:padding="0.5dp"
             android:src="@color/colorGray_e" />
 
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_name"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_margin="3dp"
             android:gravity="center_vertical"
+            android:singleLine="true"
             android:text="VVVVVv"
             android:textColor="@color/colorGray_5"
-            android:textSize="15sp" />
+            android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,7 +52,7 @@
                 android:textSize="11sp" />
 
             <TextView
-                android:id="@+id/tv_count"
+                android:id="@+id/tv_mans"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="100人购买"

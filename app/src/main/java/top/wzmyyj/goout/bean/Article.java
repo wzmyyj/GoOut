@@ -5,6 +5,7 @@ package top.wzmyyj.goout.bean;
  */
 
 public class Article {
+    private int id;
     //头像
     private int head;
     //昵称
@@ -23,6 +24,18 @@ public class Article {
 
     private int tag;
 
+    public Article(int id, int head, String name, String title, String content, int image, int comment, int like, int tag) {
+        this.id = id;
+        this.head = head;
+        this.name = name;
+        this.title = title;
+        this.content = content;
+        this.image = image;
+        this.comment = comment;
+        this.like = like;
+        this.tag = tag;
+    }
+
     public Article(int head, String name, String title, String content, int image, int comment, int like, int tag) {
         this.head = head;
         this.name = name;
@@ -32,6 +45,14 @@ public class Article {
         this.comment = comment;
         this.like = like;
         this.tag = tag;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getTag() {

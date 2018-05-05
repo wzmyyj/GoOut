@@ -110,6 +110,8 @@ public class P_GroupChatInfo extends BaseRecyclerPanel<UserInfo> {
                 tv.setText(J.getName(userInfo));
                 if (userInfo.getUserName().equals(group.getGroupOwner())) {
                     tv.setTextColor(context.getResources().getColor(R.color.colorOrange));
+                }else{
+                    tv.setTextColor(context.getResources().getColor(R.color.colorGray_7));
                 }
                 userInfo.getAvatarBitmap(new GetAvatarBitmapCallback() {
                     @Override

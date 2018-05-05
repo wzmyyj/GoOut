@@ -41,9 +41,9 @@ import top.wzmyyj.goout.activity.chat.CreateGroupChatActivity;
 import top.wzmyyj.goout.activity.chat.CreateSingleChatActivity;
 import top.wzmyyj.goout.activity.chat.GroupChatActivity;
 import top.wzmyyj.goout.activity.chat.SingleChatActivity;
-import top.wzmyyj.goout.activity.contact.ContactActivity;
 import top.wzmyyj.goout.activity.contact.FindFriendActivity;
 import top.wzmyyj.goout.activity.contact.NewFriendActivity;
+import top.wzmyyj.goout.activity.message.SomeMessageActivity;
 import top.wzmyyj.goout.base.BaseRecyclerPanel;
 import top.wzmyyj.goout.database.ContactsData;
 import top.wzmyyj.goout.tools.Expression;
@@ -376,7 +376,48 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent();
-                i.setClass(context, ContactActivity.class);
+                i.putExtra("flag", "m2");
+                i.setClass(context, SomeMessageActivity.class);
+                context.startActivity(i);
+            }
+        });
+
+        ll_h_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.putExtra("flag", "m3");
+                i.setClass(context, SomeMessageActivity.class);
+                context.startActivity(i);
+            }
+        });
+
+        ll_h_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.putExtra("flag", "m4");
+                i.setClass(context, SomeMessageActivity.class);
+                context.startActivity(i);
+            }
+        });
+
+        ll_h_5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.putExtra("flag", "m5");
+                i.setClass(context, SomeMessageActivity.class);
+                context.startActivity(i);
+            }
+        });
+
+        ll_h_6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.putExtra("flag", "m6");
+                i.setClass(context, SomeMessageActivity.class);
                 context.startActivity(i);
             }
         });

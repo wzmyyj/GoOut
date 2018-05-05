@@ -1,0 +1,194 @@
+package top.wzmyyj.data;
+
+/**
+ * Created by cjm on 2018/5/2.
+ */
+
+public class Data_Store {
+    //商品图片
+    protected static int[] image = new int[]{
+            R.drawable.store_image_1,
+            R.drawable.store_image_2,
+            R.drawable.store_image_3,
+            R.drawable.store_image_4,
+            R.drawable.store_image_5,
+            R.drawable.store_image_6,
+            R.drawable.store_image_7,
+            R.drawable.store_image_8,
+            R.drawable.store_image_9,
+            R.drawable.store_image_10,
+            R.drawable.store_image_11,
+            R.drawable.store_image_12,
+            R.drawable.store_image_13,
+            R.drawable.store_image_14,
+            R.drawable.store_image_15,
+            R.drawable.store_image_16,
+            R.drawable.store_image_17,
+            R.drawable.store_image_18
+    };
+    //商品名称
+    protected static String[] name = new String[]{
+            "探险者全自动帐篷户外3-4人二室一厅加厚防雨2人单人野营野外露营",
+            "探险者睡袋成人户外旅行秋冬四季保暖室内露营双人羽绒棉隔脏睡袋",
+            "探险者户外便携春游垫子加厚防潮垫野餐垫野炊地垫草坪露营野餐布",
+            "LED超亮多功能野营灯营地灯户外露营可吸附帐篷灯照明USB可充电式",
+            "探险者烧烤架户外5人以上家用烧烤炉木炭烤肉架子野外工具碳烤炉",
+            "原始人烧烤碳无烟碳木炭无烟户外烧烤木炭果木炭木碳烧烤机制碳",
+            "骆驼户外登山杖 T型4节伸缩拐杖 徒步爬山拐棍手杖",
+            "NIKE耐克双肩包大容量旅行背包轻便登山旅行包运动包男女学生书包",
+            "骆驼户外登山鞋男女 轻便透气耐磨防滑低帮徒步鞋网鞋",
+            "斯伯丁篮球NBA官方正品7号成人牛皮真皮手感耐磨",
+            "阿迪达斯adidas FINALE CDF CAP 男子 欧冠足球 AZ5204",
+            "官网正品尤尼克斯羽毛球拍单双拍yy全碳素碳纤维超轻耐打用进攻型",
+            "红双喜乒乓球拍单拍四星直拍兵乓球拍初学者狂飙王横拍乒乓球球拍",
+            "朗威 包胶环保哑铃男士足重杠铃家用健身器材10/20/30/40kg公斤",
+            "多德士仰卧板仰卧起坐健身器材家用多功能运动辅助器锻炼健腹肌板",
+            "李宁护腕男女士运动保暖扭伤篮球羽毛球健身纯棉吸汗擦汗护手腕",
+            "李宁护膝运动男健身篮球装备跑步羽毛球足球骑行护具女士登山护膝",
+            "迈克达威护踝男运动扭伤防护护脚踝崴脚专业篮球护具mcdavid195r"
+    };
+    //商品价格
+    protected static double[] price = new double[]{
+            108,
+            53,
+            24,
+            48,
+            178,
+            40,
+            63,
+            199,
+            238,
+            155,
+            100,
+            180,
+            99,
+            49,
+            69,
+            18,
+            22,
+            139
+    };
+    //店铺名称
+    protected static String[] storename = new String[]{
+            "三只小驴运动户外专营店",
+            "三只小驴运动户外专营店",
+            "三只小驴运动户外专营店",
+            "三只小驴运动户外专营店",
+            "三只小驴运动户外专营店",
+            "原始人户外专营店",
+            "骆驼户外官方旗舰店",
+            "逸动运动户外专营店",
+            "骆驼户外官方旗舰店",
+            "顶护运动专营店",
+            "adidas官方旗舰店",
+            "yonex尤尼克斯轶栩专卖店",
+            "红双喜慧桠惠专卖店",
+            "朗威旗舰店",
+            "多德士运动专营店",
+            "鑫焱运动户外专营店",
+            "纬弗斯运动专营店",
+            "迈克达威专卖店"
+    };
+    //类别1:露营，2:野炊，3:登山，4:运动，5:健身，6:运动护具
+    protected static int[] tag = new int[]{
+            1,
+            1,
+            1,
+            1,
+            2,
+            2,
+            3,
+            3,
+            3,
+            4,
+            4,
+            4,
+            4,
+            5,
+            5,
+            6,
+            6,
+            6
+    };
+    //购买人数
+    protected static int[] mans = new int[]{
+            56,
+            234,
+            74,
+            84,
+            212,
+            623,
+            83,
+            63,
+            198,
+            64,
+            263,
+            52,
+            72,
+            44,
+            62,
+            78,
+            97,
+            74
+    };
+    protected static String[] standard = new String[]{
+            "1.1kg-2.3kg",
+            "1.1kg-2.3kg",
+            "1.1kg-2.3kg",
+            "1.1kg-2.3kg",
+            "1.1kg-2.3kg",
+            "1.1kg-2.3kg",
+            "1.1kg-2.3kg",
+            "1.1kg-2.3kg",
+            "1.1kg-2.3kg",
+            "1.1kg-2.3kg",
+            "1.1kg-2.3kg",
+            "1.1kg-2.3kg",
+            "1.1kg-2.3kg",
+            "1.1kg-2.3kg",
+            "1.1kg-2.3kg",
+            "1.1kg-2.3kg",
+            "1.1kg-2.3kg",
+            "1.1kg-2.3kg"
+    };
+    protected static String[] parameter = new String[]{
+            "TXZ-FCD801",
+            "TXZ-FCD801",
+            "TXZ-FCD801",
+            "TXZ-FCD801",
+            "TXZ-FCD801",
+            "TXZ-FCD801",
+            "TXZ-FCD801",
+            "TXZ-FCD801",
+            "TXZ-FCD801",
+            "TXZ-FCD801",
+            "TXZ-FCD801",
+            "TXZ-FCD801",
+            "TXZ-FCD801",
+            "TXZ-FCD801",
+            "TXZ-FCD801",
+            "TXZ-FCD801",
+            "TXZ-FCD801",
+            "TXZ-FCD801"
+    };
+    protected static String[] service = new String[]{
+            "正品保证极速退款赠运费险七天无理由退换",
+            "正品保证极速退款赠运费险七天无理由退换",
+            "正品保证极速退款赠运费险七天无理由退换",
+            "正品保证极速退款赠运费险七天无理由退换",
+            "正品保证极速退款赠运费险七天无理由退换",
+            "正品保证极速退款赠运费险七天无理由退换",
+            "正品保证极速退款赠运费险七天无理由退换",
+            "正品保证极速退款赠运费险七天无理由退换",
+            "正品保证极速退款赠运费险七天无理由退换",
+            "正品保证极速退款赠运费险七天无理由退换",
+            "正品保证极速退款赠运费险七天无理由退换",
+            "正品保证极速退款赠运费险七天无理由退换",
+            "正品保证极速退款赠运费险七天无理由退换",
+            "正品保证极速退款赠运费险七天无理由退换",
+            "正品保证极速退款赠运费险七天无理由退换",
+            "正品保证极速退款赠运费险七天无理由退换",
+            "正品保证极速退款赠运费险七天无理由退换",
+            "正品保证极速退款赠运费险七天无理由退换"
+    };
+}
