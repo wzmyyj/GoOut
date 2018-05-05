@@ -48,11 +48,11 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="60dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
             android:gravity="bottom"
-            android:text="账号："
+            android:text="注册账号："
             android:textColor="@color/colorGray_5"
             android:textSize="16sp" />
 
@@ -84,11 +84,11 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="60dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
             android:gravity="bottom"
-            android:text="密码："
+            android:text="填写密码："
             android:textColor="@color/colorGray_5"
             android:textSize="16sp" />
 
@@ -130,11 +130,11 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="60dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35dp"
             android:gravity="bottom"
-            android:text="邮箱："
+            android:text="确认密码："
             android:textColor="@color/colorGray_5"
             android:textSize="16sp" />
 
@@ -145,7 +145,7 @@
             android:layout_marginRight="35dp"
             android:background="@color/colorWhite"
             android:gravity="center_vertical"
-            android:inputType="textEmailAddress"
+            android:inputType="textWebPassword"
             android:textColor="@color/colorGray_9"
             android:textSize="16sp" />
     </LinearLayout>

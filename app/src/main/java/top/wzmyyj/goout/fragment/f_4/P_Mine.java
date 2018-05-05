@@ -48,7 +48,7 @@ public class P_Mine extends BaseRecyclerPanel<F_4_Item> {
         data.add(new F_4_Item("我的收藏", "15", R.mipmap.ic_m_1_2));
         data.add(new F_4_Item("我的点赞", "35", R.mipmap.ic_m_1_3));
         data.add(new F_4_Item("我的相册", "5", R.mipmap.ic_m_1_4));
-        data.add(new F_4_Item("我的卡片", "10", R.mipmap.ic_m_1_5, true));
+        data.add(new F_4_Item("我的动态", "", R.mipmap.ic_m_1_5, true));
         data.add(new F_4_Item("通讯录", "", R.mipmap.ic_m_2_1));
         data.add(new F_4_Item("日程安排", "", R.mipmap.ic_m_2_2));
         data.add(new F_4_Item("账单记录", "", R.mipmap.ic_m_2_3));

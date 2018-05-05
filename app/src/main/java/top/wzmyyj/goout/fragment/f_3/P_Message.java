@@ -170,7 +170,7 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
 
                     case group:
                         GroupInfo group = (GroupInfo) conversation.getTargetInfo();
-                        tv_name.setText(group.getGroupName());
+                        tv_name.setText(J.getName(group));
                         img_head.setTag(pos);
                         group.getAvatarBitmap(new GetAvatarBitmapCallback() {
                             @Override

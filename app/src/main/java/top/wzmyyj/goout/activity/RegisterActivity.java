@@ -25,6 +25,7 @@ public class RegisterActivity extends BaseActivity {
 
     private EditText et_1;
     private EditText et_2;
+    private EditText et_3;
     private ImageView img_2;
     private Button bt_1;
     private Button bt_2;
@@ -52,6 +53,7 @@ public class RegisterActivity extends BaseActivity {
         setContentView(R.layout.activity_register);
         et_1 = findViewById(R.id.et_1);
         et_2 = findViewById(R.id.et_2);
+        et_3 = findViewById(R.id.et_3);
         img_2 = findViewById(R.id.img_2);
         bt_1 = findViewById(R.id.bt_1);
         bt_2 = findViewById(R.id.bt_2);
@@ -60,6 +62,7 @@ public class RegisterActivity extends BaseActivity {
     @Override
     protected void initData() {
         et_2.setInputType(129);
+        et_3.setInputType(129);
         sha = getSharedPreferences("log", Activity.MODE_PRIVATE);
         ed = sha.edit();
     }
@@ -92,6 +95,12 @@ public class RegisterActivity extends BaseActivity {
                 if (run_register) return;
                 String username = et_1.getText().toString();
                 String password = et_2.getText().toString();
+                String password2 = et_3.getText().toString();
+                if (!password.equals(password2)) {
+                    T.s("确认密码有误");
+                    et_3.setText("");
+                    return;
+                }
                 run_register = true;
                 register(username, password);
             }

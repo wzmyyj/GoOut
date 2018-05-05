@@ -1,5 +1,7 @@
 package top.wzmyyj.wzm_sdk.fragment;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,14 +14,19 @@ import android.view.ViewGroup;
  * Created by wzm on 2018/4/23 0023.
  */
 
-public abstract  class InitFragment extends Fragment {
+public abstract class InitFragment extends Fragment {
+
+    protected Activity activity;
+    protected Context context;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        context = getActivity();
+        activity = getActivity();
         initSome(savedInstanceState);
-        View view = initView(inflater,container);
+        View view = initView(inflater, container);
         initData();
         initListener();
         initEvent();
@@ -29,7 +36,7 @@ public abstract  class InitFragment extends Fragment {
     protected void initSome(Bundle savedInstanceState) {
     }
 
-    protected abstract View  initView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container);
+    protected abstract View initView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container);
 
     protected abstract void initData();
 
