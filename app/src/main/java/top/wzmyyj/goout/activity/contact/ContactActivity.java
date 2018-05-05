@@ -33,8 +33,8 @@ public class ContactActivity extends BaseMultiPanelActivity {
 
     @Override
     protected List<InitPanel> getPanelList(List<InitPanel> mPanelList) {
-        mPanelList.add(new P_FriendList(this));
-        mPanelList.add(new P_GroupList(this));
+        mPanelList.add(new P_FriendList(activity));
+        mPanelList.add(new P_GroupList(activity));
         return mPanelList;
     }
 

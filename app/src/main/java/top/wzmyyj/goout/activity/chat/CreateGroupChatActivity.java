@@ -5,12 +5,15 @@ import android.graphics.Bitmap;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
+import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
@@ -170,30 +173,63 @@ public class CreateGroupChatActivity extends BaseActivity {
                     T.s("请添加");
                     return;
                 }
-                final List<String> mStr = new ArrayList<String>();
-                for (UserInfo userInfo : mHead) {
-                    mStr.add(userInfo.getUserName());
-                }
                 if (ID == 0) {
-                    JMessageClient.createGroup("",
-                            "由用户：" + J.getName(JMessageClient.getMyInfo()) + "创建",
-                            new CreateGroupCallback() {
-                                @Override
-                                public void gotResult(int i, String s, long l) {
-                                    if (i == 0) {
-                                        ID = l;
-                                        addGroupMembers(ID, mStr);
-                                    }
-                                }
-                            });
+                    showEditTextDialog();
                 } else {
-                    addGroupMembers(ID, mStr);
+                    addGroupMembers(ID);
                 }
             }
         });
     }
 
-    private void addGroupMembers(final long id, List<String> list) {
+
+    private void showEditTextDialog() {
+        final QMUIDialog.EditTextDialogBuilder builder
+                = new QMUIDialog.EditTextDialogBuilder(context);
+        builder.setTitle("编辑：")
+                .setPlaceholder("请输入群组名称")
+                .setInputType(InputType.TYPE_CLASS_TEXT)
+                .addAction("取消", new QMUIDialogAction.ActionListener() {
+                    @Override
+                    public void onClick(QMUIDialog dialog, int index) {
+                        dialog.dismiss();
+                    }
+                })
+                .addAction("确定", new QMUIDialogAction.ActionListener() {
+                    @Override
+                    public void onClick(QMUIDialog dialog, int index) {
+                        CharSequence text = builder.getEditText().getText();
+                        if (text != null && text.length() > 0) {
+                            createGroup(text.toString());
+                            dialog.dismiss();
+                        } else {
+                        }
+                    }
+                })
+                .create(com.qmuiteam.qmui.R.style.QMUI_Dialog).show();
+    }
+
+
+    private void createGroup(String name) {
+
+        JMessageClient.createGroup(name,
+                "由用户：" + J.getName(JMessageClient.getMyInfo()) + "创建",
+                new CreateGroupCallback() {
+                    @Override
+                    public void gotResult(int i, String s, long l) {
+                        if (i == 0) {
+                            ID = l;
+                            addGroupMembers(ID);
+                        }
+                    }
+                });
+    }
+
+    private void addGroupMembers(final long id) {
+        List<String> list = new ArrayList<>();
+        for (UserInfo userInfo : mHead) {
+            list.add(userInfo.getUserName());
+        }
         JMessageClient.addGroupMembers(id, list, new BasicCallback() {
             @Override
             public void gotResult(int i, String s) {

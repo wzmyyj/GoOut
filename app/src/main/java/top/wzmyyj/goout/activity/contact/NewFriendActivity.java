@@ -17,7 +17,7 @@ public class NewFriendActivity extends BaseSinglePanelActivity {
     @NonNull
     @Override
     protected InitPanel getPanel() {
-        return new P_NewFriend(this);
+        return new P_NewFriend(activity);
     }
 
     @Override

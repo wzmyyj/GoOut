@@ -115,10 +115,6 @@ public class ContactsData {
         friendList.add(userInfo);
     }
 
-    public static void addGroup(GroupInfo groupInfo) {
-        groupList.add(groupInfo);
-    }
-
 
     public static void initFriendList() {
         ContactManager.getFriendList(new GetUserInfoListCallback() {
@@ -180,11 +176,29 @@ public class ContactsData {
 
     }
 
+    public static void addGroup(GroupInfo group) {
+        groupList.add(group);
+        Comparator comp = new GroupComparator();
+        Collections.sort(groupList, comp);
+
+    }
+
+    public static void updateGroup(GroupInfo group) {
+        for (GroupInfo groupInfo : groupList) {
+            if (groupInfo.getGroupID() == group.getGroupID()) {
+                groupList.remove(groupInfo);
+                break;
+            }
+        }
+        addGroup(group);
+
+    }
 
     public static void updateGroup(long l) {
         for (GroupInfo groupInfo : groupList) {
             if (groupInfo.getGroupID() == l) {
                 groupList.remove(groupInfo);
+                break;
             }
         }
         addGroup(l);

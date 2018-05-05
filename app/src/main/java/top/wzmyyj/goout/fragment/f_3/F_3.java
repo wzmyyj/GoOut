@@ -29,7 +29,7 @@ public class F_3 extends BaseSinglePanelFragment {
     protected void setView(Toolbar mToolbar, ImageView img_1, ImageView img_2) {
         mToolbar.setTitle("消息");
         img_1.setImageResource(R.drawable.ic_search);
-        img_2.setImageResource(R.drawable.ic_account);
+        img_2.setImageResource(R.drawable.ic_perm);
         img_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

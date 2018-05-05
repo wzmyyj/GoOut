@@ -16,7 +16,7 @@ public class UpdateMyInfoActivity extends BaseSinglePanelActivity {
     @NonNull
     @Override
     protected InitPanel getPanel() {
-        return new P_UpdateMyInfo(this);
+        return new P_UpdateMyInfo(activity);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package top.wzmyyj.wzm_sdk.panel;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ public class Panel {
 
     protected LayoutInflater mInflater;
     protected Context context;
+    protected Activity activity;
     protected View view;
     protected String title = "";
 
@@ -27,6 +29,7 @@ public class Panel {
 
     public Panel(Context context) {
         this.context = context;
+        this.activity = (Activity) context;
         this.mInflater = LayoutInflater.from(context);
     }
 

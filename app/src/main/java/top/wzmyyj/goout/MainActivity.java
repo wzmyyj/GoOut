@@ -15,6 +15,7 @@ import cn.jpush.im.android.api.model.Message;
 import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.goout.activity.chat.GroupChatActivity;
 import top.wzmyyj.goout.activity.chat.SingleChatActivity;
+import top.wzmyyj.goout.activity.contact.NewFriendActivity;
 import top.wzmyyj.goout.base.BaseMainActivity;
 import top.wzmyyj.goout.database.NewFriend;
 import top.wzmyyj.goout.fragment.f_1.F_1;
@@ -69,7 +70,7 @@ public class MainActivity extends BaseMainActivity {
 
         switch (event.getType()) {
             case invite_received:// 收到好友邀请
-                showMessageDialog("收到" + fromUsername
+                showMessageDialog(1, "收到" + fromUsername
                         + "好友邀请"
                         + "\n"
                         + "原因："
@@ -105,6 +106,10 @@ public class MainActivity extends BaseMainActivity {
 
 
     private void showMessageDialog(String msg) {
+        showMessageDialog(0, msg);
+    }
+
+    private void showMessageDialog(final int w, String msg) {
         new QMUIDialog.MessageDialogBuilder(this)
                 .setTitle("标题")
                 .setMessage(msg)
@@ -112,6 +117,11 @@ public class MainActivity extends BaseMainActivity {
                     @Override
                     public void onClick(QMUIDialog dialog, int index) {
                         dialog.dismiss();
+                        if (w == 1) {
+                            Intent i = new Intent();
+                            i.setClass(context, NewFriendActivity.class);
+                            startActivity(i);
+                        }
                     }
                 })
                 .create(com.qmuiteam.qmui.R.style.QMUI_Dialog).show();

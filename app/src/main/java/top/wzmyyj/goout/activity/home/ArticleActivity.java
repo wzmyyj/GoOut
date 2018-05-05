@@ -15,7 +15,7 @@ public class ArticleActivity extends BaseSinglePanelActivity {
     @NonNull
     @Override
     protected InitPanel getPanel() {
-        return new P_Article(this);
+        return new P_Article(activity);
     }
 
     @Override
