@@ -2,17 +2,14 @@ package top.wzmyyj.goout.fragment.f_3;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
-import android.text.SpannableString;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -20,21 +17,15 @@ import android.widget.TextView;
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.qmuiteam.qmui.widget.popup.QMUIListPopup;
 import com.qmuiteam.qmui.widget.popup.QMUIPopup;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import cn.jpush.im.android.api.JMessageClient;
-import cn.jpush.im.android.api.callback.GetAvatarBitmapCallback;
-import cn.jpush.im.android.api.content.EventNotificationContent;
-import cn.jpush.im.android.api.content.MessageContent;
-import cn.jpush.im.android.api.content.TextContent;
 import cn.jpush.im.android.api.event.MessageEvent;
 import cn.jpush.im.android.api.model.Conversation;
 import cn.jpush.im.android.api.model.GroupInfo;
-import cn.jpush.im.android.api.model.Message;
 import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.activity.chat.CreateGroupChatActivity;
@@ -44,14 +35,12 @@ import top.wzmyyj.goout.activity.chat.SingleChatActivity;
 import top.wzmyyj.goout.activity.contact.FindFriendActivity;
 import top.wzmyyj.goout.activity.contact.NewFriendActivity;
 import top.wzmyyj.goout.activity.message.SomeMessageActivity;
+import top.wzmyyj.goout.adapter.ivd.ConversationIVD;
 import top.wzmyyj.goout.base.BaseRecyclerPanel;
 import top.wzmyyj.goout.database.ContactsData;
-import top.wzmyyj.goout.tools.Expression;
 import top.wzmyyj.goout.tools.J;
 import top.wzmyyj.wzm_sdk.adapter.CommonAdapter;
 import top.wzmyyj.wzm_sdk.inter.IVD;
-import top.wzmyyj.wzm_sdk.inter.SingleIVD;
-import top.wzmyyj.wzm_sdk.utils.TimeUtil;
 
 /**
  * Created by wzm on 2018/4/23 0023.
@@ -89,107 +78,7 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
     @NonNull
     @Override
     protected List<IVD<Conversation>> getIVD(List<IVD<Conversation>> ivd) {
-        ivd.add(new SingleIVD<Conversation>() {
-            @Override
-            public int getItemViewLayoutId() {
-                return R.layout.fragment_3_item;
-            }
-
-            @Override
-            public void convert(ViewHolder holder, Conversation conversation, int position) {
-                final ImageView img_head = holder.getView(R.id.img_head);
-                TextView tv_name = holder.getView(R.id.tv_name);
-                TextView tv_time = holder.getView(R.id.tv_time);
-                TextView tv_text = holder.getView(R.id.tv_text);
-                TextView tv_count = holder.getView(R.id.tv_count);
-
-                Message latestMessage = conversation.getLatestMessage();
-                int unReadMsgCnt = conversation.getUnReadMsgCnt();
-                String text = "", count = "", lastName = "";
-
-                if (latestMessage != null) {
-                    long l = latestMessage.getCreateTime();
-                    tv_time.setText(TimeUtil.getEasyTime(l));
-                    MessageContent content = latestMessage.getContent();
-                    switch (content.getContentType()) {
-                        case text:
-                            TextContent stringExtra = (TextContent) content;
-                            text = stringExtra.getText();
-                            break;
-                        case image:
-                            text = "[图片]";
-                            break;
-                        case eventNotification:
-                            EventNotificationContent eventContent = (EventNotificationContent) content;
-                            text = eventContent.getEventText();
-                            break;
-                    }
-
-                }
-                if (unReadMsgCnt > 0) {
-                    count = "" + unReadMsgCnt;
-                    tv_count.setText(count);
-                    tv_count.setBackgroundResource(R.drawable.ic_hip);
-                } else {
-                    tv_count.setBackgroundResource(R.color.colorClarity);
-                }
-                if (latestMessage != null) {
-                    if (latestMessage.getFromUser().getUserName() ==
-                            JMessageClient.getMyInfo().getUserName()) {
-                        lastName = "";
-                    } else {
-                        lastName = J.getName(latestMessage.getFromUser());
-                    }
-                }
-                int size = (int) tv_text.getTextSize();
-                tv_text.setText(lastName + ": ");
-                //解析qq表情
-                SpannableString ss = Expression.getSpannableString(
-                        mInflater.getContext(), text, size + 5, size + 5);
-                tv_text.append(ss);
-
-                final int pos = position;
-                switch (conversation.getType()) {
-                    case single:
-                        UserInfo user = (UserInfo) conversation.getTargetInfo();
-                        tv_name.setText(J.getName(user));
-                        img_head.setTag(pos);
-                        user.getAvatarBitmap(new GetAvatarBitmapCallback() {
-                            @Override
-                            public void gotResult(int i, String s, Bitmap bitmap) {
-                                if (img_head.getTag() != null
-                                        && img_head.getTag().equals(pos))
-                                    if (bitmap != null) {
-                                        img_head.setImageBitmap(bitmap);
-                                    } else {
-                                        img_head.setImageResource(R.mipmap.no_avatar);
-                                    }
-                            }
-                        });
-                        break;
-
-                    case group:
-                        GroupInfo group = (GroupInfo) conversation.getTargetInfo();
-                        tv_name.setText(J.getName(group));
-                        img_head.setTag(pos);
-                        group.getAvatarBitmap(new GetAvatarBitmapCallback() {
-                            @Override
-                            public void gotResult(int i, String s, Bitmap bitmap) {
-                                if (img_head.getTag() != null
-                                        && img_head.getTag().equals(pos))
-                                    if (bitmap != null) {
-                                        img_head.setImageBitmap(bitmap);
-                                    } else {
-                                        img_head.setImageResource(R.mipmap.no_avatar);
-                                    }
-                            }
-                        });
-                        break;
-
-                }
-
-            }
-        });
+        ivd.add(new ConversationIVD(context));
         return ivd;
     }
 

@@ -1,7 +1,9 @@
 package top.wzmyyj.goout.activity.chat.panel;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -23,6 +25,7 @@ import cn.jpush.im.android.api.callback.GetAvatarBitmapCallback;
 import cn.jpush.im.android.api.callback.GetGroupInfoCallback;
 import cn.jpush.im.android.api.model.GroupInfo;
 import cn.jpush.im.android.api.model.UserInfo;
+import cn.jpush.im.api.BasicCallback;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.activity.chat.CreateGroupChatActivity;
 import top.wzmyyj.goout.activity.chat.DeleteGroupMemberActivity;
@@ -32,6 +35,7 @@ import top.wzmyyj.goout.database.ContactsData;
 import top.wzmyyj.goout.tools.J;
 import top.wzmyyj.wzm_sdk.inter.IVD;
 import top.wzmyyj.wzm_sdk.inter.SingleIVD;
+import top.wzmyyj.wzm_sdk.tools.T;
 
 import static top.wzmyyj.goout.R.id.bt_h_1;
 
@@ -110,7 +114,7 @@ public class P_GroupChatInfo extends BaseRecyclerPanel<UserInfo> {
                 tv.setText(J.getName(userInfo));
                 if (userInfo.getUserName().equals(group.getGroupOwner())) {
                     tv.setTextColor(context.getResources().getColor(R.color.colorOrange));
-                }else{
+                } else {
                     tv.setTextColor(context.getResources().getColor(R.color.colorGray_7));
                 }
                 userInfo.getAvatarBitmap(new GetAvatarBitmapCallback() {
@@ -182,9 +186,55 @@ public class P_GroupChatInfo extends BaseRecyclerPanel<UserInfo> {
 
     }
 
+
+    private Button bt_exit;
+
     @Override
     protected View getFooter() {
         View footer = mInflater.inflate(R.layout.activity_group_chat_info_foot, null);
+        bt_exit = footer.findViewById(R.id.bt_exit);
+        footerData();
+        footerListener();
         return footer;
+    }
+
+    private void footerData() {
+    }
+
+    private void footerListener() {
+        bt_exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteGroup(ID);
+            }
+        });
+    }
+
+
+    private void deleteGroup(final long l) {
+        JMessageClient.exitGroup(l, new BasicCallback() {
+            @Override
+            public void gotResult(int i, String s) {
+                if (i == 0) {
+                    endPlay(l);
+                    JMessageClient.exitConversation();
+                    JMessageClient.deleteGroupConversation(l);
+                    ContactsData.delGroup(l);
+                    T.s("退出成功");
+                    activity.finish();
+                } else {
+                    T.s("退出失败");
+                }
+            }
+        });
+    }
+
+    private void endPlay(long l) {
+        SharedPreferences sha = activity.getSharedPreferences("play", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor ed = sha.edit();
+        if (l == sha.getLong("id", 0)) {
+            ed.putLong("id", 0);
+            ed.commit();
+        }
     }
 }

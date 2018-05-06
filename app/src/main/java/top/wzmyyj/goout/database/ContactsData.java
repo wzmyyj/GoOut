@@ -107,11 +107,14 @@ public class ContactsData {
     }
 
     public static void delGroup(long l) {
+        GroupInfo group = null;
         for (GroupInfo groupInfo : groupList) {
             if (groupInfo.getGroupID() == l) {
-                groupList.remove(groupInfo);
+                group = groupInfo;
+                break;
             }
         }
+        groupList.remove(group);
     }
 
     public static void addFriend(UserInfo userInfo) {

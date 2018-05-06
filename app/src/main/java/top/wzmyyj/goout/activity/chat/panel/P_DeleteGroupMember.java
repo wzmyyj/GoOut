@@ -97,8 +97,10 @@ public class P_DeleteGroupMember extends BaseRecyclerPanel<UserInfo> {
                     }
                 });
                 Button bt = holder.getView(R.id.bt_1);
+                bt.setVisibility(View.VISIBLE);
                 if (JMessageClient.getMyInfo().getUserName().equals(userInfo.getUserName())) {
                     bt.setText("我");
+                    bt.setTextColor(context.getResources().getColor(R.color.colorBlue));
                 } else {
                     bt.setText("-");
                     bt.setTextColor(context.getResources().getColor(R.color.colorRed));

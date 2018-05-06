@@ -111,31 +111,33 @@ public class CreateGroupChatActivity extends BaseActivity {
             protected void convert(ViewHolder holder, UserInfo userInfo, int position) {
                 final ImageView img = holder.getView(R.id.img_1);
                 TextView tv = holder.getView(R.id.tv_1);
-                Button bt = holder.getView(R.id.bt_1);
+                final Button bt = holder.getView(R.id.bt_1);
                 final UserInfo user = userInfo;
-                if (!mHead.contains(userInfo)) {
+                bt.setVisibility(View.VISIBLE);
+                if (!mHead.contains(user)) {
                     bt.setText("+");
                     bt.setTextColor(context.getResources().getColor(R.color.colorGreen));
-                    bt.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            mHead.add(user);
-                            mHeadAdapter.notifyDataSetChanged();
-                            mAdapter.notifyDataSetChanged();
-                        }
-                    });
                 } else {
                     bt.setText("-");
                     bt.setTextColor(context.getResources().getColor(R.color.colorRed));
-                    bt.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
+                }
+
+                bt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!mHead.contains(user)) {
+                            mHead.add(user);
+                            mHeadAdapter.notifyDataSetChanged();
+                            bt.setText("-");
+                            bt.setTextColor(context.getResources().getColor(R.color.colorRed));
+                        } else {
                             mHead.remove(user);
                             mHeadAdapter.notifyDataSetChanged();
-                            mAdapter.notifyDataSetChanged();
+                            bt.setText("+");
+                            bt.setTextColor(context.getResources().getColor(R.color.colorGreen));
                         }
-                    });
-                }
+                    }
+                });
                 tv.setText(J.getName(userInfo));
                 userInfo.getAvatarBitmap(new GetAvatarBitmapCallback() {
                     @Override
@@ -209,7 +211,8 @@ public class CreateGroupChatActivity extends BaseActivity {
                     public void onClick(QMUIDialog dialog, int index) {
                         CharSequence text = builder.getEditText().getText();
                         if (text != null && text.length() > 0) {
-                            createGroup(text.toString());
+                            createGroup(text.toString(),
+                                    "由用户：" + J.getName(JMessageClient.getMyInfo()) + "创建");
                             dialog.dismiss();
                         } else {
                         }
@@ -219,20 +222,18 @@ public class CreateGroupChatActivity extends BaseActivity {
     }
 
 
-    private void createGroup(String name) {
+    private void createGroup(String name, String d) {
         is_run = true;
-        JMessageClient.createGroup(name,
-                "由用户：" + J.getName(JMessageClient.getMyInfo()) + "创建",
-                new CreateGroupCallback() {
-                    @Override
-                    public void gotResult(int i, String s, long l) {
-                        is_run = false;
-                        if (i == 0) {
-                            ID = l;
-                            addGroupMembers(ID);
-                        }
-                    }
-                });
+        JMessageClient.createGroup(name, d, new CreateGroupCallback() {
+            @Override
+            public void gotResult(int i, String s, long l) {
+                is_run = false;
+                if (i == 0) {
+                    ID = l;
+                    addGroupMembers(ID);
+                }
+            }
+        });
     }
 
     private void addGroupMembers(final long id) {

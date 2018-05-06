@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_start_play"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="@drawable/ic_back"
+        app:title="开始活动"
+        app:titleTextAppearance="@style/MyToolbarTextAppearance"
+        app:titleTextColor="@color/colorGray_5">
+
+    </android.support.v7.widget.Toolbar>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/colorLine" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="40dp"
+        android:background="@drawable/img_stroke_bg"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/img_stroke_bg"
+            android:padding="0.5dp"
+            android:src="@color/colorGray_g" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="25dp"
+            android:gravity="center"
+            android:text="添加配图"
+            android:textColor="@color/colorGray_b"
+            android:textSize="12sp" />
+
+
+        <EditText
+            android:id="@+id/et_1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@color/colorClarity"
+            android:gravity="center"
+            android:hint="活动名称"
+            android:inputType="number"
+            android:textColor="@color/colorGray_9"
+            android:textColorHint="@color/colorGray_b"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/et_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:background="@color/colorClarity"
+            android:gravity="center"
+            android:hint="活动简介"
+            android:inputType="number"
+            android:textColor="@color/colorGray_9"
+            android:textColorHint="@color/colorGray_b"
+            android:textSize="16sp" />
+        <Button
+            android:id="@+id/bt_start"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorGreen"
+            android:text="开始并邀请好友"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp" />
+    </LinearLayout>
+</LinearLayout>
