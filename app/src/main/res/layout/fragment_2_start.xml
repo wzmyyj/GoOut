@@ -18,7 +18,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="30dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_weight="1"
-            android:text="选择类型"
+            android:text="推荐"
             android:textColor="@color/colorBlue"
             android:textSize="14sp" />
 
@@ -40,8 +40,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="200dp"
+        android:padding="20dp">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bo_image_1" />
     </LinearLayout>
 
     <View
@@ -72,11 +77,11 @@
         android:textSize="14sp" />
 
     <TextView
-        android:textColor="@color/colorGray_b"
-        android:textSize="11sp"
-        android:text="邀请好伙伴们一起出去玩吧(ง ˙o˙)ว。。。"
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="60dp" />
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="邀请好伙伴们一起出去玩吧(ง ˙o˙)ว。。。"
+        android:textColor="@color/colorGray_b"
+        android:textSize="11sp" />
 
 </LinearLayout>

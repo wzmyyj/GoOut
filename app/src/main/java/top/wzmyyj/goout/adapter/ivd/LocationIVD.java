@@ -1,5 +1,8 @@
 package top.wzmyyj.goout.adapter.ivd;
 
+import android.content.Context;
+import android.view.LayoutInflater;
+
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import cn.jpush.im.android.api.enums.ContentType;
@@ -12,6 +15,12 @@ import top.wzmyyj.wzm_sdk.inter.IVD;
  */
 
 public class LocationIVD implements IVD<Message> {
+
+    private LayoutInflater mInflater;
+
+    public LocationIVD(Context context) {
+        this.mInflater = LayoutInflater.from(context);
+    }
     @Override
     public int getItemViewLayoutId() {
         return R.layout.fragment_2_item_1;

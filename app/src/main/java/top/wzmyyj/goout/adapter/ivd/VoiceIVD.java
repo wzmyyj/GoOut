@@ -1,16 +1,23 @@
 package top.wzmyyj.goout.adapter.ivd;
 
+import android.content.Context;
+
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import cn.jpush.im.android.api.model.Message;
 import top.wzmyyj.goout.R;
-import top.wzmyyj.wzm_sdk.inter.IVD;
 
 /**
  * Created by wzm on 2018/5/6 0006.
  */
 
-public class VoiceIVD implements IVD<Message> {
+public class VoiceIVD extends MyIVD<Message> {
+
+
+    public VoiceIVD(Context context) {
+        super(context);
+    }
+
     @Override
     public int getItemViewLayoutId() {
         return R.layout.fragment_2_item_1;

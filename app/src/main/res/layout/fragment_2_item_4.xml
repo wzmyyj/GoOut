@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/colorGray_h">
+    android:background="@color/colorGray_h"
+    android:layout_height="wrap_content">
 
 
     <LinearLayout
@@ -25,10 +25,10 @@
                 android:id="@+id/img_head"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:src="@color/colorGray_g"
                 app:border_color="@color/colorLine"
-                app:border_width="0.1dp" />
+                app:border_width="0.1dp"
+                android:layout_gravity="center"
+                android:src="@color/colorGray_g" />
 
 
             <TextView
@@ -81,13 +81,7 @@
                 android:minWidth="100dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tv_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:text="XXXXX"
-                    android:textColor="@color/colorOrange" />
+
 
 
             </LinearLayout>

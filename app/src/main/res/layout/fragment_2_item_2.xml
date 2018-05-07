@@ -87,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:text="XXXXX"
-                    android:textColor="@color/colorOrange" />
+                    android:textColor="@color/colorGreen" />
 
 
             </LinearLayout>

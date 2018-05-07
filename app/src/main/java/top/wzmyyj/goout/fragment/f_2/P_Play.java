@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
 import android.view.View;
@@ -21,8 +20,6 @@ import android.widget.TextView;
 
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction;
-import com.zhy.adapter.recyclerview.CommonAdapter;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,11 +37,13 @@ import cn.jpush.im.android.api.model.UserInfo;
 import cn.jpush.im.api.BasicCallback;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.activity.chat.CreateGroupChatActivity;
+import top.wzmyyj.goout.activity.chat.DeleteGroupMemberActivity;
 import top.wzmyyj.goout.activity.chat.GroupChatInfoActivity;
+import top.wzmyyj.goout.activity.chat.SingleChatActivity;
+import top.wzmyyj.goout.adapter.ivd.EmptyIVD;
 import top.wzmyyj.goout.adapter.ivd.EventNotificationIVD;
 import top.wzmyyj.goout.adapter.ivd.ImageIVD;
 import top.wzmyyj.goout.adapter.ivd.ImportantTextIVD;
-import top.wzmyyj.goout.adapter.ivd.LocationIVD;
 import top.wzmyyj.goout.base.BaseRecyclerPanel;
 import top.wzmyyj.goout.database.ContactsData;
 import top.wzmyyj.goout.tools.J;
@@ -115,6 +114,12 @@ public class P_Play extends BaseRecyclerPanel<Message> {
         super.onResume();
         long id = sha.getLong("id", 0);
         changeWhenIDChange(id);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                update();
+            }
+        }, 100);
 
     }
 
@@ -127,10 +132,11 @@ public class P_Play extends BaseRecyclerPanel<Message> {
     @NonNull
     @Override
     protected List<IVD<Message>> getIVD(List<IVD<Message>> ivd) {
-        ivd.add(new ImportantTextIVD());
-        ivd.add(new ImageIVD());
-        ivd.add(new EventNotificationIVD());
-        ivd.add(new LocationIVD());
+        ivd.add(new EmptyIVD(context));
+        ivd.add(new ImportantTextIVD(context));
+        ivd.add(new ImageIVD(context));
+        ivd.add(new EventNotificationIVD(context));
+//        ivd.add(new LocationIVD());
 //        ivd.add(new AccountsIVD());
 //        ivd.add(new VoiceIVD());
         return ivd;
@@ -172,6 +178,7 @@ public class P_Play extends BaseRecyclerPanel<Message> {
 
     @Override
     protected void update() {
+        super.update();
         headerData();
     }
 
@@ -186,43 +193,27 @@ public class P_Play extends BaseRecyclerPanel<Message> {
 
 
     private TextView tv_title;
-    private RecyclerView rlv;
+    private Button bt_info;
+    private Button bt_1;
+    private Button bt_2;
+    private LinearLayout ll_member;
     private List<UserInfo> members;
-    private CommonAdapter<UserInfo> adapter;
 
     @Override
     protected View getHeader() {
         View header = mInflater.inflate(R.layout.fragment_2_head, null);
-        rlv = header.findViewById(R.id.rv_1);
+        ll_member = header.findViewById(R.id.ll_1);
         tv_title = header.findViewById(R.id.tv_title);
-        rlv.setLayoutManager(new LinearLayoutManager(context, LinearLayout.HORIZONTAL, false));
-        members = new ArrayList<>();
-        adapter = new CommonAdapter<UserInfo>(context,
-                R.layout.activity_group_chat_info_item, members) {
-            @Override
-            protected void convert(ViewHolder holder, UserInfo userInfo, int position) {
-                final ImageView img = holder.getView(R.id.img_head);
-                TextView tv = holder.getView(R.id.tv_name);
-                tv.setText(J.getName(userInfo));
-                userInfo.getAvatarBitmap(new GetAvatarBitmapCallback() {
-                    @Override
-                    public void gotResult(int i, String s, Bitmap bitmap) {
-                        if (bitmap != null) {
-                            img.setImageBitmap(bitmap);
-                        } else {
-                            img.setImageResource(R.mipmap.no_avatar);
-                        }
-                    }
-                });
-            }
-        };
-        rlv.setAdapter(adapter);
+        bt_info = header.findViewById(R.id.bt_info);
+        bt_1 = header.findViewById(R.id.bt_h_1);
+        bt_2 = header.findViewById(R.id.bt_h_2);
         headerData();
         headerListener();
         return header;
     }
 
     private void headerData() {
+        members = new ArrayList<>();
         JMessageClient.getGroupInfo(ID, new GetGroupInfoCallback() {
             @Override
             public void gotResult(int i, String s, GroupInfo groupInfo) {
@@ -232,16 +223,46 @@ public class P_Play extends BaseRecyclerPanel<Message> {
                     for (UserInfo user : groupInfo.getGroupMembers()) {
                         members.add(user);
                     }
-                    adapter.notifyDataSetChanged();
-
+                    setMemberList(members);
                 }
             }
         });
+    }
+
+    private void setMemberList(List<UserInfo> members) {
+        ll_member.removeAllViews();
+        for (final UserInfo user : members) {
+            View v = mInflater.inflate(R.layout.activity_group_chat_info_item, null);
+            TextView tv = v.findViewById(R.id.tv_name);
+            final ImageView img = v.findViewById(R.id.img_head);
+            tv.setText(J.getName(user));
+            user.getAvatarBitmap(new GetAvatarBitmapCallback() {
+                @Override
+                public void gotResult(int i, String s, Bitmap bitmap) {
+                    if (bitmap != null) {
+                        img.setImageBitmap(bitmap);
+                    } else {
+                        img.setImageResource(R.mipmap.no_avatar);
+                    }
+                }
+            });
+            v.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent();
+                    i.putExtra("u", user.getUserName());
+                    i.putExtra("n", J.getName(user));
+                    i.setClass(context, SingleChatActivity.class);
+                    context.startActivity(i);
+                }
+            });
+            ll_member.addView(v);
+        }
 
     }
 
     private void headerListener() {
-        tv_title.setOnClickListener(new View.OnClickListener() {
+        bt_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (ID != 0) {
@@ -250,6 +271,26 @@ public class P_Play extends BaseRecyclerPanel<Message> {
                     i.setClass(context, GroupChatInfoActivity.class);
                     context.startActivity(i);
                 }
+            }
+        });
+
+        bt_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.putExtra("id", ID);
+                i.putExtra("flag", 1);
+                i.setClass(context, CreateGroupChatActivity.class);
+                context.startActivity(i);
+            }
+        });
+        bt_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.putExtra("id", ID);
+                i.setClass(context, DeleteGroupMemberActivity.class);
+                context.startActivity(i);
             }
         });
     }
@@ -281,19 +322,19 @@ public class P_Play extends BaseRecyclerPanel<Message> {
                         dialog.dismiss();
                     }
                 })
-                .addAction("确定", new QMUIDialogAction.ActionListener() {
-                    @Override
-                    public void onClick(QMUIDialog dialog, int index) {
-                        dialog.dismiss();
-                        deleteGroup(ID);
-                    }
-                })
-
+                .addAction(0, "退出", QMUIDialogAction.ACTION_PROP_NEGATIVE,
+                        new QMUIDialogAction.ActionListener() {
+                            @Override
+                            public void onClick(QMUIDialog dialog, int index) {
+                                dialog.dismiss();
+                                deleteGroup(ID);
+                            }
+                        })
                 .create(com.qmuiteam.qmui.R.style.QMUI_Dialog).show();
     }
 
     private void deleteGroup(final long l) {
-        changeWhenIDChange(l);
+        changeWhenIDChange(0);
         JMessageClient.exitGroup(l, new BasicCallback() {
             @Override
             public void gotResult(int i, String s) {
@@ -323,7 +364,7 @@ public class P_Play extends BaseRecyclerPanel<Message> {
                 if (ID == 0) return;
                 switch (pos) {
                     case 1:
-                        changeWhenIDChange(0);
+
                         break;
                     case 2:
                         break;

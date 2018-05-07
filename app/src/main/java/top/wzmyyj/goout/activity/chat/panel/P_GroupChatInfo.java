@@ -222,7 +222,8 @@ public class P_GroupChatInfo extends BaseRecyclerPanel<UserInfo> {
                         dialog.dismiss();
                     }
                 })
-                .addAction("确定", new QMUIDialogAction.ActionListener() {
+                .addAction(0, "退出", QMUIDialogAction.ACTION_PROP_NEGATIVE,
+                        new QMUIDialogAction.ActionListener() {
                     @Override
                     public void onClick(QMUIDialog dialog, int index) {
                         dialog.dismiss();

@@ -3,7 +3,6 @@ package top.wzmyyj.goout.adapter.ivd;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.text.SpannableString;
-import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,20 +20,17 @@ import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.tools.Expression;
 import top.wzmyyj.goout.tools.J;
-import top.wzmyyj.wzm_sdk.inter.IVD;
 import top.wzmyyj.wzm_sdk.utils.TimeUtil;
 
 /**
  * Created by wzm on 2018/5/6 0006.
  */
 
-public class ConversationIVD implements IVD<Conversation> {
-    private LayoutInflater mInflater;
+public class ConversationIVD extends MyIVD<Conversation> {
 
     public ConversationIVD(Context context) {
-        this.mInflater = LayoutInflater.from(context);
+        super(context);
     }
-
     @Override
     public int getItemViewLayoutId() {
         return R.layout.conversation_item;

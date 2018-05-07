@@ -265,7 +265,7 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent();
-                i.putExtra("flag", "m2");
+                i.putExtra("flag", 2);
                 i.setClass(context, SomeMessageActivity.class);
                 context.startActivity(i);
             }
@@ -275,7 +275,7 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent();
-                i.putExtra("flag", "m3");
+                i.putExtra("flag", 3);
                 i.setClass(context, SomeMessageActivity.class);
                 context.startActivity(i);
             }
@@ -285,7 +285,7 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent();
-                i.putExtra("flag", "m4");
+                i.putExtra("flag", 4);
                 i.setClass(context, SomeMessageActivity.class);
                 context.startActivity(i);
             }
@@ -295,7 +295,7 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent();
-                i.putExtra("flag", "m5");
+                i.putExtra("flag", 5);
                 i.setClass(context, SomeMessageActivity.class);
                 context.startActivity(i);
             }
@@ -305,7 +305,7 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent();
-                i.putExtra("flag", "m6");
+                i.putExtra("flag", 6);
                 i.setClass(context, SomeMessageActivity.class);
                 context.startActivity(i);
             }
