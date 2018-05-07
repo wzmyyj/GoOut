@@ -136,7 +136,7 @@ public class ConversationIVD implements IVD<Conversation> {
                             if (bitmap != null) {
                                 img_head.setImageBitmap(bitmap);
                             } else {
-                                img_head.setImageResource(R.mipmap.no_avatar);
+                                img_head.setImageResource(R.mipmap.no_avatar_g);
                             }
                     }
                 });

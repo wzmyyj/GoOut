@@ -111,7 +111,7 @@ public class MainActivity extends BaseMainActivity {
 
     private void showMessageDialog(final int w, String msg) {
         new QMUIDialog.MessageDialogBuilder(this)
-                .setTitle("标题")
+                .setTitle("提示")
                 .setMessage(msg)
                 .addAction("确定", new QMUIDialogAction.ActionListener() {
                     @Override

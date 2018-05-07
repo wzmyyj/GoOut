@@ -2,6 +2,7 @@ package top.wzmyyj.goout.adapter.ivd;
 
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
+import cn.jpush.im.android.api.enums.ContentType;
 import cn.jpush.im.android.api.model.Message;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.wzm_sdk.inter.IVD;
@@ -18,7 +19,8 @@ public class LocationIVD implements IVD<Message> {
 
     @Override
     public boolean isForViewType(Message item, int position) {
-        return true;
+
+        return item.getContentType() == ContentType.location;
     }
 
     @Override

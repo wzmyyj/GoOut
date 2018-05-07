@@ -2,6 +2,8 @@ package top.wzmyyj.goout.adapter.ivd;
 
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
+import cn.jpush.im.android.api.content.TextContent;
+import cn.jpush.im.android.api.enums.ContentType;
 import cn.jpush.im.android.api.model.Message;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.wzm_sdk.inter.IVD;
@@ -18,7 +20,9 @@ public class ImportantTextIVD implements IVD<Message> {
 
     @Override
     public boolean isForViewType(Message item, int position) {
-        return true;
+        if (item.getContentType() != ContentType.text) return false;
+        String s = ((TextContent) item.getContent()).getText();
+        return s.contains("！公告：");
     }
 
     @Override

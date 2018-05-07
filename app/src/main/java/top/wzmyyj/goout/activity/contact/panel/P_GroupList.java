@@ -107,7 +107,7 @@ public class P_GroupList extends BaseRecyclerPanel<GroupInfo> {
                         if (bitmap != null) {
                             img.setImageBitmap(bitmap);
                         } else {
-                            img.setImageResource(R.mipmap.no_avatar);
+                            img.setImageResource(R.mipmap.no_avatar_g);
                         }
                     }
                 });

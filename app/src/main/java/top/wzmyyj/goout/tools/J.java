@@ -15,7 +15,7 @@ public class J {
 
         if (info == null)
             return null;
-       if (!TextUtils.isEmpty(info.getNotename())) {
+        if (!TextUtils.isEmpty(info.getNotename())) {
             return info.getNotename();
         } else if (!TextUtils.isEmpty(info.getNickname())) {
             return info.getNickname();
@@ -30,8 +30,19 @@ public class J {
             return null;
         if (!TextUtils.isEmpty(info.getGroupName())) {
             return info.getGroupName();
-        }else {
-            return "群组："+info.getGroupID();
+        } else {
+            return "群组：" + info.getGroupID();
+        }
+    }
+
+    public static String getD(GroupInfo info) {
+
+        if (info == null)
+            return null;
+        if (TextUtils.isEmpty(info.getGroupDescription())) {
+            return "无";
+        } else {
+            return info.getGroupDescription().replace("!@#$%^&*()_+", "");
         }
     }
 

@@ -16,6 +16,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
+import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.util.List;
@@ -205,11 +207,31 @@ public class P_GroupChatInfo extends BaseRecyclerPanel<UserInfo> {
         bt_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteGroup(ID);
+                showMessageDialog("确认退出？");
             }
         });
     }
 
+    private void showMessageDialog(String msg) {
+        new QMUIDialog.MessageDialogBuilder(activity)
+                .setTitle("提示")
+                .setMessage(msg)
+                .addAction("取消", new QMUIDialogAction.ActionListener() {
+                    @Override
+                    public void onClick(QMUIDialog dialog, int index) {
+                        dialog.dismiss();
+                    }
+                })
+                .addAction("确定", new QMUIDialogAction.ActionListener() {
+                    @Override
+                    public void onClick(QMUIDialog dialog, int index) {
+                        dialog.dismiss();
+                        deleteGroup(ID);
+                    }
+                })
+
+                .create(com.qmuiteam.qmui.R.style.QMUI_Dialog).show();
+    }
 
     private void deleteGroup(final long l) {
         JMessageClient.exitGroup(l, new BasicCallback() {

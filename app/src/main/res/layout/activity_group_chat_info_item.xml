@@ -18,9 +18,10 @@
 
     <TextView
         android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
+        android:gravity="center"
         android:text="XXX"
         android:textColor="@color/colorGray_7"
         android:textSize="12sp" />

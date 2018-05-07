@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/tv_end"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:textColor="@color/colorGray_b"
+        android:textSize="13sp">
+
+        <Button
+            android:id="@+id/bt_exit"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/click_bg"
+            android:text="结束活动"
+            android:textColor="@color/colorGray_b"
+            android:textSize="13sp" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
+</LinearLayout>
