@@ -17,8 +17,6 @@ import top.wzmyyj.goout.base.BaseRecyclerPanel;
 import top.wzmyyj.goout.bean.SomeMessage;
 import top.wzmyyj.wzm_sdk.inter.IVD;
 
-import static cn.jpush.android.api.JPushInterface.a.w;
-
 /**
  * Created by wzm on 2018/5/6 0006.
  */
@@ -33,7 +31,7 @@ public class P_SomeMessage extends BaseRecyclerPanel<SomeMessage> {
     public void initSome(Bundle savedInstanceState) {
         super.initSome(savedInstanceState);
         Intent i = activity.getIntent();
-        int W = i.getIntExtra("flag", 0);
+        int w = i.getIntExtra("flag", 0);
         switch (w) {
             case 0:
             case 1:
