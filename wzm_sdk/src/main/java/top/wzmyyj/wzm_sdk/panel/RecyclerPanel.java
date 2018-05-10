@@ -71,7 +71,7 @@ public abstract class RecyclerPanel<T> extends InitPanel
 
     protected abstract void setView(RecyclerView rv, SwipeRefreshLayout srl, FrameLayout layout);
 
-    protected abstract View getHeader();
+        protected abstract View getHeader();
 
     protected abstract View getFooter();
 

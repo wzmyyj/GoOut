@@ -1,5 +1,6 @@
 package top.wzmyyj.goout.fragment.f_2;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -20,7 +22,12 @@ import android.widget.TextView;
 
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction;
+import com.yancy.gallerypick.inter.IHandlerCallBack;
+import com.yanzhenjie.permission.Action;
+import com.yanzhenjie.permission.AndPermission;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,8 +45,9 @@ import cn.jpush.im.api.BasicCallback;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.activity.chat.CreateGroupChatActivity;
 import top.wzmyyj.goout.activity.chat.DeleteGroupMemberActivity;
-import top.wzmyyj.goout.activity.chat.GroupChatInfoActivity;
+import top.wzmyyj.goout.activity.chat.GroupChatActivity;
 import top.wzmyyj.goout.activity.chat.SingleChatActivity;
+import top.wzmyyj.goout.activity.turing.OtherChatActivity;
 import top.wzmyyj.goout.adapter.ivd.EmptyIVD;
 import top.wzmyyj.goout.adapter.ivd.EventNotificationIVD;
 import top.wzmyyj.goout.adapter.ivd.ImageIVD;
@@ -47,6 +55,7 @@ import top.wzmyyj.goout.adapter.ivd.ImportantTextIVD;
 import top.wzmyyj.goout.base.BaseRecyclerPanel;
 import top.wzmyyj.goout.database.ContactsData;
 import top.wzmyyj.goout.tools.J;
+import top.wzmyyj.goout.utils.gallery.GalleryUtil;
 import top.wzmyyj.wzm_sdk.inter.IVD;
 import top.wzmyyj.wzm_sdk.tools.T;
 import top.wzmyyj.wzm_sdk.view.ArcMenu;
@@ -193,7 +202,7 @@ public class P_Play extends BaseRecyclerPanel<Message> {
 
 
     private TextView tv_title;
-    private Button bt_info;
+    private Button bt_chat;
     private Button bt_1;
     private Button bt_2;
     private LinearLayout ll_member;
@@ -204,7 +213,7 @@ public class P_Play extends BaseRecyclerPanel<Message> {
         View header = mInflater.inflate(R.layout.fragment_2_head, null);
         ll_member = header.findViewById(R.id.ll_1);
         tv_title = header.findViewById(R.id.tv_title);
-        bt_info = header.findViewById(R.id.bt_info);
+        bt_chat = header.findViewById(R.id.bt_chat);
         bt_1 = header.findViewById(R.id.bt_h_1);
         bt_2 = header.findViewById(R.id.bt_h_2);
         headerData();
@@ -231,6 +240,9 @@ public class P_Play extends BaseRecyclerPanel<Message> {
 
     private void setMemberList(List<UserInfo> members) {
         ll_member.removeAllViews();
+        //robot
+        setRobot();
+        //member
         for (final UserInfo user : members) {
             View v = mInflater.inflate(R.layout.activity_group_chat_info_item, null);
             TextView tv = v.findViewById(R.id.tv_name);
@@ -261,14 +273,33 @@ public class P_Play extends BaseRecyclerPanel<Message> {
 
     }
 
+
+    private void setRobot() {
+        View v = mInflater.inflate(R.layout.activity_group_chat_info_item, null);
+        TextView tv = v.findViewById(R.id.tv_name);
+        final ImageView img = v.findViewById(R.id.img_head);
+        tv.setText("助手");
+        img.setImageResource(R.drawable.ic_robot);
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(context, OtherChatActivity.class);
+                context.startActivity(i);
+            }
+        });
+        ll_member.addView(v);
+    }
+
     private void headerListener() {
-        bt_info.setOnClickListener(new View.OnClickListener() {
+        bt_chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (ID != 0) {
                     Intent i = new Intent();
                     i.putExtra("id", ID);
-                    i.setClass(context, GroupChatInfoActivity.class);
+                    i.putExtra("n", tv_title.getText().toString());
+                    i.setClass(context, GroupChatActivity.class);
                     context.startActivity(i);
                 }
             }
@@ -364,11 +395,13 @@ public class P_Play extends BaseRecyclerPanel<Message> {
                 if (ID == 0) return;
                 switch (pos) {
                     case 1:
-
+                        showEditDialog();
                         break;
                     case 2:
+                        openGallery(true);
                         break;
                     case 3:
+                        openGallery();
                         break;
                     case 4:
                         break;
@@ -377,6 +410,166 @@ public class P_Play extends BaseRecyclerPanel<Message> {
         });
         return menu;
     }
+
+    private void showEditDialog() {
+        final QMUIDialog.EditTextDialogBuilder builder
+                = new QMUIDialog.EditTextDialogBuilder(context);
+        builder.setTitle("请输入：")
+                .setPlaceholder("请输入公告")
+                .setInputType(InputType.TYPE_CLASS_TEXT)
+                .addAction("取消", new QMUIDialogAction.ActionListener() {
+                    @Override
+                    public void onClick(QMUIDialog dialog, int index) {
+                        dialog.dismiss();
+                    }
+                })
+                .addAction("确定", new QMUIDialogAction.ActionListener() {
+                    @Override
+                    public void onClick(QMUIDialog dialog, int index) {
+                        CharSequence text = builder.getEditText().getText();
+                        if (text != null && text.length() > 0) {
+
+                            sendText("公告：" + text.toString());
+                            dialog.dismiss();
+                        } else {
+                        }
+                    }
+                })
+                .create(com.qmuiteam.qmui.R.style.QMUI_Dialog).show();
+    }
+
+
+    private void sendText(String text) {
+
+        if (!TextUtils.isEmpty(text)) {
+            Message message = JMessageClient.createGroupTextMessage(ID, text);
+            message.setOnSendCompleteCallback(new BasicCallback() {
+                @Override
+                public void gotResult(int i, String s) {
+                    if (i == 0) {
+                        notifyDataSetChanged();
+                    } else {
+                        T.s("发送失败");
+                        notifyDataSetChanged();
+                    }
+                }
+            });
+            JMessageClient.sendMessage(message);
+            mData.add(message);
+            notifyDataSetChanged();
+
+
+//            new Handler().postDelayed(new Runnable() {
+//
+//                @Override
+//                public void run() {
+//                    mList.setSelection(mAdapter.getCount());
+//                }
+//            }, 100);
+
+
+        }
+    }
+
+    private void openGallery() {
+        openGallery(false);
+    }
+
+    private void openGallery(boolean isOpenCamera) {
+        GalleryUtil.initGallery(new IHandlerCallBack() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onSuccess(List<String> photoList) {
+                uploadPic(photoList.get(0));
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        }).getBuilder().crop(false).isOpenCamera(isOpenCamera).build();
+        AndPermission.with(activity)
+                .permission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .onGranted(new Action() {
+                    @Override
+                    public void onAction(List<String> permissions) {
+                        GalleryUtil.open(activity);
+                    }
+                })
+                .onDenied(new Action() {
+                    @Override
+                    public void onAction(List<String> permissions) {
+                        T.s("No Permission");
+                    }
+                })
+                .start();
+    }
+
+
+    private void uploadPic(String picturePath) {
+        if (picturePath != null) {
+            File file = new File(picturePath);
+            try {
+                final Message message = JMessageClient.createGroupImageMessage(ID, file);
+                message.setOnSendCompleteCallback(new BasicCallback() {
+                    @Override
+                    public void gotResult(int i, String s) {
+                        if (i == 0) {
+                            notifyDataSetChanged();
+                        } else {
+                            T.s("发送失败");
+                            notifyDataSetChanged();
+                        }
+                    }
+                });
+                JMessageClient.sendMessage(message);
+                mData.add(message);
+                notifyDataSetChanged();
+//                new Handler().postDelayed(new Runnable() {
+//
+//                    @Override
+//                    public void run() {
+//                        mList.setSelection(mAdapter.getCount());
+//                    }
+//                }, 100);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else {
+        }
+    }
+
+
+    /*
+
+
+
+
+
+
+    hhhhhhhhhh
+
+
+
+
+
+
+
+    */
 
 
     //start

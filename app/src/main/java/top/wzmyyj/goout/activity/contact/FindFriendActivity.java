@@ -76,6 +76,7 @@ public class FindFriendActivity extends BaseActivity {
                     }
                 });
                 Button bt = holder.getView(R.id.bt_1);
+                bt.setVisibility(View.VISIBLE);
                 if (userInfo.isFriend() ||
                         JMessageClient.getMyInfo().getUserName().equals(userInfo.getUserName())) {
                     bt.setText("");

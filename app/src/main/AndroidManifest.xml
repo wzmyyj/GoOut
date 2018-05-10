@@ -92,7 +92,9 @@
         <activity android:name=".activity.home.ArticleActivity" />
         <activity android:name=".activity.chat.DeleteGroupMemberActivity" />
         <activity android:name=".activity.message.SomeMessageActivity" />
-        <activity android:name=".activity.play.StartPlayActivity"></activity>
+        <activity android:name=".activity.tools.PhotoViewActivity" />
+        <activity android:name=".activity.turing.OtherChatActivity" />
+        <activity android:name=".activity.web.WebActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/GoOut.iml" filepath="$PROJECT_DIR$/GoOut.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/data/data.iml" filepath="$PROJECT_DIR$/data/data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gallerypick/gallerypick.iml" filepath="$PROJECT_DIR$/gallerypick/gallerypick.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reclib_qq/reclib_qq.iml" filepath="$PROJECT_DIR$/reclib_qq/reclib_qq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/turing/turing.iml" filepath="$PROJECT_DIR$/turing/turing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wzm_sdk/wzm_sdk.iml" filepath="$PROJECT_DIR$/wzm_sdk/wzm_sdk.iml" />
+    </modules>
+  </component>
+</project>

@@ -33,6 +33,12 @@ public abstract class SinglePanelActivity extends PanelActivity {
         return mPanelList;
     }
 
+
+    public void setTitle(String s) {
+        if (mToolbar == null) return;
+        this.mToolbar.setTitle(s);
+    }
+
     @Override
     protected void initView() {
         super.initView();

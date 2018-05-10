@@ -8,7 +8,7 @@
         android:id="@+id/arcMenu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
+        android:layout_margin="15dp"
         wzm:position="right_bottom"
         wzm:radius="100dp">
 
@@ -16,35 +16,35 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:contentDescription="@null"
-            android:src="#777777"
+            android:src="@mipmap/ic_arc_0"
             android:tag="Center" />
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:contentDescription="@null"
-            android:src="#777777"
+            android:src="@mipmap/ic_arc_1"
             android:tag="Item1" />
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:contentDescription="@null"
-            android:src="#777777"
+            android:src="@mipmap/ic_arc_2"
             android:tag="Item2" />
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:contentDescription="@null"
-            android:src="#777777"
+            android:src="@mipmap/ic_arc_3"
             android:tag="Item3" />
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:contentDescription="@null"
-            android:src="#777777"
+            android:src="@mipmap/ic_arc_4"
             android:tag="Item4" />
     </top.wzmyyj.wzm_sdk.view.ArcMenu>
 </LinearLayout>

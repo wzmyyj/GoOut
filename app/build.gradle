@@ -18,9 +18,9 @@ android {
         }
 
         manifestPlaceholders = [
-                JPUSH_PKGNAME : applicationId,
+                JPUSH_PKGNAME: applicationId,
                 JPUSH_APPKEY : "8492c4fd713571cb56a5e9db", //JPush上注册的包名对应的appkey.
-                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]
     }
     buildTypes {
@@ -45,6 +45,7 @@ dependencies {
     compile project(':gallerypick')
     compile project(':data')
     compile project(':reclib_qq')
+    compile project(':turing')
 
     compile 'cn.jiguang.sdk:jpush:3.1.1'  // 此处以JPush 3.1.1 版本为例。
     compile 'cn.jiguang.sdk:jmessage:2.5.0'  // 此处以JMessage 2.5.0 版本为例。
@@ -53,4 +54,8 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.6.1'
 
     compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+
+    compile 'com.github.chrisbanes:PhotoView:1.2.6'
+
+    compile 'cn.yipianfengye.android:zxing-library:2.1'
 }

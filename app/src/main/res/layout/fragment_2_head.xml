@@ -18,7 +18,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="35dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -43,27 +43,27 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/bt_info"
+            android:id="@+id/bt_chat"
             android:layout_width="35dp"
             android:layout_height="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="15dp"
             android:background="@drawable/click_bg"
-            android:text="详情"
+            android:text="会话"
             android:textColor="@color/colorGray_b"
             android:textSize="12sp" />
     </LinearLayout>
 
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.1dp"
-        android:background="@color/colorLine" />
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0.1dp"-->
+    <!--android:background="@color/colorLine" />-->
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="15dp"
-        android:background="@color/colorGray_g" />
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="15dp"-->
+    <!--android:background="@color/colorGray_g" />-->
 
     <View
         android:layout_width="match_parent"
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_weight="1"
-            android:text="成员"
+            android:text="成员："
             android:textColor="@color/colorGray_7"
             android:textSize="14sp" />
 
