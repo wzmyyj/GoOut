@@ -2,6 +2,7 @@ package top.wzmyyj.goout.application;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.Configuration;
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 import cn.jpush.im.android.api.JMessageClient;
 import top.wzmyyj.goout.database.NewFriend;
@@ -30,6 +31,7 @@ public class MyApplication extends WZM_Application {
         //手动的添加模型类
         builder.addModelClasses(NewFriend.class);
         ActiveAndroid.initialize(builder.create());
+        ZXingLibrary.initDisplayOpinion(this);
     }
 
     @Override

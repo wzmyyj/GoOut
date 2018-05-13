@@ -47,6 +47,7 @@ import top.wzmyyj.goout.activity.chat.CreateGroupChatActivity;
 import top.wzmyyj.goout.activity.chat.DeleteGroupMemberActivity;
 import top.wzmyyj.goout.activity.chat.GroupChatActivity;
 import top.wzmyyj.goout.activity.chat.SingleChatActivity;
+import top.wzmyyj.goout.activity.map.MapActivity;
 import top.wzmyyj.goout.activity.turing.OtherChatActivity;
 import top.wzmyyj.goout.adapter.ivd.EmptyIVD;
 import top.wzmyyj.goout.adapter.ivd.EventNotificationIVD;
@@ -278,7 +279,7 @@ public class P_Play extends BaseRecyclerPanel<Message> {
         View v = mInflater.inflate(R.layout.activity_group_chat_info_item, null);
         TextView tv = v.findViewById(R.id.tv_name);
         final ImageView img = v.findViewById(R.id.img_head);
-        tv.setText("助手");
+        tv.setText("智能助手");
         img.setImageResource(R.drawable.ic_robot);
         v.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -404,6 +405,9 @@ public class P_Play extends BaseRecyclerPanel<Message> {
                         openGallery();
                         break;
                     case 4:
+                        Intent i = new Intent();
+                        i.setClass(context, MapActivity.class);
+                        context.startActivity(i);
                         break;
                 }
             }

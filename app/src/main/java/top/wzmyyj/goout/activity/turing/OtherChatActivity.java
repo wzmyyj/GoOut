@@ -38,7 +38,7 @@ public class OtherChatActivity extends AppCompatActivity {
     private Button mBt_send;
     private UserInfo myInfo;
     private Bitmap bitmap,myAvatar;
-    private String name="小助手",name1;
+    private String name="智能助手",name1;
 
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {

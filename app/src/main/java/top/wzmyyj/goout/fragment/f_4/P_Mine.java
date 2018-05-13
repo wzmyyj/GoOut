@@ -1,5 +1,6 @@
 package top.wzmyyj.goout.fragment.f_4;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +15,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.uuzuche.lib_zxing.activity.CaptureActivity;
+import com.yanzhenjie.permission.Action;
+import com.yanzhenjie.permission.AndPermission;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import java.io.File;
@@ -25,10 +29,13 @@ import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.activity.LoginActivity;
 import top.wzmyyj.goout.activity.contact.ContactActivity;
+import top.wzmyyj.goout.activity.map.PlaceActivity;
+import top.wzmyyj.goout.activity.my_info.MyInfoActivity;
 import top.wzmyyj.goout.activity.my_info.UpdateMyInfoActivity;
 import top.wzmyyj.goout.base.BaseRecyclerPanel;
 import top.wzmyyj.goout.tools.J;
 import top.wzmyyj.wzm_sdk.inter.IVD;
+import top.wzmyyj.wzm_sdk.tools.T;
 
 /**
  * Created by wzm on 2018/4/30 0030.
@@ -110,10 +117,34 @@ public class P_Mine extends BaseRecyclerPanel<F_4_Item> {
         super.onItemClick(view, holder, position);
 
 //        T.l("pos:" + position);
+        Intent i = new Intent();
         switch (position) {
+            case 1:
+
+                AndPermission.with(context)
+                        .permission(
+                                Manifest.permission.READ_EXTERNAL_STORAGE,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                Manifest.permission.CAMERA,
+                                Manifest.permission.VIBRATE)
+                        .onGranted(new Action() {
+                            @Override
+                            public void onAction(List<String> permissions) {
+                                Intent i = new Intent();
+                                i.setClass(context, CaptureActivity.class);
+                                activity.startActivityForResult(i, 5);
+                            }
+                        })
+                        .onDenied(new Action() {
+                            @Override
+                            public void onAction(List<String> permissions) {
+                                T.s("No Permission");
+                            }
+                        })
+                        .start();
+                break;
             case 10:
                 JMessageClient.logout();
-                Intent i = new Intent();
                 i.setClass(context, LoginActivity.class);
                 context.startActivity(i);
                 ((Activity) context).finish();
@@ -124,6 +155,13 @@ public class P_Mine extends BaseRecyclerPanel<F_4_Item> {
                 i6.setClass(context, ContactActivity.class);
                 context.startActivity(i6);
                 break;
+
+            case 2:
+                Intent i2 = new Intent();
+                i2.setClass(context, PlaceActivity.class);
+                context.startActivity(i2);
+                break;
+
         }
     }
 
@@ -176,6 +214,14 @@ public class P_Mine extends BaseRecyclerPanel<F_4_Item> {
     }
 
     private void headerListener() {
+        img_t_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent();
+                i.setClass(context, MyInfoActivity.class);
+                context.startActivity(i);
+            }
+        });
         img_t_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

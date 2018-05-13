@@ -3,10 +3,12 @@ package top.wzmyyj.goout.activity.turing;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,7 +95,8 @@ public class ChatMessageAdapter extends BaseAdapter {
                         .findViewById(R.id.img_chat_item_user);
             }
             view.setTag(viewHolder);
-        } else {          viewHolder = (ViewHolder) view.getTag();
+        } else {
+            viewHolder = (ViewHolder) view.getTag();
         }
 
         SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -104,6 +107,7 @@ public class ChatMessageAdapter extends BaseAdapter {
         if (url != null) {
             viewHolder.mText.setText(chatMessage.getMsg());
             SpannableString ss = new SpannableString(url);
+//            ss.setSpan(new ForegroundColorSpan(Color.BLUE), 0, url.length(), Spanned.SPAN_COMPOSING);
             ss.setSpan(new ClickableSpan() {
                 @Override
                 public void onClick(View widget) {
@@ -113,6 +117,7 @@ public class ChatMessageAdapter extends BaseAdapter {
                     mInflater.getContext().startActivity(i);
                 }
             }, 0, url.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            ss.setSpan(new ForegroundColorSpan(Color.rgb(00, 99, 0xff)), 0, url.length(), Spanned.SPAN_COMPOSING);
             viewHolder.mText.append("\n");
             viewHolder.mText.append(ss);
             viewHolder.mText.setMovementMethod(new LinkMovementMethod());

@@ -20,7 +20,7 @@ import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.tools.Expression;
 import top.wzmyyj.goout.tools.J;
-import top.wzmyyj.wzm_sdk.utils.TimeUtil;
+import top.wzmyyj.wzm_sdk.java.TimeUtil;
 
 /**
  * Created by wzm on 2018/5/6 0006.

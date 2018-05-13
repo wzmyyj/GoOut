@@ -15,6 +15,7 @@ android {
             //选择要添加的对应cpu类型的.so库。
             abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a'
             // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86","arm64-v8a","x86_64"
         }
 
         manifestPlaceholders = [
@@ -58,4 +59,12 @@ dependencies {
     compile 'com.github.chrisbanes:PhotoView:1.2.6'
 
     compile 'cn.yipianfengye.android:zxing-library:2.1'
+
+
+    compile 'com.amap.api:3dmap:6.2.0'
+    //定位功能
+    compile 'com.amap.api:location:3.3.0'
+    //搜索功能
+    compile 'com.amap.api:search:5.0.0'
+
 }

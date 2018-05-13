@@ -36,7 +36,7 @@ import top.wzmyyj.goout.base.BaseNestedScrollPanel;
 import top.wzmyyj.goout.tools.J;
 import top.wzmyyj.goout.utils.gallery.GalleryUtil;
 import top.wzmyyj.wzm_sdk.tools.T;
-import top.wzmyyj.wzm_sdk.utils.TimeUtil;
+import top.wzmyyj.wzm_sdk.java.TimeUtil;
 
 /**
  * Created by wzm on 2018/5/4 0004.

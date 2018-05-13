@@ -4,7 +4,7 @@ import android.text.TextUtils;
 
 import cn.jpush.im.android.api.model.GroupInfo;
 import cn.jpush.im.android.api.model.UserInfo;
-import top.wzmyyj.wzm_sdk.utils.TimeUtil;
+import top.wzmyyj.wzm_sdk.java.TimeUtil;
 
 /**
  * Created by wzm on 2018/4/25 0025.

@@ -29,7 +29,7 @@ import cn.jpush.im.android.api.model.Message;
 import cn.jpush.im.android.api.model.UserInfo;
 import top.wzmyyj.goout.R;
 import top.wzmyyj.goout.tools.Expression;
-import top.wzmyyj.wzm_sdk.utils.TimeUtil;
+import top.wzmyyj.wzm_sdk.java.TimeUtil;
 
 
 public class MessageAdapter extends BaseAdapter {

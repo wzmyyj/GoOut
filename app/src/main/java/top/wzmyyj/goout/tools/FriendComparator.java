@@ -3,7 +3,7 @@ package top.wzmyyj.goout.tools;
 import java.util.Comparator;
 
 import cn.jpush.im.android.api.model.UserInfo;
-import top.wzmyyj.wzm_sdk.utils.FirstChar;
+import top.wzmyyj.wzm_sdk.java.FirstChar;
 
 /**
  * Created by Administrator on 2017/8/8 0008.

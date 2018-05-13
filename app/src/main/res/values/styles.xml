@@ -21,7 +21,7 @@
     </style>
 
     <style name="splash_style" parent="@android:style/Theme.NoTitleBar">
-        <item name="android:windowBackground">@color/colorBlue</item>
+        <item name="android:windowBackground">@mipmap/ic_welcome</item>
         <item name="android:windowNoTitle">true</item>
     </style>
 </resources>

@@ -1,5 +1,6 @@
 package top.wzmyyj.goout.fragment.f_3;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -17,6 +18,9 @@ import android.widget.TextView;
 import com.qmuiteam.qmui.util.QMUIDisplayHelper;
 import com.qmuiteam.qmui.widget.popup.QMUIListPopup;
 import com.qmuiteam.qmui.widget.popup.QMUIPopup;
+import com.uuzuche.lib_zxing.activity.CaptureActivity;
+import com.yanzhenjie.permission.Action;
+import com.yanzhenjie.permission.AndPermission;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,6 +45,7 @@ import top.wzmyyj.goout.database.ContactsData;
 import top.wzmyyj.goout.tools.J;
 import top.wzmyyj.wzm_sdk.adapter.CommonAdapter;
 import top.wzmyyj.wzm_sdk.inter.IVD;
+import top.wzmyyj.wzm_sdk.tools.T;
 
 /**
  * Created by wzm on 2018/4/23 0023.
@@ -355,18 +360,40 @@ public class P_Message extends BaseRecyclerPanel<Conversation> {
                             switch (i) {
                                 case 0:
                                     intent.setClass(context, CreateSingleChatActivity.class);
+                                    context.startActivity(intent);
                                     break;
                                 case 1:
                                     intent.setClass(context, CreateGroupChatActivity.class);
+                                    context.startActivity(intent);
                                     break;
                                 case 2:
                                     intent.setClass(context, FindFriendActivity.class);
+                                    context.startActivity(intent);
                                     break;
                                 case 3:
-                                    intent.setClass(context, FindFriendActivity.class);
+                                    AndPermission.with(context)
+                                            .permission(
+                                                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                                                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                                    Manifest.permission.CAMERA,
+                                                    Manifest.permission.VIBRATE)
+                                            .onGranted(new Action() {
+                                                @Override
+                                                public void onAction(List<String> permissions) {
+                                                    Intent i = new Intent();
+                                                    i.setClass(context, CaptureActivity.class);
+                                                    context.startActivity(i);
+                                                }
+                                            })
+                                            .onDenied(new Action() {
+                                                @Override
+                                                public void onAction(List<String> permissions) {
+                                                    T.s("No Permission");
+                                                }
+                                            })
+                                            .start();
                                     break;
                             }
-                            context.startActivity(intent);
                         }
                     });
             mListPopup.setOnDismissListener(new PopupWindow.OnDismissListener() {

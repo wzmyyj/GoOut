@@ -20,8 +20,8 @@ import top.wzmyyj.goout.database.ArticleData;
  * Created by wzm on 2018/5/4 0004.
  */
 
-public class P_Article extends BaseNestedScrollPanel {
-    public P_Article(Context context) {
+public class P_Article1 extends BaseNestedScrollPanel {
+    public P_Article1(Context context) {
         super(context);
         this.title = "文章";
     }
@@ -45,8 +45,7 @@ public class P_Article extends BaseNestedScrollPanel {
 
     @Override
     protected void setView(NestedScrollView ns, SwipeRefreshLayout srl, FrameLayout layout) {
-        View bottom = mInflater.inflate(R.layout.activity_article_bottom, null);
-        layout.addView(bottom);
+
     }
 
 
@@ -55,8 +54,6 @@ public class P_Article extends BaseNestedScrollPanel {
     private TextView tv_name;
     private Button bt_add;
     private TextView tv_text;
-    private TextView tv_text1;
-    private ImageView img_1;
 
     @Override
     protected View getContentView() {
@@ -66,8 +63,6 @@ public class P_Article extends BaseNestedScrollPanel {
         tv_name = content.findViewById(R.id.tv_name);
         bt_add = content.findViewById(R.id.bt_add);
         tv_text = content.findViewById(R.id.tv_text);
-        tv_text1 = content.findViewById(R.id.tv_text1);
-        img_1 = content.findViewById(R.id.img_image);
         contentData();
         contentListener();
         return content;
@@ -77,9 +72,7 @@ public class P_Article extends BaseNestedScrollPanel {
         tv_title.setText(article.getTitle());
         img_head.setImageResource(article.getHead());
         tv_name.setText(article.getName());
-        tv_text.setText(article.getContent());
-        img_1.setImageResource(article.getImage());
-        tv_text1.setText(s);
+        tv_text.setText(article.getTitle() + s);
 
     }
 
